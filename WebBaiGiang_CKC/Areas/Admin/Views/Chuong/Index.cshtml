@@ -19,14 +19,14 @@
 <table class="table table alert-light">
     <thead class="table-dark">
         <tr style="text-align: center;">
-            <th>  @Html.DisplayNameFor(model => model.SoChuong)</th>
             <th>
                 @Html.DisplayNameFor(model => model.MonHoc.TenMonHoc)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TenChuong)
             </th>
-
+            <th>  @Html.DisplayNameFor(model => model.SoChuong)</th>
+           
             <th>Chức năng</th>
         </tr>
     </thead>
@@ -35,15 +35,15 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SoChuong)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.MonHoc.TenMonHoc)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TenChuong)
                 </td>
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoChuong)
+                </td>
+               
                 <td>
                     <a asp-action="Details" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
                     <a asp-action="Edit" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>

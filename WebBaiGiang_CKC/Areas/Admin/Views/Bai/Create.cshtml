@@ -22,7 +22,7 @@
             <br />
             <div class="form-group">
                 <label asp-for="ChuongId" class="form-label">Chương <span id="ChuongDisplay"></span></label>
-                <select asp-for="ChuongId" asp-items="ViewBag.ChuongId" class="form-select" onchange="showChuongInfo(this)">
+                <select asp-for="ChuongId" asp-items="@ViewBag.ChuongId" class="form-select" onchange="showChuongInfo(this)">
                     <option value="">-- Chọn chương học --</option>
                 </select>
             </div>

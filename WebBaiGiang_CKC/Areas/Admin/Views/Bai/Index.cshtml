@@ -25,12 +25,13 @@
     <thead class="table-dark">
         <tr style="text-align: center;">
             <th>
-                @Html.DisplayNameFor(model => model.SoBai)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Chuong.TenChuong)
             </th>
             <th> @Html.DisplayNameFor(model => model.TenBai)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoBai)
+            </th>
+           
            
             <th>Chức năng</th>
         </tr>
@@ -40,16 +41,14 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SoBai)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Chuong.TenChuong)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TenBai)
                 </td>
-               
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoBai)
+                </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.BaiId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
                     <a asp-action="Edit" asp-route-id="@item.BaiId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>

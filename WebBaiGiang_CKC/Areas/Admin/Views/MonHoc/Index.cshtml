@@ -24,9 +24,6 @@
     <thead class="table-dark">
         <tr style="text-align: center;">
             <th>
-                STT
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.TenMonHoc)
             </th>
             <th>
@@ -41,9 +38,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MonHocId)
-                </td>
 
                 <td>
                     @Html.DisplayFor(modelItem => item.TenMonHoc)

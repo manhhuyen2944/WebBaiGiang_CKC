@@ -71,10 +71,19 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         {
             if (bai.ChuongId == 0)
             {
-               _notyfService.Error("Vui lòng chọn chương học!");
+                _notyfService.Error("Vui lòng chọn chương học!");
             }
-            else
+            else if (ModelState.IsValid)
             {
+                // Kiểm tra xem số bài đã tồn tại hay chưa
+                var existingBai = await _context.Bai.FirstOrDefaultAsync(b => b.SoBai == bai.SoBai && b.ChuongId == bai.ChuongId);
+                if (existingBai != null)
+                {
+                    ModelState.AddModelError("SoBai", "Số bài đã tồn tại");
+                    ViewData["ChuongId"] = new SelectList(_context.Chuong, "ChuongId", "TenChuong", bai.ChuongId);
+                    return View(bai);
+                }
+
                 _context.Add(bai);
                 _notyfService.Success("Thêm Thành Công");
                 await _context.SaveChangesAsync();
@@ -115,6 +124,15 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                // Kiểm tra xem số bài mới đã tồn tại hay chưa
+                var existingBai = await _context.Bai.FirstOrDefaultAsync(b => b.SoBai == bai.SoBai && b.ChuongId == bai.ChuongId && b.BaiId != bai.BaiId);
+                if (existingBai != null)
+                {
+                    ModelState.AddModelError("SoBai", "Số bài đã tồn tại");
+                    ViewData["ChuongId"] = new SelectList(_context.Chuong, "ChuongId", "TenChuong", bai.ChuongId);
+                    return View(bai);
+                }
+
                 try
                 {
                     if (bai.ChuongId == 0)
@@ -127,7 +145,6 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                         _notyfService.Success("Sửa Thành Công");
                         await _context.SaveChangesAsync();
                     }
-                   
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -145,7 +162,6 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             ViewData["ChuongId"] = new SelectList(_context.Chuong, "ChuongId", "TenChuong", bai.ChuongId);
             return View(bai);
         }
-
         // GET: Admin/Bai/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

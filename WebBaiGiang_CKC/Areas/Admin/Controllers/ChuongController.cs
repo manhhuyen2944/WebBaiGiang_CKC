@@ -62,6 +62,15 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra xem số chương đã tồn tại hay chưa
+                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.SoChuong == chuong.SoChuong && c.MonHocId == chuong.MonHocId);
+                if (existingChuong != null)
+                {
+                    ModelState.AddModelError("SoChuong", "Số chương đã tồn tại");
+                    ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
+                    return View(chuong);
+                }
+
                 _context.Add(chuong);
                 _notyfService.Success("Thêm Thành Công");
                 await _context.SaveChangesAsync();
@@ -102,6 +111,15 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                // Kiểm tra xem số chương mới đã tồn tại hay chưa
+                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.SoChuong == chuong.SoChuong && c.MonHocId == chuong.MonHocId && c.ChuongId != chuong.ChuongId);
+                if (existingChuong != null)
+                {
+                    ModelState.AddModelError("SoChuong", "Số chương đã tồn tại");
+                    ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
+                    return View(chuong);
+                }
+
                 try
                 {
                     _context.Update(chuong);
