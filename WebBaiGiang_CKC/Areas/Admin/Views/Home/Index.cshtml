@@ -1,0 +1,209 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+
+    var sinhvienthamgia = ViewBag.TotalParticipants;
+}
+@section scripts{
+    <script src="~/AdminAssets/js/vendor/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var ctx = document.getElementById('score-chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['0-5', '5-7', '7-8', '8-10'],
+                    datasets: [{
+                        label: 'Số lượng sinh viên',
+                        data: [
+                            @ViewBag.Percent0to5,
+                            @ViewBag.Percent5to7,
+                            @ViewBag.Percent7to8,
+                            @ViewBag.Percent8to10
+                        ],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)', // màu đỏ cho khoảng điểm 0-5
+                            'rgb(255, 205, 86)', // màu vàng cho khoảng điểm 7-8
+                            'rgb(54, 162, 235)', // màu xanh cho khoảng điểm 5-7
+                            'rgb(75, 192, 192)' // màu xanh lá cho khoảng điểm 8-10
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Biểu đồ thể hiện tỷ lệ phần trăm sinh viên trong mỗi khoảng điểm'
+                        },
+                        datalabels: {
+                            formatter: function (value, context) {
+                                return (value * 100).toFixed(2);
+                            },
+                            color: '#fff',
+                            anchor: 'end',
+                            align: 'start',
+                            offset: 4,
+                            borderWidth: 2,
+                            borderRadius: 25,
+                            backgroundColor: (context) => {
+                                return context.dataset.backgroundColor;
+                            },
+                            padding: {
+                                top: 10,
+                                right: 12,
+                                bottom: 10,
+                                left: 12,
+                            },
+                            suffix: '%'
+                        }
+                    }
+                }
+            });
+        });
+        $(document).ready(function () {
+            // Khởi tạo Datepicker
+            $('#dash-dateranges').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+
+            // Lấy giá trị ngày tháng năm hiện tại
+            var currentDate = moment().format('DD/MM/YYYY');
+
+            // Đưa giá trị vào trong input field
+            $('#dash-dateranges').val(currentDate);
+        });
+    </script>
+
+}
+
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <form class="d-flex">
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-light" id="dash-dateranges">
+                                    <span class="input-group-text bg-primary border-primary text-white">
+                                        <i class="mdi mdi-calendar-range font-13"></i>
+                                    </span>
+                                </div>
+
+                            </form>
+                        </div>
+                        <h4 class="page-title">Trang chủ</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card widget-inline">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+
+                                <div class="col-sm-6 col-xl-3">
+                                    <div class="card shadow-none m-0">
+                                        <div class="card-body text-center">
+                                            <i class="dripicons-user-group text-muted " style="font-size: 24px;"></i>
+                                            <h3><span>@sinhvienthamgia</span></h3>
+                                            <p class="text-muted font-15 mb-0">Tổng sinh viên tham gia thi</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xl-3">
+                                    <div class="card shadow-none m-0 border-start">
+                                        <div class="card-body text-center">
+                                            <i class="dripicons-graph-line text-muted" style="font-size: 24px;"></i>
+                                            <h3><span> @ViewBag.Diem8to10</span> </h3>
+                                            <p class="text-muted font-15 mb-0">Số lượng sinh viên làm bài nhanh nhất</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xl-3">
+                                    <div class="card shadow-none m-0 border-start">
+                                        <div class="card-body text-center">
+                                            <i class="dripicons-checklist text-muted" style="font-size: 24px;"></i>
+                                            <h3><span> @ViewBag.Diem0to5</span></h3>
+                                            <p class="text-muted font-15 mb-0">Sinh viên có điểm thấp nhất</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-xl-3">
+                                    <div class="card shadow-none m-0 border-start">
+                                        <div class="card-body text-center">
+                                            <i class="dripicons-briefcase text-muted" style="font-size: 24px;"></i>
+                                            <h3><span>31</span></h3>
+                                            <p class="text-muted font-15 mb-0">Tổng sinh viên tham gia thi</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div> <!-- end row -->
+                        </div>
+                    </div> <!-- end card-box-->
+                </div> <!-- end col-->
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="card card-h-100">
+                            <div class="card-body">
+
+                                <h4 class="header-title mb-3">Projections Vs Actuals</h4>
+
+                                <div dir="ltr">
+                                    <div id="high-performing-product" class="apex-charts" data-colors="#0acf97,#e3eaef"></div>
+                                </div>
+
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+
+                    </div> <!-- end col -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Thống kê điểm sinh viên trong 1 kỳ kiểm tra</h4>
+                                <div class="d-flex justify-content-center">
+                                    <canvas id="score-chart" style="max-width:600px; max-height:600px;"></canvas>
+                                </div>
+                                <div class="chart-widget-list mt-4">
+                                    <p><i class="mdi mdi-square text-danger"></i> 0-5 điểm <span class="float-end">@ViewBag.Diem0to5</span></p>
+                                    <p><i class="mdi mdi-square text-warning"></i> 5-7 điểm <span class="float-end">@ViewBag.Diem5to7</span></p>
+                                    <p><i class="mdi mdi-square" style="color: rgb(54, 162, 235)"></i> 7-8 điểm <span class="float-end">@ViewBag.Diem7to8</span></p>
+                                    <p><i class="mdi mdi-square" style="color: rgb(75, 192, 192);"></i>  8-10 điểm <span class="float-end">@ViewBag.Diem8to10</span></p>
+
+                                </div>
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
+
+
+
+                </div>
+                <!-- end row -->
+
+            </div>
+            <!-- container -->
+
+        </div>
+    </div>

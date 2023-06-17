@@ -266,3 +266,4 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\refint\WebBaiGiang_
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\WebBaiGiang_CKC.pdb
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\WebBaiGiang_CKC.genruntimeconfig.cache
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\ref\WebBaiGiang_CKC.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_LayoutAdmin.cshtml.rz.scp.css
