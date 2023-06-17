@@ -123,7 +123,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             try
             {
-                giaoVien.HoTen = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(giaoVien.HoTen);
+               
                 var giaoVienFromDb = await _context.GiaoVien.FindAsync(giaoVien.Id);
                
                 if (giaoVienFromDb == null)
