@@ -19,6 +19,26 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuZ05oYXBcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/HinhAnh/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSGluaEFuaFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

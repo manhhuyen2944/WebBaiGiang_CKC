@@ -1,0 +1,71 @@
+﻿@model WebBaiGiang_CKC.Models.GiaoVien
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<ol class="breadcrumb">
+
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+    <li class="breadcrumb-item"><a asp-controller="GiaoVien" asp-action="Index">Quản lý tài khoản</a></li>
+    <li class="breadcrumb-item"><a asp-controller="GiaoVien" asp-action="Create">Thêm</a></li>
+</ol>
+<h1 style="text-align: center;">THÊM TÀI KHOẢN GIÁO VIÊN</h1>
+
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TenDangNhap" class="control-label"></label>
+                <input asp-for="TenDangNhap" class="form-control" />
+                <span asp-validation-for="TenDangNhap" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="MatKhau" class="control-label"></label>
+                <input asp-for="MatKhau" class="form-control" />
+                <span asp-validation-for="MatKhau" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="HoTen" class="control-label"></label>
+                <input asp-for="HoTen" class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="AnhDaiDien" class="control-label"></label>
+                <input type="file" name="fAvatar" asp-for="AnhDaiDien" class="form-control-file" required />
+                <span asp-validation-for="AnhDaiDien" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsGiaoVien" /> @Html.DisplayNameFor(model => model.IsGiaoVien)
+                </label>
+            </div>
+            <br />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TrangThai" /> @Html.DisplayNameFor(model => model.TrangThai)
+                </label>
+            </div>
+            <br />
+            <div class="form-group">
+                <div style="float: left; padding-right:10px">
+                    <input type="submit" value="Thêm" class="btn btn-primary" />
+                </div>
+                <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
+            </div>
+        </form>
+    </div>
+</div>
