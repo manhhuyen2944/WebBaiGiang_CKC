@@ -23,7 +23,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         // GET: Admin/Chuong
         public async Task<IActionResult> Index()
         {
-            var baiGiangContext = _context.Chuong.Include(c => c.MonHoc);
+            var baiGiangContext = _context.Chuong.OrderBy(x=>x.SoChuong).Include(c => c.MonHoc);
             return View(await baiGiangContext.ToListAsync());
         }
 

@@ -10,6 +10,7 @@ namespace WebBaiGiang_CKC.Models
         [Required(ErrorMessage = "{0} không được bỏ trống")]
         public string TenChuong { get; set; }
         [DisplayName("Chương số")]
+        [Range(1, int.MaxValue, ErrorMessage = "Số chương phải lớn không 0")]
         [Required(ErrorMessage = "{0} không được bỏ trống")]
         public int SoChuong { get; set; }
 
