@@ -23,5 +23,11 @@ namespace WebBaiGiang_CKC.Data
         public DbSet<CauHoi_De> CauHoi_De { get; set; }
         public DbSet<BaiLam> BaiLam { get; set; }
         public DbSet<CauHoi_BaiLam> CauHoi_BaiLam { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Chuong>()
+                .HasIndex(c => c.ChuongId)
+                .IsUnique();
+        }
     }
 }

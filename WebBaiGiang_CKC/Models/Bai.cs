@@ -13,6 +13,7 @@ namespace WebBaiGiang_CKC.Models
         [Required(ErrorMessage = "{0} không được bỏ trống")]
         public string TenBai { get; set; }
         [DisplayName("Bài số")]
+        [Range(1, int.MaxValue, ErrorMessage = "Số bài phải lớn hơn 0")]
         [Required(ErrorMessage = "{0} không được bỏ trống")]
         public int SoBai { get; set; }
         [DisplayName("Mô tả")]

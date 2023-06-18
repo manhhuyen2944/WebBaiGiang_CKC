@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebBaiGiang_CKC.Models
 {
@@ -26,6 +27,7 @@ namespace WebBaiGiang_CKC.Models
         public string DapAnDung { get; set; }
 
         [DisplayName("Độ khó")]
+        [Range(1, 100, ErrorMessage = "Độ khó đề là nguyên dương từ 1% đến 100%")]
         public float DoKho { get; set; }
         public int? SoLanLay { get; set; }
         public int? SoLanTraLoiDung { get; set; }

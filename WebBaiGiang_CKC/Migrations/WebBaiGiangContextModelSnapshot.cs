@@ -17,7 +17,7 @@ namespace WebBaiGiang_CKC.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.15")
+                .HasAnnotation("ProductVersion", "6.0.18")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -179,15 +179,9 @@ namespace WebBaiGiang_CKC.Migrations
             modelBuilder.Entity("WebBaiGiang_CKC.Models.Chuong", b =>
                 {
                     b.Property<int>("ChuongId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChuongId"), 1L, 1);
 
                     b.Property<int>("MonHocId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SoChuong")
                         .HasColumnType("int");
 
                     b.Property<string>("TenChuong")
@@ -195,6 +189,9 @@ namespace WebBaiGiang_CKC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ChuongId");
+
+                    b.HasIndex("ChuongId")
+                        .IsUnique();
 
                     b.HasIndex("MonHocId");
 
