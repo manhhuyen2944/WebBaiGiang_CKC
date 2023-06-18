@@ -23,7 +23,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         // GET: Admin/Bai
         public async Task<IActionResult> Index()
         {
-            var baiGiangContext = _context.Bai.OrderBy(b => b.Chuong.SoChuong).ThenBy(b => b.SoBai).Include(b => b.Chuong);
+            var baiGiangContext = _context.Bai.OrderBy(b => b.Chuong.ChuongId).ThenBy(b => b.SoBai).Include(b => b.Chuong);
             return View(await baiGiangContext.ToListAsync());
         }
 
@@ -50,7 +50,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             var chuong = _context.Chuong.FirstOrDefault(c => c.ChuongId == chuongId);
             if (chuong != null)
             {
-                var chuongInfo = new { id = chuong.SoChuong, tenChuong = chuong.TenChuong };
+                var chuongInfo = new { id = chuong.ChuongId, tenChuong = chuong.TenChuong };
                 return Json(chuongInfo);
             }
             return Json(new { });

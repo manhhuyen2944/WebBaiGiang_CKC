@@ -27,7 +27,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         public IActionResult Index(int? page)
         {
 
-            var baiGiangContext = _context.Muc.OrderBy(x => x.Bai.Chuong.SoChuong).ThenBy(c => c.Bai.SoBai).ThenBy(m => m.MucSo).Include(m => m.Bai).ThenInclude(x => x.Chuong).AsNoTracking();
+            var baiGiangContext = _context.Muc.OrderBy(x => x.Bai.Chuong.ChuongId).ThenBy(c => c.Bai.SoBai).ThenBy(m => m.MucSo).Include(m => m.Bai).ThenInclude(x => x.Chuong).AsNoTracking();
             var pageNo = page == null || page <= 0 ? 1 : page.Value;
             var pageSize = 12;
             PagedList<Muc> models = new PagedList<Muc>(baiGiangContext, pageNo, pageSize);
@@ -89,8 +89,20 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             if (muc.BaiId == 0)
             {
                 _notyfService.Error("Vui lòng chọn bài học");
+                var chuongid = new SelectList(_context.Chuong, "ChuongId", "TenChuong");
+                ViewData["ChuongId"] = chuongid;
+                var firstChuongId = _context.Chuong.FirstOrDefault()?.ChuongId ?? 0;
+                if (!string.IsNullOrEmpty(Request.Query["ChuongId"]))
+                {
+
+                    int chuongId = int.Parse(Request.Query["ChuongId"]);
+                    var danhSachBai = _context.Bai.Where(b => b.ChuongId == chuongId).ToList();
+                    var baiid = new SelectList(danhSachBai, "BaiId", "TenBai");
+                    ViewData["BaiId"] = baiid;
+                }
+                return View(muc);
             }
-            else if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 // Kiểm tra xem số mục đã tồn tại hay chưa
                 var existingMuc = await _context.Muc.FirstOrDefaultAsync(m => m.MucSo == muc.MucSo && m.BaiId == muc.BaiId);
@@ -165,11 +177,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            if (muc.BaiId == 0)
-            {
-                _notyfService.Error("Vui lòng chọn bài học");
-            }
-            else if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 // Kiểm tra xem số mục đã tồn tại hay chưa
                 var existingMuc = await _context.Muc.FirstOrDefaultAsync(m => m.MucSo == muc.MucSo && m.BaiId == muc.BaiId && m.MucId != muc.MucId);
@@ -192,6 +200,23 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 }
                 try
                 {
+                    if (muc.BaiId == 0)
+                    {
+                        _notyfService.Error("Vui lòng chọn bài học");
+                        var chuongid = new SelectList(_context.Chuong, "ChuongId", "TenChuong");
+                        ViewData["ChuongId"] = chuongid;
+                        var firstChuongId = _context.Chuong.FirstOrDefault()?.ChuongId ?? 0;
+                        if (!string.IsNullOrEmpty(Request.Query["ChuongId"]))
+                        {
+
+                            int chuongId = int.Parse(Request.Query["ChuongId"]);
+                            var danhSachBai = _context.Bai.Where(b => b.ChuongId == chuongId).ToList();
+
+                        }
+                        var baiid = new SelectList(_context.Bai, "BaiId", "TenBai");
+                        ViewData["BaiId"] = baiid;
+                        return View(muc);
+                    }
                     _context.Update(muc);
                     await _context.SaveChangesAsync();
                     _notyfService.Success("Cập nhật thành công");
@@ -210,6 +235,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
+           
             return View(muc);
         }
         // GET: Admin/Muc/Delete/5

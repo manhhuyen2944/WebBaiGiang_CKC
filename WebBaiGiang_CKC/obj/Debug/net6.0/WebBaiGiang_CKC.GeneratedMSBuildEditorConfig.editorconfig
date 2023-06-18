@@ -87,6 +87,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/_PartialViewCreateList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXF9QYXJ0aWFsVmlld0NyZWF0ZUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,4 +1,8 @@
-﻿using AspNetCoreHero.ToastNotification.Abstractions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,8 +27,8 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         // GET: Admin/Chuong
         public async Task<IActionResult> Index()
         {
-            var baiGiangContext = _context.Chuong.OrderBy(x=>x.SoChuong).Include(c => c.MonHoc);
-            return View(await baiGiangContext.ToListAsync());
+            var webBaiGiangContext = _context.Chuong.Include(c => c.MonHoc);
+            return View(await webBaiGiangContext.ToListAsync());
         }
 
         // GET: Admin/Chuong/Details/5
@@ -58,19 +62,17 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ChuongId,TenChuong,SoChuong,MonHocId")] Chuong chuong)
+        public async Task<IActionResult> Create([Bind("ChuongId,TenChuong,MonHocId")] Chuong chuong)
         {
             if (ModelState.IsValid)
             {
-                // Kiểm tra xem số chương đã tồn tại hay chưa
-                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.SoChuong == chuong.SoChuong && c.MonHocId == chuong.MonHocId);
+                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.ChuongId == chuong.ChuongId && c.MonHocId == chuong.MonHocId);
                 if (existingChuong != null)
                 {
-                    ModelState.AddModelError("SoChuong", "Số chương đã tồn tại");
+                    ModelState.AddModelError("ChuongId", "Số chương đã tồn tại");
                     ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
                     return View(chuong);
                 }
-
                 _context.Add(chuong);
                 _notyfService.Success("Thêm Thành Công");
                 await _context.SaveChangesAsync();
@@ -102,7 +104,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ChuongId,TenChuong,SoChuong,MonHocId")] Chuong chuong)
+        public async Task<IActionResult> Edit(int id, [Bind("ChuongId,TenChuong,MonHocId")] Chuong chuong)
         {
             if (id != chuong.ChuongId)
             {
@@ -111,19 +113,10 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                // Kiểm tra xem số chương mới đã tồn tại hay chưa
-                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.SoChuong == chuong.SoChuong && c.MonHocId == chuong.MonHocId && c.ChuongId != chuong.ChuongId);
-                if (existingChuong != null)
-                {
-                    ModelState.AddModelError("SoChuong", "Số chương đã tồn tại");
-                    ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-                    return View(chuong);
-                }
-
                 try
                 {
                     _context.Update(chuong);
-                    _notyfService.Success("Sửa Thành Công");
+                    _notyfService.Success("Cập Nhật Thành Công");
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -169,7 +162,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         {
             if (_context.Chuong == null)
             {
-                return Problem("Entity set 'BaiGiangContext.Chuong'  is null.");
+                return Problem("Entity set 'WebBaiGiangContext.Chuong'  is null.");
             }
             var chuong = await _context.Chuong.FindAsync(id);
             if (chuong != null)
@@ -183,7 +176,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
         private bool ChuongExists(int id)
         {
-            return _context.Chuong.Any(e => e.ChuongId == id);
+          return _context.Chuong.Any(e => e.ChuongId == id);
         }
     }
 }
