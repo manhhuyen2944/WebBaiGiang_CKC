@@ -77,7 +77,11 @@ namespace WebBaiGiang_CKC.Controllers
             ViewBag.kiemtra = kikiemtra;
             return View();
         }
+        public IActionResult NopBai()
+        {
 
+            return View();
+        }
 
     }
 }
