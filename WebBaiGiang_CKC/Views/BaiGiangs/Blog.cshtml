@@ -1,0 +1,125 @@
+﻿@model IEnumerable<WebBaiGiang_CKC.Models.Bai>
+
+@{
+    var lstMon = ViewBag.lstSubject as List<MonHoc>;
+
+}
+
+
+<main>
+
+    <div class="menu-toggle"> <a href="#">Menu</a> </div>
+
+    <div>
+        @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
+
+
+        <div class="noidung">
+
+            <h2> Bài tập</h2>
+            <hr />
+            <div class="baitap">
+
+                <h2>
+                    (ASP.NET Core MVC) Xây dựng ứng dụng mẫu - Danh mục của Blog (phần 1)
+                </h2>
+                <p>Từng bước xây dựng Website mẫu với ASP.NET Core MVC, phần này xây dựng danh mục để chuẩn bị cho một Website là một blog đăng các bài viết</p>
+                <h2>Định nghĩa Model Category</h2>
+                <p>Model Category tương ứng là bảng Category trong CSDL SQL Server, lưu trữ thông tinh các danh mục của Blog, mỗi danh mục có thể là danh mục gốc hoặc là danh mục con của một danh mục khác, ta sẽ xây dựng Model này như sau:</p>
+                <p>Models/Category.cs</p>
+
+                <img src="/contents/imgBaiTap/blog.png" alt="">
+                <h2>Cập nhật DbContext của ứng dụng</h2>
+                <pre>
+                <code>
+                        public DbSet< Category > Categories {set; get;}
+                    </code>
+                </pre>
+                <h2>
+                    Cập nhật Database bằng EF Migration
+                </h2>
+                <p>Thực hiện lệnh sau tạo một Migration đặt tên là init</p>
+                <pre>
+                <code>
+                        Add-migration Init 
+                    </code>
+                </pre>
+                <p>
+                    Sau đó thực hiện cập nhật database
+                </p>
+                <pre>
+                <code>
+                        Update-database
+                    </code>
+                </pre>
+                <p>Nếu sau cập nhật cần sửa đổi thì có thể xóa Migration và thực hiện lại quy trình trên, xóa Migration cuối bằng cách</p>
+                <pre>
+                <code>
+                        Remove migrations 
+                    </code>
+                </pre>
+                <h2>Tạo CRUD cho Category</h2>
+                <p>Bạn có thể sử dụng công cụ dotnet aspnetcodegenerator, tự động phát sinh ra Controller với các Action/View đáp ứng các chức năng Create, Read, Update, Delete cho Category. Sau khi phát sinh, sẽ chỉnh sửa trên mã nguồn này cho nhanh chóng, hãy thực hiện lệnh sau:</p>
+                <pre>
+                <code>
+                        dotnet aspnet-codegenerator controller -name CategoryController -m CategoryBlog.Models.Category -dc CategoryBlog.Data.CategoryBlogContext -outDir  Areas/Admin/Controllers -l _Layout
+                    </code>
+                </pre>
+                <p>Lệnh trên sẽ phát sinh cho chúng ta Controller với tên là Category, các tham số đó là:</p>
+                <p>-name Category tạo controller đặt tên là Category</p>
+                <p>-m CategoryBlog.Models.Category chỉ ra lớp Model sẽ phát sinh CRUD</p>
+                <p>-dc CategoryBlog.Data.CategoryBlogContext chỉ ra lớp DbContext</p>
+                <p>-outDir Areas/Admin/Controllers nơi lưu code Controller (đặt trong Area có tên Blog)</p>
+                <p>-l _Layout view phát sinh sử dụng layout là _Layout</p>
+                <p>
+                    Sau lệnh trên nó tạo ra Controller Category trong Area Admin, các View lưu ở thư mục Areas/Admin/Views/Category, để các View tự động nạp thư viện TagHelper hãy tạo ra file Areas/Admin/Views/Category/_ViewImports.cshtml với nội dung
+                </p>
+
+                <p>Như vậy đã tạo ra Controller và các View, bạn có thể truy cập /admin/category/ để hiện thị trang Index, là danh sách các Category - Từ trang này có thể tạo mới, sửa đổi, xóa Category</p>
+                <p>Giờ sẽ mở Controller và các file View ra để tùy biến</p>
+                <h2>Tùy biến chức năng tạo Category</h2>
+
+
+                <p>Chức năng này thực hiện qua 2 Action Create (một cho get và một cho post) và file view là Create.cshtml, sửa lại Action Create trong CategoryController như sau:</p>
+                <img src="/contents/imgBaiTap/blog1.png" alt="">
+
+                <p>Trang view Index.cshtml có nội dung:</p>
+                <img src="/contents/imgBaiTap/blog2.png" alt="">
+
+                <p>
+                    Để ý khi tạo Category có phát sinh phần tử HTML Select để chọn ID danh mục cha nếu cần, để làm điều đó đã sử dụng đoạn mã tạo ra SelectList rồi chuyển nó tới View thông qua ViewData, thể hiện qua đoạn mã với diễn giải như sau:
+
+                </p>
+                    <pre>
+                                    <code>
+                                 ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Slug", category.ParentCategoryId);
+                        </code>
+                    </pre>
+
+                <p>Tạo View thì nó dựng HTML để chọn phần tử cha bằng select TagHelper</p>
+                <p>Tạo phần tử HTML select tương ứng cho ParentID của Model, các mục chọn có nguồn từ Controller truyền tới là ViewBag.ParentCategoryId</p>
+                <p>
+                    Các chức năng Delete, Edit, Detail tùy biến một cách tương tự. Kết quả sẽ có đủ chức năng để quản lý danh mục
+
+                </p>
+                <img src="/contents/imgBaiTap/blog3.png" alt="">
+                <img src="/contents/imgBaiTap/blog4.png" alt="">
+                <img src="/contents/imgBaiTap/blog5.png" alt="">
+                <p>Xem chi tiết tại video hướng dẫn : </p>
+                <iframe width="1000" height="500" src="https://www.youtube.com/embed/WxsnETqGiGk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p></p>
+                <p></p>
+                <p></p>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+</main>
+@section Scripts{
+    <script src="~/assets/js/menu_.js">
+    </script>
+    }

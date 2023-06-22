@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebBaiGiang_CKC.Models.Bai>
+
+@{
+    var lstMon = ViewBag.lstSubject as List<MonHoc>;
+
+}
+
+
+<main>
+
+    <div class="menu-toggle"> <a href="#">Menu</a> </div>
+
+    <div>
+        @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
+
+
+        <div class="noidung">
+
+            <h2> Bài tập</h2>
+            <hr />
+            <div class="baitap">
+                <h2>(ASP.NET Core MVC) Xây dựng ứng dụng mẫu - Tích hợp HTML Editor Summernote</h2>
+                <p>Tích hợp HTML Editor (WYSIWYG HTML) vào trang web ASP.NET MVC Core, sử dụng Summernote Editor</p>
+
+                <h2>Tích hợp Summernote - HTML Editor vào Website</h2>
+                <p>Có nhiều công cụ soạn thảo HTML (WYSIWYG Editor) để bạn tích hợp vào website, phổ biến như CkEditor, Summernote, TinyMCE ... Ở đây sẽ sử dụng công cụ đơn giản là Summernote, công cụ này có sử dụng BootStrap, JQuery.</p>
+                <p>Tải về bản mới tại Summernote Releases, ví dụ tải về file summernote-0.8.18-dist.zip. Giải nén, copy tất cả các file có vào thư mục của dự án, ta sẽ copy vào thư mục wwwroot/summernote - để có thể truy cập qua file tĩnh ASP.NET MVC</p>
+                <p>https://github.com/summernote/summernote/releases</p>
+                <p>
+                    Trong thư mục wwwroot/summernote có nhiều file .js, .css tùy ngữ cảnh mà sử dụng. Trong trường hợp sử dụng cùng CSS BootStrap, thì cần nạp vào trang HTML hai file:
+
+                </p>
+                <img src="/contents/imgBaiTap/blog6.png" alt="">
+
+                <p>Sau đó kích hoạt phần tử HTML nào trở thành Editor bằng cú pháp mã JavaScript như sau:</p>
+                <img src="/contents/imgBaiTap/blog7.png" alt="">
+
+                <p>Áp dụng:</p>
+                <p>Trong ứng dụng của Blog, các Category có thuộc tính Content, thuộc tính này sẽ thiết lập có nội dung là HTML, do vậy khi soạn thảo, tạo mới hãy kích hoạt Summernote để biên tập nội dung HTML</p>
+                <p>Mở file Areas/Admin/Views/Category/Create.cshtml thêm vào đoạn mã kích hoạt Summernote cho phần tử Content - nó thành như sau:</p>
+                <img src="/contents/imgBaiTap/blog10.png" alt="">
+                
+                <p>Kết quả khi soạn thảo một Category</p>
+                <img src="/contents/imgBaiTap/blog9.png" alt="">
+                <p>Tham khảo thêm tại video hướng dẫn : </p>
+                <iframe width="1000" height="500" src="https://www.youtube.com/embed/4RkxUWIZ3ZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p></p>
+            </div>
+
+
+        </div>
+    </div>
+
+</main>
+@section Scripts{
+    <script src="~/assets/js/menu_.js">
+    </script>
+    }

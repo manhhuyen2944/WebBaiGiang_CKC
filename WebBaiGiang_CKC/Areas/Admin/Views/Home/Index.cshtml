@@ -4,15 +4,8 @@
 
 
     var sinhvienthamgia = ViewBag.TotalParticipants;
-    var kyKiemTraId = ViewBag.KyKiemTraId ?? 0;
-    var percent0to5ByKyKiemTra = ViewBag.Percent0to5ByKyKiemTra ?? new List<double>();
-    var percent5to7ByKyKiemTra = ViewBag.Percent5to7ByKyKiemTra ?? new List<double>();
-    var percent7to8ByKyKiemTra = ViewBag.Percent7to8ByKyKiemTra ?? new List<double>();
-    var percent8to10ByKyKiemTra = ViewBag.Percent8to10ByKyKiemTra ?? new List<double>();
-    var diem0to5CountByKyKiemTra = ViewBag.Diem0to5CountByKyKiemTra ?? new List<int>();
-    var diem5to7CountByKyKiemTra = ViewBag.Diem5to7CountByKyKiemTra ?? new List<int>();
-    var diem7to8CountByKyKiemTra = ViewBag.Diem7to8CountByKyKiemTra ?? new List<int>();
-    var diem8to10CountByKyKiemTra = ViewBag.Diem8to10CountByKyKiemTra ?? new List<int>();
+  
+   
 }
 @section scripts{
     <script src="~/AdminAssets/js/vendor/apexcharts.min.js"></script>
@@ -28,17 +21,12 @@
                     labels: ['0-5', '5-7', '7-8', '8-10'],
                     datasets: [{
                         label: 'Số lượng sinh viên',
-                        data: [
-        @ViewBag.Percent0to5ByKyKiemTra,
-        @ViewBag.Percent5to7ByKyKiemTra,
-        @ViewBag.Percent7to8ByKyKiemTra,
-        @ViewBag.Percent8to10ByKyKiemTra
-                                ],
+                        data: [@ViewBag.Percent0to5, @ViewBag.Percent5to7, @ViewBag.Percent7to8, @ViewBag.Percent8to10],
                         backgroundColor: [
-                            'rgb(255, 99, 132)', // màu đỏ cho khoảng điểm 0-5
-                            'rgb(255, 205, 86)', // màu vàng cho khoảng điểm 7-8
-                            'rgb(54, 162, 235)', // màu xanh cho khoảng điểm 5-7
-                            'rgb(75, 192, 192)' // màu xanh lá cho khoảng điểm 8-10
+                            '#f1556c', 
+                            '#ffbf00', 
+                            '#00c1ef',
+                            '#4caf50' 
                         ],
                         hoverOffset: 4
                     }]
@@ -182,26 +170,23 @@
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                    @foreach (var kyKiemTra in ViewBag.KyKiemTraList)
-                                    {
-                                        <a href="@Url.Action("Index", "Home", new { kyKiemTraId = kyKiemTra.KyKiemTraId })" class="dropdown-item">@kyKiemTra.TenKyKiemTra</a>
-                                    }
-                                </div>
+                                        @foreach (var kyKiemTra in ViewBag.KyKiemTraList)
+                                        {
+                                            <a href="@Url.Action("Index", new { kyKiemTraId = kyKiemTra.KyKiemTraId })" class="dropdown-item">@kyKiemTra.TenKyKiemTra</a>
+                                        }
+                                     </div>
                             </div>
-                            <h4 class="header-title">Thống kê điểm sinh viên trong 1 kỳ kiểm tra</h4>
+                            <h4 class="header-title">Thống kê điểm sinh viên trong @ViewBag.KyKiemTraName</h4>
                             <div class="d-flex justify-content-center">
                                 <canvas id="score-chart" style="max-width:600px; max-height:600px;"></canvas>
-
                             </div>
-
-
                             <div class="chart-widget-list mt-4">
-                                <p><i class="mdi mdi-square text-danger"></i> 0-5 điểm <span class="float-end">@ViewBag.Diem0to5CountByKyKiemTra</span></p>
-                                <p><i class="mdi mdi-square text-warning"></i> 5-7 điểm <span class="float-end">@ViewBag.Diem5to7CountByKyKiemTra</span></p>
-                                <p><i class="mdi mdi-square" style="color: rgb(54, 162, 235)"></i> 7-8 điểm <span class="float-end">@ViewBag.Diem7to8CountByKyKiemTra</span></p>
-                                <p><i class="mdi mdi-square" style="color: rgb(75, 192, 192);"></i>  8-10 điểm <span class="float-end">@ViewBag.Diem8to10CountByKyKiemTra</span></p>
+                                <p><i class="mdi mdi-square text-danger"></i> 0-5 điểm <span class="float-end">@ViewBag.Diem0to5</span></p>
+                                <p><i class="mdi mdi-square text-warning"></i> 5-7 điểm <span class="float-end">@ViewBag.Diem5to7</span></p>
+                                <p><i class="mdi mdi-square text-info"></i> 7-8 điểm <span class="float-end">@ViewBag.Diem7to8</span></p>
+                                <p><i class="mdi mdi-square text-success"></i> 8-10 điểm <span class="float-end">@ViewBag.Diem8to10</span></p>
                             </div>
-
+                          
                         </div> <!-- end card-body-->
                     </div> <!-- end card-->
                 </div> <!-- end col-->

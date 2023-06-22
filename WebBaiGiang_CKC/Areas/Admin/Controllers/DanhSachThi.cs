@@ -31,8 +31,8 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
         public IActionResult Index(int? page)
         {
-            var baiGiangContext = _context.DanhSachThi.Include(d => d.KyKiemTra).Include(d => d.TaiKhoan);
-
+            var baiGiangContext = _context.DanhSachThi.Include(d => d.TaiKhoan).Include(d => d.KyKiemTra).ThenInclude(x=>x.De).ThenInclude(x=>x.CauHoi_DeThi).ThenInclude(x=>x.CauHoi_BaiLam).ThenInclude(x=>x.BaiLam).ToList();
+            
             var pageNo = page == null || page <= 0 ? 1 : page.Value;
             var pageSize = 12;
             PagedList<DanhSachThi> models = new PagedList<DanhSachThi>(baiGiangContext, pageNo, pageSize);

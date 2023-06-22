@@ -55,8 +55,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/DatLaiMatKhau.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuZ05oYXBcRGF0TGFpTWF0S2hhdS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuZ05oYXBcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/QuenMatKhau.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuZ05oYXBcUXVlbk1hdEtoYXUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Create.cshtml]
@@ -263,12 +271,96 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Bai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJhaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BaiKiemTra.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJhaUtpZW1UcmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BaiTap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJhaVRhcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Blog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJsb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BookShop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJvb2tTaG9wLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Crue.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXENydWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/DeCuong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXERlQ3VvbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/GiaoVien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEdpYW9WaWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/HoSo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEhvU28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/KyThi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEt5VGhpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Lich.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXExpY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/NoiDungChinh.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXE5vaUR1bmdDaGluaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/TichHop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXFRpY2hIb3AuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/XemLaiBaiThi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXFhlbUxhaUJhaVRoaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/DangNhap/DatLaiMatKhau.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ05oYXBcRGF0TGFpTWF0S2hhdS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/DangNhap/QuenMatKhau.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ05oYXBcUXVlbk1hdEtoYXUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_DangNhap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX0RhbmdOaGFwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX0Zvb3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX0hlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX01lbnUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Shared/Error.cshtml]

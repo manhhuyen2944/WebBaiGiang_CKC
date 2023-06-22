@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="mb-3">
-
+                                    <a asp-area="Admin" asp-controller="DangNhap" asp-action="QuenMatKhau" class="text-muted float-end"><small>Quên mật khẩu?</small></a>
                                     <label for="password" class="form-label">Mật khẩu</label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" id="password" name="pass" class="form-control" placeholder="Nhập mật khẩu">
@@ -84,28 +84,13 @@
     <!-- end page -->
 
     <footer class="footer footer-alt">
-        <p id="realtime-clock"> </p>
+        2023 © Đinh Mạnh Huyên | Nguyễn Chí Khang
     </footer>
 
     <!-- bundle -->
     <script src="~/AdminAssets/js/vendor.min.js"></script>
     <script src="~/AdminAssets/js/app.min.js"></script>
-    <script>
-        function updateTime() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var day = now.getDate();
-            var month = now.getMonth() + 1;
-            var year = now.getFullYear();
-            var timeString = hours + ':' + minutes + ':' + seconds;
-            var dateString = day + '/' + month + '/' + year;
-            document.getElementById('realtime-clock').innerHTML = timeString + ' ' + dateString;
-        }
-
-        setInterval(updateTime, 1000);
-    </script>
+   
     @await Component.InvokeAsync("Notyf")
 </body>
 </html>
