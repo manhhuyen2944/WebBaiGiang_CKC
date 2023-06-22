@@ -6,6 +6,10 @@ using System.Security.Claims;
 using WebBaiGiang_CKC.Extension;
 using WebBaiGiang_CKC.Data;
 using Microsoft.EntityFrameworkCore;
+using BaiGiang.Models;
+using MailKit.Security;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 {
@@ -113,7 +117,98 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
         #endregion
 
+        [HttpGet]
+        public IActionResult QuenMatKhau()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> QuenMatKhau(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _context.GiaoVien.FirstOrDefaultAsync(u => u.Email == model.Email);
+                if (user != null)
+                {
+                    var token = Guid.NewGuid().ToString();
+                    user.ResetToken = token;
+                    user.ResetTokenExpiry = DateTime.UtcNow.AddHours(1);
+                    user.Email = model.Email;
+                    await _context.SaveChangesAsync();
+                    // Lưu token và thời gian hết hạn vào biến Session
+                    HttpContext.Session.SetString("ResetToken", token);
+                    HttpContext.Session.SetString("Email", user.Email);
+                    HttpContext.Session.SetString("ResetTokenExpiry", user.ResetTokenExpiry.ToString());
+                    // Gửi email chứa token đến địa chỉ email của người dùng
+                    // ...
+                    var email = new MimeMessage();
+                    email.From.Add(new MailboxAddress("AdminDotnet", "admin@example.com"));
+                    email.To.Add(MailboxAddress.Parse($"{model.Email}"));
+                    email.Subject = "Yêu cầu đặt lại mật khẩu";
+
+                    email.Body = new TextPart("plain")
+                    {
+                        Text = $"Để đặt lại mật khẩu, vui lòng sử dụng token sau đây: {token} mã token có thời hạn là 10 phút"
+                    };
+                    using var smtp = new SmtpClient();
+                    smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+                    smtp.Authenticate("0306201451@caothang.edu.vn", "12345qwertKHANG");
+                    smtp.Send(email);
+                    smtp.Disconnect(true);
+
+                    TempData["SuccessMessage"] = "Yêu cầu đặt lại mật khẩu của bạn đã được gửi đi. Vui lòng kiểm tra email của bạn để tiếp tục.";
+                    return RedirectToAction("DatLaiMatKhau");
+                }
+                else
+                {
+                    _notyfService.Warning("Email không tồn tại trong hệ thống ");
+                }
+
+
+            }
+
+            return View(model);
+
+        }
+
+
+        [HttpGet]
+        public IActionResult DatLaiMatKhau()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DatLaiMatKhau(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var resetToken = HttpContext.Session.GetString("ResetToken");
+                var resetTokenExpiry = HttpContext.Session.GetString("ResetTokenExpiry");
+                var email = HttpContext.Session.GetString("Email");
+                var user = await _context.GiaoVien.FirstOrDefaultAsync(u => u.Email == email);
+                if (user != null && resetToken == model.Token)
+                {
+                    if (model.Password != model.ConfirmPassword)
+                    {
+                        TempData["ResetPasswordErrorMessage"] = "Mật khẩu mới và mật khẩu xác nhận không khớp.";
+                        return View(model);
+                    }
+
+                    user.MatKhau = (model.Password).ToMD5();
+                    await _context.SaveChangesAsync();
+
+
+                    _notyfService.Success("Mật khẩu của bạn đã được đặt lại thành công.");
+                    return RedirectToAction("Login", "DangNhap");
+                }
+
+                _notyfService.Error("Yêu cầu đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.");
+            }
+
+            return View(model);
+        }
 
     }
 }

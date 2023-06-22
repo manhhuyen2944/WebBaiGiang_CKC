@@ -14,5 +14,7 @@
     <WebStackScaffolding_DbContextTypeFullName>WebBaiGiang_CKC.Data.WebBaiGiangContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>False</WebStackScaffolding_IsViewGenerationSelected>
+    <View_SelectedScaffolderID>RazorViewEmptyScaffolder</View_SelectedScaffolderID>
+    <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
   </PropertyGroup>
 </Project>

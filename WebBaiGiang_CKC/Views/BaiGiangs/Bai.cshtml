@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebBaiGiang_CKC.Models.Bai>
+
+@{
+    var lstMon = ViewBag.lstSubject as List<MonHoc>;
+
+}
+<main>
+
+    <div class="menu-toggle"> <a href="#">Menu</a> </div>
+
+    <div>
+        @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
+
+
+        <div class="noidung">
+
+            @foreach (var item in Model)
+            {
+                // tieu de
+                <h2>
+                    @item.TenBai
+                </h2>
+                <hr />
+
+                //menu an hien
+
+                <p style="font-size: 15px; font-weight: bold;">
+                    NỘI DUNG BÀI GIẢNG
+                    <a onclick="toggleContent()"
+                   href="#"
+                   class="lwptoc_toggle_label"
+                   data-label="Ẩn">
+                        [Hiện]
+                    </a>
+                </p>
+
+                <div id="mydiv">
+                    <ul>
+                        @foreach (var e in item.Mucs)
+                        {
+
+                            <li>
+                                <a href="#@e.TenMuc" style=" text-decoration: none;">
+                                    <strong>
+                                        @e.TenMuc
+                                    </strong>
+
+                                </a>
+
+                            </li>
+
+                        }
+
+                    </ul>
+
+                </div>
+
+
+                // body o day
+                @foreach (var e in item.Mucs)
+                {
+                    <a id="@e.TenMuc" name="@e.TenMuc"></a>
+                    <h2>@e.TenMuc</h2>
+                    <p>@Html.Raw(@e.NoiDung)</p>
+
+                }
+
+
+
+            }
+
+        </div>
+    </div>
+
+</main>
+
+@section Scripts{
+    <script src="~/assets/js/menu_.js">
+    </script>
+    }

@@ -1,0 +1,248 @@
+﻿@model IEnumerable<WebBaiGiang_CKC.Models.Bai>
+
+@{
+    var lstMon = ViewBag.lstSubject as List<MonHoc>;
+
+}
+
+
+<main>
+
+    <div class="menu-toggle"> <a href="#">Menu</a> </div>
+
+    <div>
+        @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
+
+
+        <div class="noidung">
+
+            <h2> Bài tập</h2>
+            <hr />
+            <div class="crue">
+                        <h2 style=" text-align:center;">Thực hành (2) CRUD trong Razor Pages (+video)</h2>
+                        <p>CRUD – Create, Retrieve, Update, Delete – là nhóm chức năng cơ bản nhất của các ứng dụng quản lý (Line-of-Business, LOB). Trong Razor Pages, bạn rất dễ dàng thực hiện nhóm chức năng CRUD dữ liệu cơ bản.</p>
+                        <p>Trong bài thực hành tổng hợp thứ nhất, bạn đã xây dựng được một phần của ứng dụng quản lý sách điện tử. Cụ thể, bạn đã hiển thị được danh sách tài liệu ở dạng bảng và hiển thị được thông tin chi tiết của từng tài liệu. Đây tương ứng với chức năng R – Retrieve trong CRUD.</p>
+                        <p>Trong bài thực hành này chúng ta tiếp tục xây dựng nốt 3 chức năng xử lý dữ liệu còn lại: Create, Update và Delete. Qua bài thực hành này chúng ta sẽ xem xét cách vận dụng loạt kiến thức đã học trong các bài trước khi xây dựng chương trình MVC.</p>
+                <p>Kết thúc bài thực hành này bạn sẽ thu được một ứng dụng đơn giản với đủ 4 chức năng CRUD dữ liệu cơ bản.</p>
+                <img src="/contents/imgBaiTap/bookstore.png" alt="">
+                <p>Video hướng dẫn và mã nguồn ở phần kết luận.</p>
+              <h2>Entity Framework Core</h2>
+                <hr />
+                <p>
+                    − Cách 1: Cài đặt bằng console:
+                    + Tools → NuGet Package
+                    Manager → Package
+                    Manager Console (PMC):
+                </p>
+                <p>
+                    + Gõ câu lệnh sau vào PMC, sau đó nhấn phím Enter:
+                </p>
+                <p>
+                    Install-Package Microsoft.EntityFrameworkCore.SqlServer
+                </p>
+                <p>− Cách 2: Cài đặt bằng giao diện:</p>
+                <p>− Cách 2: Cài đặt bằng giao diện:</p>
+                <p>+ Mục Browse, tìm package Microsoft.EntityFrameworkCore.SqlServer</p>
+                <p>+ Cài đặt phiên bản ổn định mới nhất (Latest stable) của package này.</p>
+                   <img src="/contents/imgBaiTap/bookstore19.png" alt="">
+                <p><strong>Lưu ý:</strong></p>
+               
+                <p>− .NET 6.0 tương thích với các NuGet Package có phiên bản là 6.x.x.</p>
+                <p>− Việc cài đặt các NuGet package cần phải có kết nối Internet. </p>
+                <p>− NuGet Package chỉ có tác dụng với project hiện tại</p>
+                <h2>Thiết lập project dùng EF Code-First</h2>
+                
+                <p>
+                    − Bước 1 – Tạo chuỗi kết nối đến CSDL: Mở file appsettings.json và bổ sung chuỗi
+                    kết nối có tên là Eshop như sau, trong đó mục Server và Database lần lượt là tên
+                    máy chủ SQL và tên CSDL:
+                </p>
+                <pre>"ConnectionStrings": { "BookStore": "Server=DESKTOP-VC92P42\\SQLEXPRESS;Database=BookStore_CKC;Trusted_Connection=True;MultipleActiveResultSets=true" }</pre>
+                <p>
+                    − Bước 2 – Xây dựng Context: Tạo thư mục Data trong project, trong đó tạo class
+                    BookStoreContext kế thừa từ class DbContext, kèm theo 1 phương thức khởi tạo cũng
+                    kế thừa từ phương thức khởi tạo tương ứng của DbContext:
+                </p>
+                <img src="/contents/imgBaiTap/bookstore20.png" alt="">
+
+                <p>
+                    − Bước 3 – Thiết lập service: Bổ sung câu lệnh sau vào phần thiết lập dịch vụ của
+                    file Program.cs để quy định project sẽ sử dụng EshopContext với chuỗi kết nối có
+                    tên là Eshop từ file appsettings.json:
+                </p>
+                <p></p>
+                <pre>
+                    <code>
+                        builder.Services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BookStore")));
+
+                    </code>
+                </pre>
+
+                <h2>Migration</h2>
+                <p>Khởi tạo CSDL lần đầu</p>
+                <p>Để dùng được migration, cần cài package sau: Microsoft.EntityFrameworkCore.Tools.</p>
+                <p>
+                    Đầu tiên, tạo class Books trong thư mục Models:
+                </p>
+                  <img src="/contents/imgBaiTap/bookstore21.png" alt="">
+                <p>
+                    Tiếp theo, trong class BookStoreContext, cần khai báo model Book dưới dạng 1 thuộc
+                    tính của class này, với kiểu dữ liệu là DbSet<T> bằng cách bổ sung câu lệnh sau:
+                </p>
+               <pre>
+                <code>    public DbSet < Book > Books { get; set; }</code>
+               </pre>
+                <p>
+                    Để tạo migration, gõ lệnh sau vào PMC:Add-Migration Init
+                </p>
+                     <img src="/contents/imgBaiTap/bookstore23.png" alt="">
+
+                <p>
+                    Sau khi migration đã được tạo ra, gõ lệnh sau vào PMC để tạo ra CSDL lần đầu:
+                </p>
+                <p>
+                    Update-Database
+                </p>
+               <p></p>
+               <p></p>
+
+
+                <h2>Xóa dữ liệu</h2><hr />
+                <p>Chúng ta bắt đầu với chức năng xóa dữ liệu.</p>
+                <p>Workflow của chức năng này xuất phát từ trang Index:</p>
+                <p>=> người dùng click vào nút hoặc đường link tương ứng</p>
+                <p>=> hiển thị thông tin chi tiết của cuốn sách và đề nghị người dùng xác nhận xóa</p>
+                <p>-> nếu người dùng xác nhận xóa => xóa dữ liệu => quay trở về trang Index</p>
+                <p>-> nếu người dùng đổi ý => quay trở về trang Index</p>
+                <h2>Bước 1. Bổ sung khai phương thức</h2>
+                <hr />
+                <p>Thêm khai báo sau vào Controller:</p>
+                <img src="/contents/imgBaiTap/bookstore10.png" alt="">
+                    </div>
+            <h2>Bước 2. Bổ sung phương thức Delete vào Controller</h2>
+          
+            <p>Thực thi phương thức Delete trong Controller:</p>
+            <img src="/contents/imgBaiTap/bookstore11.png" alt="">
+            <p>Sau bước này Controller đã có khả năng xóa bỏ object khỏi tập hợp dữ liệu Books dựa trên giá trị Id của sách.</p>
+            <h2>Bước 3. Bổ sung link vào trang Index</h2>
+            <p>Thêm link sau vào trang Index:</p>
+
+            <img src="/contents/imgBaiTap/bookstore12.png" alt="">
+            <h2>Chạy thử nghiệm</h2>
+            <p>Chạy thử nghiệm chương trình. Từ trang Index click nút Delete sẽ chuyển đến trang sau:</p>
+            <img src="/contents/imgBaiTap/bookstore13.png" alt="">
+            <p>
+                Đến đây chức năng xóa dữ liệu đã hoàn thành.
+            </p>
+            <h2>Tạo mới</h2>
+            <hr />
+            <p>Bước 1. Bổ sung khai báo sau vào Controller:</p>
+            <img src="/contents/imgBaiTap/bookstore14.png" alt="">
+            <img src="/contents/imgBaiTap/bookstore15.png" alt="">
+            <p>Hai bước này chuẩn bị các phương thức cần dùng cho trang Book.cshtml.</p>
+            <p>Bước 2. Bổ sung thẻ sau vào trang Index.cshtml:</p>
+            <img src="/contents/imgBaiTap/bookstore16.png" alt="">
+            <p>
+                Bước này đặt đường link mới (Add new book) vào trang Index trước bảng dữ liệu để gọi tới trang Book => phương thức Create.
+
+            </p>
+            <img src="/contents/imgBaiTap/bookstore17.png" alt="">
+            <p>Bước 4. Tạo view cho trang Create</p>
+            <p>
+                Chuột phải thư mục Views  -> Books-> Add -> View
+            </p>
+            <p>Bạn cần tạo view Create cho phương thức Create như sau </p>
+            <img src="/contents/imgBaiTap/bookstore9.png" alt="">
+            <p>Đoạn code của view Create sẽ như sau :  </p>
+            <img src="/contents/imgBaiTap/bookstore18.png" alt="">
+            <p> Ở đây layout là lớp kế thừa của của trang _Layout</p>
+            <p>
+                Chúng ta cần định danh đường dẫn action truyền về Controller bằng cách  asp-action="Create" asp-controller="Books"
+            </p>
+            <p>Kết quả của trang Create như sau : </p>
+            <img src="/contents/imgBaiTap/bookstore1.png" alt="">
+            <h2>Cập nhật</h2>
+            <p>Bước 1. Thêm khai báo sau vào Controller:</p>
+            <pre>
+                <code>
+                     public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.Books == null)
+            {
+                return NotFound();
+            }
+
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TieuDe,TacGia,NhaXuatBan,NamPhatHanh,MoTa")] Book book)
+        {
+            if (id != book.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(book);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BookExists(book.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(book);
+        }
+                </code>
+            </pre>
+
+            <p>Bước 2. Thêm đường link vào sau nút Delete và Detail:</p>
+            <img src="/contents/imgBaiTap/bookstore24.png" alt="">
+            <p>Sau khi bổ sung các đường dẫn thì đã có các chức năng hoàn chỉnh </p>
+            <p>
+                Đến đây chức năng cập nhật đã hoàn thành:
+            </p>
+            <img src="/contents/imgBaiTap/bookstore.png" alt="">
+            <p>
+                Giao diện sửa : 
+            </p>    
+            <img src="/contents/imgBaiTap/bookstore25.png" alt="">
+            <P>Giao diện xem chi tiết : </P>
+            <img src="/contents/imgBaiTap/bookstore26.png" alt="">
+            <h2>Kết luận</h2>
+            <hr />
+            <p>Qua bài thực hành này bạn xây dựng được các chức năng CRUD dữ liệu cơ bản nhất của ứng dụng Razor Pages. Qua đây bạn đã vận dụng tương đối đầy đủ các kỹ thuật của Razor, bao gồm phương thức xử lý truy vấn, truy xuất dữ liệu từ truy vấn, model binding.</p>
+            <p>
+                Dĩ nhiên, các chức năng này còn rất hạn chế và chưa thực tế. Ví dụ, bạn chưa hề kiểm soát dữ liệu người dùng, chưa lưu trữ được dữ liệu, chưa upload/download file sách.
+            </p>
+            <p>Một vấn đề khá “nghiêm trọng” nữa là mặc dù ứng dụng hoạt động nhưng cách thức chúng ta xây dựng các chức năng CRUD lại không thực sự “tiêu chuẩn”. Để thực hành các tính năng của ASP.NET Core Razor Pages chúng ta đã sử dụng một cách lập trình khác so với cách làm tiêu chuẩn của Razor Pages: Thay vì tạo page riêng rẽ cho từng chức năng, chúng ta dồn tất cả vào trang Book.</p>
+            <p>Cuối cùng, ứng dụng của chúng ta mặc dù hiển thị được bảng dữ liệu nhưng chưa thể thực hiện các chức năng đi cùng bảng dữ liệu như tìm kiếm, sắp xếp, phân trang.</p>
+            <p>Tất cả những hạn chế trên sẽ được giải quyết trong bài thực hành tổng hợp tiếp theo.</p>
+       
+            <p>Bạn có thể xem video hướng dẫn này để tham khảo.</p>
+            <iframe width="1000" height="500" src="https://www.youtube.com/embed/phrt-EufumQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        
+        </div>
+    </div>
+</main>
+@section Scripts{
+    <script src="~/assets/js/menu_.js">
+    </script>
+    }
