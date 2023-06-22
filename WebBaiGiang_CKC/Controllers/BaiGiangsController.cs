@@ -210,6 +210,31 @@ namespace WebBaiGiang_CKC.Controllers
             }
 
         }
-
+        [Route("/HoSo/XemLaiBaiThi")]
+        [HttpPost]
+        public IActionResult XemLaiBaiThi(int id)
+        {
+            var mssvclaim = User.Claims.FirstOrDefault(c => c.Type == "MSSV");
+            var mssv_ = "";
+            if (mssvclaim != null)
+            {
+                mssv_ = mssvclaim.Value;
+            }
+            var exBaiLam = _context.BaiLam.Include(x => x.CauHoi_BaiLam).ThenInclude(x => x.CauHoi_De).FirstOrDefault(x => x.MSSV == mssv_ && x.CauHoi_BaiLam.FirstOrDefault().CauHoi_De.De.KyKiemTraId == id);
+            //tìm kiếm kiều kiện để add dữ liệu 
+            var thoigiandenhan = _context.KyKiemTra.FirstOrDefault(x => x.KyKiemTraId == id);
+            var tenkikiem = "";
+            tenkikiem = thoigiandenhan.TenKyKiemTra;
+            @ViewBag.TenKiKiemTra = tenkikiem;
+            ///thoi gian lam bai cua sv 
+            @ViewBag.kiemtrasv_id = exBaiLam.MSSV;
+            var cauhoi_de_mssv = _context.CauHoi_BaiLam.Where(x => x.BaiLam.MSSV == mssv_ && x.CauHoi_De.De.KyKiemTraId == id).Include(x => x.CauHoi_De).ThenInclude(x => x.CauHoi).ThenInclude(x => x.CauHoi_De).ThenInclude(x => x.De).ToList();
+            ViewBag.cauhoi_de_mssv = cauhoi_de_mssv;
+            DateTime? tg_batdau = exBaiLam.ThoiGianBatDau;
+            DateTime? tg_ketthuc = exBaiLam.ThoiGianDenHan;
+            ViewBag.tg_batdau = tg_batdau;
+            ViewBag.tg_ketthuc = tg_ketthuc;
+            return View();
+        }
     }
 }
