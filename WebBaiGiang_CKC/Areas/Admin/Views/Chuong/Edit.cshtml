@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var MonHocId = @ViewBag.MonHocId;
+}
 }
 
 <ol class="breadcrumb">
@@ -24,7 +26,7 @@
             <br />
             <div class="form-group">
                 <label asp-for="MonHocId" class="control-label"></label>
-                <select asp-for="MonHocId" class="form-control" asp-items="@ViewBag.MonHocId"></select>
+                <select asp-for="MonHocId" class="form-control" asp-items="MonHocId"></select>
                 <span asp-validation-for="MonHocId" class="text-danger"></span>
             </div>
             <br />

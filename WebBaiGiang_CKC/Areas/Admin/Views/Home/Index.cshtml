@@ -4,6 +4,15 @@
 
 
     var sinhvienthamgia = ViewBag.TotalParticipants;
+    var kyKiemTraId = ViewBag.KyKiemTraId ?? 0;
+    var percent0to5ByKyKiemTra = ViewBag.Percent0to5ByKyKiemTra ?? new List<double>();
+    var percent5to7ByKyKiemTra = ViewBag.Percent5to7ByKyKiemTra ?? new List<double>();
+    var percent7to8ByKyKiemTra = ViewBag.Percent7to8ByKyKiemTra ?? new List<double>();
+    var percent8to10ByKyKiemTra = ViewBag.Percent8to10ByKyKiemTra ?? new List<double>();
+    var diem0to5CountByKyKiemTra = ViewBag.Diem0to5CountByKyKiemTra ?? new List<int>();
+    var diem5to7CountByKyKiemTra = ViewBag.Diem5to7CountByKyKiemTra ?? new List<int>();
+    var diem7to8CountByKyKiemTra = ViewBag.Diem7to8CountByKyKiemTra ?? new List<int>();
+    var diem8to10CountByKyKiemTra = ViewBag.Diem8to10CountByKyKiemTra ?? new List<int>();
 }
 @section scripts{
     <script src="~/AdminAssets/js/vendor/apexcharts.min.js"></script>
@@ -20,11 +29,11 @@
                     datasets: [{
                         label: 'Số lượng sinh viên',
                         data: [
-                            @ViewBag.Percent0to5,
-                            @ViewBag.Percent5to7,
-                            @ViewBag.Percent7to8,
-                            @ViewBag.Percent8to10
-                        ],
+        @ViewBag.Percent0to5ByKyKiemTra,
+        @ViewBag.Percent5to7ByKyKiemTra,
+        @ViewBag.Percent7to8ByKyKiemTra,
+        @ViewBag.Percent8to10ByKyKiemTra
+                                ],
                         backgroundColor: [
                             'rgb(255, 99, 132)', // màu đỏ cho khoảng điểm 0-5
                             'rgb(255, 205, 86)', // màu vàng cho khoảng điểm 7-8
@@ -165,45 +174,42 @@
 
                 <div class="row">
                     <div class="col-12">
-
-                        <div class="card card-h-100">
-                            <div class="card-body">
-
-                                <h4 class="header-title mb-3">Projections Vs Actuals</h4>
-
-                                <div dir="ltr">
-                                    <div id="high-performing-product" class="apex-charts" data-colors="#0acf97,#e3eaef"></div>
-                                </div>
-
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-
-                    </div> <!-- end col -->
-                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Thống kê điểm sinh viên trong 1 kỳ kiểm tra</h4>
-                                <div class="d-flex justify-content-center">
-                                    <canvas id="score-chart" style="max-width:600px; max-height:600px;"></canvas>
+                                <div class="dropdown float-end">
+                                    <a href="#" class="dropdown-toggle arrow-none card-drop"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                    @foreach (var kyKiemTra in ViewBag.KyKiemTraList)
+                                    {
+                                        <a href="@Url.Action("Index", "Home", new { kyKiemTraId = kyKiemTra.KyKiemTraId })" class="dropdown-item">@kyKiemTra.TenKyKiemTra</a>
+                                    }
                                 </div>
-                                <div class="chart-widget-list mt-4">
-                                    <p><i class="mdi mdi-square text-danger"></i> 0-5 điểm <span class="float-end">@ViewBag.Diem0to5</span></p>
-                                    <p><i class="mdi mdi-square text-warning"></i> 5-7 điểm <span class="float-end">@ViewBag.Diem5to7</span></p>
-                                    <p><i class="mdi mdi-square" style="color: rgb(54, 162, 235)"></i> 7-8 điểm <span class="float-end">@ViewBag.Diem7to8</span></p>
-                                    <p><i class="mdi mdi-square" style="color: rgb(75, 192, 192);"></i>  8-10 điểm <span class="float-end">@ViewBag.Diem8to10</span></p>
+                            </div>
+                            <h4 class="header-title">Thống kê điểm sinh viên trong 1 kỳ kiểm tra</h4>
+                            <div class="d-flex justify-content-center">
+                                <canvas id="score-chart" style="max-width:600px; max-height:600px;"></canvas>
 
-                                </div>
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-                    </div> <!-- end col-->
+                            </div>
 
 
+                            <div class="chart-widget-list mt-4">
+                                <p><i class="mdi mdi-square text-danger"></i> 0-5 điểm <span class="float-end">@ViewBag.Diem0to5CountByKyKiemTra</span></p>
+                                <p><i class="mdi mdi-square text-warning"></i> 5-7 điểm <span class="float-end">@ViewBag.Diem5to7CountByKyKiemTra</span></p>
+                                <p><i class="mdi mdi-square" style="color: rgb(54, 162, 235)"></i> 7-8 điểm <span class="float-end">@ViewBag.Diem7to8CountByKyKiemTra</span></p>
+                                <p><i class="mdi mdi-square" style="color: rgb(75, 192, 192);"></i>  8-10 điểm <span class="float-end">@ViewBag.Diem8to10CountByKyKiemTra</span></p>
+                            </div>
 
-                </div>
-                <!-- end row -->
-
+                        </div> <!-- end card-body-->
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
             </div>
-            <!-- container -->
+            <!-- end row -->
 
         </div>
+        <!-- container -->
+
     </div>
+</div>

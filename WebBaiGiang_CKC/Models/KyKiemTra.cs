@@ -5,6 +5,7 @@ namespace WebBaiGiang_CKC.Models
 {
     public class KyKiemTra : IValidatableObject
     {
+        [DisplayName("ID kỳ kiểm tra")]
         public int KyKiemTraId { get; set; }
 
         [DisplayName("Tên kỳ kiểm tra")]

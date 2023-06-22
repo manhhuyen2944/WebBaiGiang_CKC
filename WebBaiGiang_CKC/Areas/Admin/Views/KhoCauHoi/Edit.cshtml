@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var ChuongId = @ViewBag.ChuongId;
 }
 
 <ol class="breadcrumb">
@@ -23,7 +24,7 @@
             <input type="hidden" asp-for="CauHoiId" />
             <div class="form-group">
                 <label asp-for="ChuongId" class="form-label">Chương <span id="ChuongDisplay"></span></label>
-                <select asp-for="ChuongId" asp-items="@ViewBag.ChuongId" class="form-select" onchange="showChuongInfo(this)">
+                <select asp-for="ChuongId" asp-items="ChuongId" class="form-select" onchange="showChuongInfo(this)">
                     <option value="">-- Chọn chương học --</option>
                 </select>
             </div>

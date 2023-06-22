@@ -14,11 +14,21 @@
 <h1 style="text-align: center;">QUẢN LÝ KỲ KIỂM TRA</h1>
 <hr />
 <br />
-<a class="btn btn-success mb-2" asp-action="Create">Thêm </a>
+<div class="d-flex justify-content-between">
+    <a asp-action="Create" class="btn btn-success mb-2">Thêm</a>
+    <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Import File Excel
+    </button>
+
+</div>
+@await Html.PartialAsync("_PartialViewCreateList", new WebBaiGiang_CKC.Models.DanhSachThi())
+
 <table class="table table alert-light">
     <thead class="table-dark">
         <tr style="text-align: center;">
-
+            <th>
+                @Html.DisplayNameFor(model => model.KyKiemTraId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.TenKyKiemTra)
             </th>
@@ -43,6 +53,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KyKiemTraId)
+                </td>
 
                 <td>
                     @Html.DisplayFor(modelItem => item.TenKyKiemTra)
@@ -62,7 +75,9 @@
                     <a asp-action="Details" asp-route-id="@item.KyKiemTraId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
                     <a asp-action="Edit" asp-route-id="@item.KyKiemTraId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>
                     <a asp-action="Delete" asp-route-id="@item.KyKiemTraId" class="action-icon"> <i class="mdi mdi-delete" style="color:#e75555;font-size:25px;"></i></a>
-                    <a asp-action="ExportExcel" asp-route-kykiemtra="@item.KyKiemTraId" class="btn btn-info">Xuất danh sách điểm </a>
+                    <a asp-action="ExportExcel" asp-route-kykiemtra="@item.KyKiemTraId" class="action-icon">
+                        <i class="uil-down-arrow" style="color: steelblue;"></i>
+                    </a>
                 </td>
             </tr>
         }

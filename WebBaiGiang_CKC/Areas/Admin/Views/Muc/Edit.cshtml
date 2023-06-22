@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var ChuongId = @ViewBag.ChuongId;
+    var BaiId = @ViewBag.BaiId;
 }
 <ol class="breadcrumb">
 
@@ -22,14 +24,14 @@
             <br />
             <div class="form-group">
                 <label class="form-label">Chương <span id="ChuongDisplay"></span></label>
-                <select asp-items="@ViewBag.ChuongId" class="form-select" onchange="showChuongInfo(this)">
+                <select asp-items="ChuongId" class="form-select" onchange="showChuongInfo(this)">
                     <option value="">-- Chọn chương học --</option>
                 </select>
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="BaiId" class="form-label">Bài <span id="ChuongDisplay"></span></label>
-                <select asp-for="BaiId" asp-items="@ViewBag.BaiId" class="form-select">
+                <select asp-for="BaiId" asp-items="BaiId" class="form-select">
                     <option value="">-- Chọn bài học --</option>
                 </select>
             </div>

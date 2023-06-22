@@ -79,10 +79,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaFNhY2hUaGlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/_PartialViewCreateList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaFNhY2hUaGlcX1BhcnRpYWxWaWV3Q3JlYXRlTGlzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -173,6 +169,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/_PartialViewCreateList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXF9QYXJ0aWFsVmlld0NyZWF0ZUxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Create.cshtml]
