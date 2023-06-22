@@ -62,5 +62,22 @@ namespace WebBaiGiang_CKC.Controllers
         {
             return View();
         }
+        [Route("/HoSo")]
+        public IActionResult HoSo()
+        {
+            var mssvclaim = User.Claims.FirstOrDefault(c => c.Type == "MSSV");
+            var mssv_ = "";
+            if (mssvclaim != null)
+            {
+                mssv_ = mssvclaim.Value;
+            }
+
+
+            var kikiemtra = _context.DanhSachThi.Include(t => t.KyKiemTra).Include(x => x.TaiKhoan).ToList();
+            ViewBag.kiemtra = kikiemtra;
+            return View();
+        }
+
+
     }
 }
