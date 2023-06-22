@@ -41,5 +41,17 @@ namespace WebBaiGiang_CKC.Controllers
 
             return View();
         }
+        [Route("/BaiTap/thuc-hanh-tong-hop-1-xay-dung-ung-dung-quan-ly-sach")]
+        public IActionResult BookShop()
+        {
+
+            return View();
+        }
+        [Route("/BaiTap/thuc-hanh-tong-hop-2-crud-trong-MVC")]
+        public IActionResult Crue()
+        {
+            return View();
+        }
+
     }
 }
