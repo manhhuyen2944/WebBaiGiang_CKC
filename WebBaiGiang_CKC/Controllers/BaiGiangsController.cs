@@ -52,6 +52,15 @@ namespace WebBaiGiang_CKC.Controllers
         {
             return View();
         }
-
+        [Route("/BaiTap/xay-dung-ung-dung-mau-danh-muc-cua-blog-MVC")]
+        public IActionResult Blog()
+        {
+            return View();
+        }
+        [Route("/BaiTap/xay-dung-ung-dung-mau-tich-hop-html-editor-summernote-MVC")]
+        public IActionResult TichHop()
+        {
+            return View();
+        }
     }
 }
