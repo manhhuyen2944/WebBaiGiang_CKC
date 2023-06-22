@@ -18,7 +18,6 @@ namespace WebBaiGiang_CKC.Controllers
         }
         public IActionResult NoiDungChinh()
         {
-
             return View();
         }
         public IActionResult GiaoVien()
@@ -26,7 +25,12 @@ namespace WebBaiGiang_CKC.Controllers
             var giaovien = _context.GiaoVien.AsNoTracking();
             return View(giaovien);
         }
+        public IActionResult Bai(int id)
+        {
 
+            var lstBai = _context.Bai.Where(x => x.BaiId == id).Include(a => a.Mucs).AsNoTracking();
+            return View(lstBai);
+        }
 
     }
 }
