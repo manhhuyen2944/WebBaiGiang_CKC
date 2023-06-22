@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var KyKiemTraId = @ViewBag.KyKiemTraId;
 }
 <ol class="breadcrumb">
 
@@ -22,7 +23,7 @@
             <input type="hidden" asp-for="DeId" />
             <div class="form-group">
                 <label asp-for="KyKiemTraId" class="control-label"></label>
-                <select asp-for="KyKiemTraId" class="form-control" asp-items="@ViewBag.KyKiemTraId" disabled></select>
+                <select asp-for="KyKiemTraId" class="form-control" asp-items="KyKiemTraId"></select>
                 <span asp-validation-for="KyKiemTraId" class="text-danger"></span>
             </div>
             <br />

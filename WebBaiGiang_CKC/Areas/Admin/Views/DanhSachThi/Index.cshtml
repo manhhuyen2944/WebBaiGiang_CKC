@@ -17,16 +17,6 @@
 <h1 style="text-align: center;">QUẢN LÝ DANH SÁCH THI</h1>
 <hr />
 <br />
-
-<div class="d-flex justify-content-between">
-    <a asp-action="Create" class="btn btn-success mb-2">Thêm</a>
-    <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Import File Excel
-    </button>
-
-</div>
-@await Html.PartialAsync("_PartialViewCreateList", new WebBaiGiang_CKC.Models.DanhSachThi())
-
 <table class="table table alert-light">
     <thead class="table-dark">
         <tr style="text-align: center;">
