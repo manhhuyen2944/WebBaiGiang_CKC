@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+@section Scripts{
+
+    <link rel="stylesheet" href="~/assets/css/HoSo.css" />
+
+}
+@{
+    var mssvClaim = User.Claims.FirstOrDefault(c => c.Type == "MSSV");
+    var emailClaim = User.Claims.FirstOrDefault(c => c.Type == "Email");
+    var mssv_ = "";
+    var email = "";
+    if (mssvClaim != null && email != null)
+    {
+        mssv_ = mssvClaim.Value;
+        email = emailClaim.Value;
+    }
+
+    var kiemtraviews = ViewBag.kiemtra as List<DanhSachThi>;
+    var dk_can = ViewBag.DKCan;
+}
+<body>
+    <div class="container">
+        <h1 class="title">Hồ sơ sinh viên</h1>
+
+        <section class="personal-information">
+            <h2>Thông tin cá nhân</h2>
+            <ul>
+                <li><strong>Họ tên:</strong> @User.Identity.Name</li>
+                <li><strong>MSSV:</strong> @mssv_</li>
+                @*<li><strong>Ngày sinh:</strong> 01/01/2000</li>
+                <li><strong>Địa chỉ:</strong> Số 1, Đường ABC, Quận XYZ, Thành phố HCM</li>*@
+                <li><strong>Email:</strong> @email</li>
+
+            </ul>
+
+            <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#resetModal">
+                Đổi mật khẩu
+            </button>
+
+
+            <div class="modal fade" id="resetModal" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header border-bottom-0">
+                            <button style="color:black" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-title text-center">
+                                <h3 style="color:black">Đổi mật khẩu</h3>
+                            </div>
+                            <div class="d-flex flex-column text-center">
+                                <form method="post" asp-controller="DangNhap" asp-action="DoiMatKhau">
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="pass" placeholder=" Mật khẩu">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="newpass" placeholder=" Mật khẩu mới">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="confirmpass" placeholder="Xác nhập mật khẩu">
+                                    </div>
+                                    <button type="submit" class="btn btn-info btn-block btn-round"> Đổi mật khẩu</button>
+                                </form>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="education">
+            <h2>Các bài kiểm tra</h2>
+            <hr />
+            @foreach (var item in kiemtraviews)
+            {
+
+                @if (item.TaiKhoan.MSSV == mssv_ && item.TrangThai == true)
+                {
+
+                    <div style="padding-bottom:20px;">
+                        <div style=" border-radius: 10px 10px 10px 10px;padding: 8px;overflow:hidden;">
+                            <div style="float:left;padding-right:250px; overflow:hidden">
+                                <h2>@item.KyKiemTra.TenKyKiemTra </h2>
+                                <p class="tieudethe">
+                                    Bắt đầu vào lúc: @item.KyKiemTra.ThoiGianBatDau
+                                </p>
+                                <p class="tieudethe">
+                                    Kết thúc lúc: @item.KyKiemTra.ThoiGianKetThuc
+                                </p>
+                                <p class="tieudethe">
+                                    Thời gian làm bài: @item.KyKiemTra.ThoiGianLamBai Phút
+                                </p>
+                            </div>
+
+                            <div style="float:left;padding-top:20px;padding-right:70px;">
+                                <p>Trạng thái: Đã làm </p>
+                            </div>
+                            <form asp-controller="BaiGiangs" asp-action="XemLaiBaiThi" method="post">
+                                <div style="padding-top:20px;">
+                                    <input type="hidden" name="id" value="@item.KyKiemTra.KyKiemTraId" />
+                                    <button type="submit" class="btn btn-success mb-2"> Xem làm bài</button>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        </section>
+
+
+    </div>
+</body>
+</html>

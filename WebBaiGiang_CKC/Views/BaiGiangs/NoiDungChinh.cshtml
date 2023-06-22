@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WebBaiGiang_CKC.Models.Bai>
+
+@{
+    var lstMon = ViewBag.lstSubject as List<MonHoc>;
+
+}
+
+<main>
+
+    <div class="menu-toggle"> <a href="#">Menu</a> </div>
+
+    <div>
+        @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
+        <div class="noidung">
+
+
+            <ul>
+                @if (lstMon != null && lstMon.Count() > 0)
+                {
+                    @foreach (var monhoc in lstMon)
+                    {
+
+                        <li>
+                            <h2>
+                                @monhoc.TenMonHoc
+                            </h2>
+                            <hr />
+                        </li>
+                    }
+                }
+            </ul>
+            <h2>Các chương bài giảng:</h2>
+            @if (lstMon != null && lstMon.Count() > 0)
+            {
+                @foreach (var mon in lstMon)
+                {
+
+                    @foreach (var chuong in mon.Chuongs)
+                    {
+
+
+                        <h3 style="padding-left:30px;">
+                            @chuong.TenChuong
+                        </h3>
+
+                        @if (mon.MonHocId == chuong.MonHocId)
+                        {
+                            @foreach (var bai in chuong.Bais)
+                            {
+
+                                <a asp-controller="BaiGiangs" asp-action="Bai" asp-route-id="@bai.BaiId">
+                                    <p style="padding-left:50px;">
+                                        @bai.TenBai
+                                    </p>
+
+
+                                </a>
+                                <hr />
+
+                            }
+
+
+                        }
+                    }
+
+
+
+
+                }
+            }
+
+
+
+
+
+        </div>
+    </div>
+
+</main>
+
+@section Scripts{
+    <script src="~/assets/js/menu_.js">
+    </script>
+    }

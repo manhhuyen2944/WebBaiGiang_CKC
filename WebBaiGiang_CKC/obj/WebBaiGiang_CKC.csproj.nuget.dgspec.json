@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[6.0.14, )"
             },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "System.Data.OleDb": {
               "target": "Package",
               "version": "[6.0.0, )"

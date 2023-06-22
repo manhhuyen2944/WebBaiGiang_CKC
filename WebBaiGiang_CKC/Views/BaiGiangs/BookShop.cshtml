@@ -1,0 +1,128 @@
+﻿@model IEnumerable<WebBaiGiang_CKC.Models.Bai>
+
+@{
+    var lstMon = ViewBag.lstSubject as List<MonHoc>;
+
+}
+
+
+<main>
+
+    <div class="menu-toggle"> <a href="#">Menu</a> </div>
+
+    <div>
+        @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
+
+
+        <div class="noidung">
+
+            <h2> Bài tập</h2>
+            <hr />
+            <div class="bookshop">
+                <h2 style=" text-align:center;">Thực hành (1) Xây dựng ứng dụng quản lý sách (+video)</h2>
+                <p>Qua loạt bài học Razor Pages từ đầu đến giờ bạn đã nắm được rất nhiều kiến thức mới. Giờ là lúc chúng ta vận dụng tổng hợp để giải quyết một bài toán (hơi hơi) thực tế. Bài học này hướng tới củng cố những gì bạn đã học trong những bài học trước đây.</p>
+                <p>Trong bài học này chúng ta sẽ cùng xây dựng một ứng dụng quản lý sách điện tử đơn giản. Do kiến thức chưa đầy đủ, chúng ta sẽ chỉ xây dựng một phần chức năng của ứng dụng, chủ yếu là chức năng xuất dữ liệu.</p>
+                <h2>Bài toán</h2>
+                <hr />
+                <p>Trong bài học này chúng ta sẽ cùng xây dựng một ứng dụng quản lý sách điện tử đơn giản.</p>
+                <p>Ứng dụng này có thể:</p>
+                <p>(1) xuất ra danh sách các cuốn sách điện tử (file pdf) đang lưu trong một thư mục trên máy chủ;</p>
+                <p>(2) thêm một cuốn sách mới;</p>
+                <p>(3) cập nhật thông tin sách;</p>
+                <p>(4) xóa bỏ sách.</p>
+                <p>Nói tóm lại, đây là một ứng dụng CRUD dữ liệu cơ bản và rất phổ biến.</p>
+                <p>Bạn sẽ lần lượt hoàn thiện ứng dụng này qua các bài thực hành tổng hợp theo lộ trình học và vận dụng những kiến thức học được.</p>
+                <p>Trong bài thực hành tổng hợp đầu tiên này bạn sẽ xây dựng chức năng thứ nhất: xuất dữ liệu.</p>
+                <p>Khi kết thúc bài thực hành này bạn sẽ thu được một ứng dụng web đơn giản như sau:</p>
+                <img src="/contents/imgBaiTap/bookstore.png" alt="">
+                <br />
+                <img src="/contents/imgBaiTap/bookstore1.png" alt="">
+                <h2>Tạo dự án Razor Pages</h2>
+                <hr />
+                <p>Hãy thực hiện các bước như sau để tạo dự án MVC Pages theo template Web Application:</p>
+                <img src="/contents/imgBaiTap/bookstore2.png" alt="">
+                <img src="/contents/imgBaiTap/bookstore3.png" alt="">
+                <img src="/contents/imgBaiTap/bookstore4.png" alt="">
+                <p>Lưu ý ở đây chúng ta tích chọn thêm hai mục:</p>
+                <p>(1) Configure for HTTPS: cấu hình để ứng dụng hoạt động với giao thức HTTPS (có mã hóa dữ liệu). Lựa chọn này sẽ tạo ra một chứng chỉ bảo mật (certificate) giả nhằm mục đích thử nghiệm ứng dụng. Khi chạy thử nghiệm, trình duyệt sẽ đưa ra thông báo bảo mật. Bạn hãy chấp nhận đưa site vào danh sách ngoại lệ.</p>
+                <h2>Tạo domain model</h2>
+                <hr />
+
+
+                <p>Tạo thư mục Model trực thuộc project. Trong thư mục này tạo file Book.cs.</p>
+                <img src="/contents/bookstore/bookstore5.png" alt="">
+                <p>Viết code cho Book.cs như sau:</p>
+                <pre>
+                            <code>
+            using System.ComponentModel;
+            using System.ComponentModel.DataAnnotations;
+
+            namespace BookStore.Models
+            {
+                public class Book
+                {
+                    public int Id { get; set; }
+                    [DisplayName("Tiêu Đề")]
+
+                    public string TieuDe { get; set; } 
+                    [DisplayName("Tác giả")]
+
+                    public string TacGia { get; set; } 
+                    [DisplayName("Nhà xuất bản")]
+                    public string NhaXuatBan { get; set; } 
+                    [DisplayName("Năm phát hành")]
+                    public DateTime NamPhatHanh { get; set; } 
+                    [DisplayName("Mô tả")]
+                    public string MoTa { get; set; } 
+                }
+            }
+
+                </code>
+            </pre>
+
+                <p>Bạn có thể để ý thấy đây là một POCO (Plain-Old-C#-Object) – loại class C# chỉ chứa dữ liệu thuộc các kiểu cơ sở. Bạn phải sử dụng POCO để sau này có thể làm việc với Entity Framework.</p>
+               <h2>
+                    Giao diện
+               </h2>
+                <hr /> 
+             
+                <p>Điều chỉnh nội dung của file Index.cshtml như sau:</p>
+                <img src="/contents/imgBaiTap/bookstore6.png" alt="">
+                <img src="/contents/imgBaiTap/bookstore7.png" alt="">
+
+               <p>Đây là một file cshtml thông thường mà bạn đã tiếp xúc nhiều lần. Ở đây chúng ta sử dụng các định dạng css của Bootstrap để giao diện nhìn đàng hoàng hơn một chút.</p>
+                <p>Giờ đây nếu chạy ứng dụng bạn sẽ thu được kết quả như sau:</p>
+                <img src="/contents/imgBaiTap/bookstore.png" alt="">
+                <h2>
+                    Thông tin chi tiết
+                </h2><hr />
+                <p>
+                    Chúng ta thực hiện thêm chức năng hiển thị thông tin chi tiết mỗi khi người dùng click vào đường link.
+                </p>
+                <p>Thêm Controller Books:</p>
+
+                <img src="/contents/imgBaiTap/bookstore8.png" alt="">
+                <p>
+                   Ở phương thức Index thì phương thức này chúng ta sẽ truy vấn dữ liệu của Db bằng phương thức bất đồng bộ và return dữ liệu trả về view Index 
+                </p>
+                <p>chúng ta sẽ thêm View cho dự án như sau : </p>
+                <img src="/contents/imgBaiTap/bookstore9.png" alt="">
+                <p>Ở thư mục view trong mô hình MVC chúng ta sẽ tạo ra các thư mục mang tên tương ứng với Controller và trong những thư mục này sẽ chứa tên cách phương thức mà Controller xử lý tương ứng với view</p>
+                
+                <h2>Kết luận</h2><hr />
+
+
+                <p>Qua bài thực hành này bạn đã xây dựng được một phần chức năng của một phần mềm. Bạn đã thấy cách vận dụng những kiến thức đã học vào giải quyết một bài toán cụ thể. Qua những phần thực hành tổng hợp sau chúng ta sẽ lần lượt hoàn thiện ứng dụng theo mức độ kiến thức và kỹ năng học được.
+
+Bạn có thể tham khảo video hướng dẫn sau:</p>
+                <iframe  width="1000" height="600" src="https://www.youtube.com/embed/Xli_0icE1Z0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+@section Scripts{
+    <script src="~/assets/js/menu_.js">
+    </script>
+    }

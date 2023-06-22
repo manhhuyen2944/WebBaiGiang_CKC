@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j/qZ7A9CWsBZW/fl2LIamDTReowKNlqMP4/ZuRohU60XhONCn7kHgsKuZ84ykNBjY8EH/TsQz0vAd00KUGcDOg==",
+  "dgSpecHash": "8xb4eCZkzEDm5OqSEBCRB0+56IvqQoTLA3hobJvdJNy4GbyLeVm4lbzuaYi9h9GFHvi37ZAF42WEFXg9NC8CyQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\SV\\Source\\Repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
   "expectedPackageFiles": [
@@ -122,6 +122,7 @@
     "C:\\Users\\SV\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\mimekit\\4.0.0\\mimekit.4.0.0.nupkg.sha512",
+    "C:\\Users\\SV\\.nuget\\packages\\netcore.mailkit\\2.1.0\\netcore.mailkit.2.1.0.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",

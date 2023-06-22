@@ -1,8 +1,68 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<WebBaiGiang_CKC.Models.Bai>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@{
+    var lstMon = ViewBag.lstSubject as List<MonHoc>;
+}
+<main>
+    <div class="menu-toggle"> <a href="#">Menu</a> </div>
+    <div>
+        <div class="thanh">
+            <nav>
+
+                <ul class="menu">
+                    <li>
+                        <div class="close-btn">
+                            <i class="fas fa-times">
+                            </i>
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="BaiGiangs" asp-action="DeCuong">Đề cương</a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="BaiGiangs" asp-action="Lich">Lịch</a>
+                    </li>
+                    <li class="menu-item ">
+                        <a asp-controller="BaiGiangs" asp-action="NoiDungChinh">Bài giảng</a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="BaiGiangs" asp-action="BaiTap">Bài tập</a>
+                    </li>
+
+                    @if (ViewBag.kikiemtra != null)
+                    {
+                        <li class="menu-item">
+                            <a id="menu-item-5" asp-area="" asp-controller="BaiGiangs" data-action="kythi" asp-action="KyThi">Kỳ thi</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    <div id="" class="noidung">
+        <ul>
+            @if (lstMon != null && lstMon.Count() > 0)
+            {
+                @foreach (var monhoc in lstMon)
+                {
+                    <li>
+                        <h2>
+                            @monhoc.TenMonHoc
+                        </h2>
+                        <hr />
+                    </li>
+                    <li>
+                        <p>
+                            @Html.Raw(  @monhoc.MoTa)
+                        </p>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</main>
+@section Scripts{
+    <script src="~/assets/js/menu_.js">
+    </script>
+}
