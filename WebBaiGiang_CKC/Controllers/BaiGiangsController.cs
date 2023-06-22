@@ -165,5 +165,51 @@ namespace WebBaiGiang_CKC.Controllers
             return View(models);
 
         }
+        [HttpPost]
+        public async Task<IActionResult> NopBai(IFormCollection form, int id)
+        {
+            var mssvClaim = User.Claims.SingleOrDefault(c => c.Type == "MSSV");
+            var mssv = mssvClaim?.Value;
+            if (string.IsNullOrEmpty(mssv) || !User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var ds_cauhoi = _context.CauHoi_BaiLam.Where(x => x.CauHoi_De.De.KyKiemTraId == id).Include(t => t.BaiLam).Include(t => t.CauHoi_De).ThenInclude(x => x.De).ToList();
+
+            // lấy danh sách câu hỏi trong đề kiểm tra
+            var trangthai = _context.DanhSachThi.FirstOrDefault(x => x.TaiKhoan.MSSV == mssv && x.KyKiemTraId == id);
+
+            if (trangthai.TrangThai == false)
+            {
+                foreach (var cauhoi in ds_cauhoi)
+                {
+                    var dapAnSinhVien = form[cauhoi.CauHoi_DeId.ToString()];
+                    var baiLam = await _context.CauHoi_BaiLam.Include(x => x.BaiLam).Include(x => x.CauHoi_De).ThenInclude(x => x.CauHoi)
+                        .FirstOrDefaultAsync(y => y.CauHoi_De.De.KyKiemTraId == id && y.BaiLam.MSSV == mssv && y.CauHoi_DeId == cauhoi.CauHoi_DeId);
+                    //var cauhoi_bailam = baiLam.FirstOrDefault(cd => cd.CauHoi_DeId == cauhoi.CauHoi_DeId);
+                    if (baiLam != null)
+                    {
+                        baiLam.DapAnSVChon = string.IsNullOrEmpty(dapAnSinhVien) ? "X" : dapAnSinhVien;
+                    }
+                    int socaudung = baiLam.BaiLam.CauHoi_BaiLam
+                        .Count(cd => cd.CauHoi_De.CauHoi?.DapAnDung?.ToLower() == cd.DapAnSVChon?.ToLower());
+                    baiLam.BaiLam.SoCauDung = socaudung;
+                    baiLam.BaiLam.Diem = socaudung > 0 ? (float)socaudung / cauhoi.CauHoi_De.De.SoCauHoi * 10 : 0;
+
+                }
+
+                trangthai.TrangThai = true;
+                await _context.SaveChangesAsync();
+                _notyfService.Success("Chúc mừng bạn nộp bài thành công!!!");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                _notyfService.Warning("Chúc mừng bạn bài này đã được nộp trước đó !!!");
+                return RedirectToAction("Index", "Home");
+            }
+
+        }
+
     }
 }
