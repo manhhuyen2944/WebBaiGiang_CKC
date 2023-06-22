@@ -24,7 +24,8 @@ namespace WebBaiGiang_CKC.Models
         [Range(0, int.MaxValue, ErrorMessage = "{0} phải là số nguyên dương không âm")]
         public int ThoiGianLamBai { get; set; }
 
-
+        public virtual ICollection<De> De { get; set; }
+        public virtual ICollection<DanhSachThi> DanhSachThi { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (ThoiGianBatDau <= DateTime.Now)

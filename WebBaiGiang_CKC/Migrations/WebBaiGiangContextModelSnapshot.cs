@@ -475,7 +475,7 @@ namespace WebBaiGiang_CKC.Migrations
             modelBuilder.Entity("WebBaiGiang_CKC.Models.DanhSachThi", b =>
                 {
                     b.HasOne("WebBaiGiang_CKC.Models.KyKiemTra", "KyKiemTra")
-                        .WithMany()
+                        .WithMany("DanhSachThi")
                         .HasForeignKey("KyKiemTraId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -494,7 +494,7 @@ namespace WebBaiGiang_CKC.Migrations
             modelBuilder.Entity("WebBaiGiang_CKC.Models.De", b =>
                 {
                     b.HasOne("WebBaiGiang_CKC.Models.KyKiemTra", "KyKiemTra")
-                        .WithMany()
+                        .WithMany("De")
                         .HasForeignKey("KyKiemTraId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -541,6 +541,13 @@ namespace WebBaiGiang_CKC.Migrations
             modelBuilder.Entity("WebBaiGiang_CKC.Models.De", b =>
                 {
                     b.Navigation("CauHoi_DeThi");
+                });
+
+            modelBuilder.Entity("WebBaiGiang_CKC.Models.KyKiemTra", b =>
+                {
+                    b.Navigation("DanhSachThi");
+
+                    b.Navigation("De");
                 });
 
             modelBuilder.Entity("WebBaiGiang_CKC.Models.MonHoc", b =>

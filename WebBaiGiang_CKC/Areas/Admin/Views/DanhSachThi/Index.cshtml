@@ -6,6 +6,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var kiemtra = ViewBag.kiemtra as List<De>;
 }
 
 <ol class="breadcrumb">
@@ -28,6 +29,12 @@
             </th>
             <th>
                 Tên kỳ kiểm tra
+            </th> 
+            <th>
+                Số câu đúng
+            </th> 
+            <th>
+               Điềm 
             </th>
             <th>
                 Trạng thái
@@ -49,6 +56,40 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.KyKiemTra.TenKyKiemTra)
+                </td>
+                <td>
+                    @if (item.KyKiemTra.De.Any())
+                    {
+                        var baiLam = item.KyKiemTra.De.First().CauHoi_DeThi.First().CauHoi_BaiLam.FirstOrDefault(x => x.BaiLam.MSSV == item.TaiKhoan.MSSV);
+                        if (baiLam != null)
+                        {
+                            var soCauDung = baiLam.BaiLam.SoCauDung;
+                            @Html.DisplayFor(modelItem => soCauDung)
+                        }
+                        else
+                        {
+                            int socaunull = 0;
+                            @Html.DisplayFor(modelItem => socaunull)
+                        }
+                    }
+                   
+                </td>
+                <td>
+                    @if (item.KyKiemTra.De.Any())
+                    {
+                        var baiLam = item.KyKiemTra.De.First().CauHoi_DeThi.First().CauHoi_BaiLam.FirstOrDefault(x => x.BaiLam.MSSV == item.TaiKhoan.MSSV);
+                        if (baiLam != null)
+                        {
+                            var diem = baiLam.BaiLam.Diem;
+                            @Html.DisplayFor(modelItem => diem)
+                        }
+                        else
+                        {
+                            int deimnull = 0;
+                            @Html.DisplayFor(modelItem => deimnull)
+                        }
+                    }
+                   
                 </td>
                 <td>
                     @if (@item.TrangThai == false)

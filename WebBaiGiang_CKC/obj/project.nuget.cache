@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YQcH2qcSt8JgM/oDIm0+GmaGkgeIU8gZJRedRslKYjIP7gaxnqSJr6mi373WBQn2DuuvK1lqO1W8GmMiYLyavw==",
+  "dgSpecHash": "0Ykq+wIvqL0xIVUOjxT1DyaGYLIWQNqHsuB0rXwIOYoPhmSDnN0X/ykjDyWe0OaNwtWA+43e0rIWr2CdluP7gQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
   "expectedPackageFiles": [
@@ -122,6 +122,7 @@
     "C:\\Users\\SV\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\mimekit\\4.0.0\\mimekit.4.0.0.nupkg.sha512",
+    "C:\\Users\\SV\\.nuget\\packages\\netcore.mailkit\\2.1.0\\netcore.mailkit.2.1.0.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",
@@ -237,5 +238,12 @@
     "C:\\Users\\SV\\.nuget\\packages\\x.pagedlist.mvc.core\\8.4.7\\x.pagedlist.mvc.core.8.4.7.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\xlparser\\1.5.2\\xlparser.1.5.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

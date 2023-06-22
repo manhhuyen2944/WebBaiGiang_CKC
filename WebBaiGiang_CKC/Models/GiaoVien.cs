@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebBaiGiang_CKC.Models
 {
@@ -30,5 +31,10 @@ namespace WebBaiGiang_CKC.Models
         [DisplayName("Còn hoạt động")]
         [DefaultValue(true)]
         public bool TrangThai { get; set; } = true;
+        [NotMapped]
+        public string ResetToken { get; set; }
+
+        [NotMapped]
+        public DateTime? ResetTokenExpiry { get; set; }
     }
 }

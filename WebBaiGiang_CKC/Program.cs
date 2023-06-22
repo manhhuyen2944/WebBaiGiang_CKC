@@ -18,9 +18,12 @@ builder.Services.AddNotyf(config => { config.DurationInSeconds = 3; config.IsDis
 
 builder.Services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
 
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
-
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(10);
+});
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -53,6 +56,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
+app.UseSession();
 
 
 app.UseStaticFiles(new StaticFileOptions()

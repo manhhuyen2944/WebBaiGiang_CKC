@@ -1,0 +1,40 @@
+﻿@using BaiGiang.Models;
+@model ForgotPasswordModel
+
+<div class="container">
+    <form asp-action="QuenMatKhau" method="post">
+        <h1>Quên Mật Khẩu</h1>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" name="Email" placeholder="Nhập địa chỉ email của bạn" required>
+        </div>
+        <div class="text-right"> <!-- Add this div with text-right class to align button to the right -->
+            <button type="submit" class="btn btn-info btn-round">Gửi yêu cầu</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Đặt chiều cao của body và html là 100%, để đảm bảo rằng modal sẽ được căn giữa theo chiều dọc */
+html, body {
+    height: 90%;
+}
+
+/* Định dạng container để nó sẽ được căn giữa theo chiều dọc và chiều ngang */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Định dạng form quên mật khẩu của bạn */
+form {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+</style>
