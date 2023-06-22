@@ -1,5 +1,6 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebBaiGiang_CKC.Data;
 
 namespace WebBaiGiang_CKC.Controllers
@@ -15,5 +16,17 @@ namespace WebBaiGiang_CKC.Controllers
         {
             return View();
         }
+        public IActionResult NoiDungChinh()
+        {
+
+            return View();
+        }
+        public IActionResult GiaoVien()
+        {
+            var giaovien = _context.GiaoVien.AsNoTracking();
+            return View(giaovien);
+        }
+
+
     }
 }
