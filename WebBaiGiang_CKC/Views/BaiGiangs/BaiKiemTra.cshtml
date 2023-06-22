@@ -22,15 +22,17 @@
             @for (int i = 0; i < cauhoi_baiLam.Count; i++)
             {
                 <li>
-                    <a  href="#" class="question-link" data-question="@i">@{
+                    <a  href="#"  data-question="@i">@{
                             int a = i + 1;
-                        } @a</a>
+                        }@a
+                        <span class ="question-link"> </span>
+                    </a>
                 </li>
             }
         </ul>
         <hr>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Nộp bài</button>
+            <button type="submit" class="nopbaibtn">Nộp bài</button>
         </div>
     </div>
     <div class="content" id="content">
@@ -116,7 +118,7 @@
                             @if (cauhoi_baiLam.Count - 1 == socau)
                             {
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Nộp Bài</button>
+                                    <button type="submit" class="nopbaibtn">Nộp Bài</button>
                                 </div>
                             }
                         </div>
@@ -138,15 +140,21 @@
 </div>
 <style>
     .question-link.selected {
-        font-weight: bold;
-        background-color:aqua;
+      
+        background-color: #AAAAAA;
         
     }
 </style>
 <script>
-    function submitForm() {
-        document.getElementById("myForm").submit();
-    }
+   function submitForm() {
+  localStorage.clear(); // Xóa hết dữ liệu đã lưu trữ trong localStorage
+  document.getElementById("myForm").submit();
+}
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  submitForm();
+});
     setTimeout(function () {
         submitForm();
     }, @(((int)tg_tim.TotalMilliseconds)));
@@ -206,6 +214,11 @@
             currentQuestion = 0;
         }
         showQuestion(currentQuestion);
+        if (currentQuestion === questionContainers.length - 1) {
+            nextButton.style.display = "none"; // Ẩn nút "Đến câu hỏi tiếp theo"
+        } else {
+            nextButton.style.display = "inline-block"; // Hiển thị nút "Đến câu hỏi tiếp theo"
+        }
     }
 
     function showPreviousQuestion() {
@@ -214,6 +227,11 @@
             currentQuestion = questionContainers.length - 1;
         }
         showQuestion(currentQuestion);
+        if (currentQuestion === 0) {
+            prevButton.style.display = "none"; // Ẩn nút "Trở về câu hỏi trước"
+        } else {
+            prevButton.style.display = "inline-block"; // Hiển thị nút "Trở về câu hỏi trước"
+        }
     }
 
     function showQuestionByLink(event) {
@@ -222,15 +240,24 @@
         currentQuestion = questionIndex;
         showQuestion(currentQuestion);
     }
-    function handleAnswerChange() {
-        const currentAnswers = document.querySelectorAll(`.question-container:nth-of-type(${currentQuestion + 1}) input[type=radio]:checked`);
-        if (currentAnswers.length > 0) {
-            const selectedQuestionLink = questionLinks[currentQuestion];
-            selectedQuestionLink.classList.add('selected');
-        } else {
-            questionLinks[currentQuestion].classList.remove('selected');
-        }
-    }
+   function handleAnswerChange() {
+  const currentAnswers = document.querySelectorAll(`.question-container:nth-of-type(${currentQuestion + 1}) input[type=radio]:checked`);
+  if (currentAnswers.length > 0) {
+    const selectedQuestionLink = questionLinks[currentQuestion];
+    selectedQuestionLink.classList.add('selected');
+    localStorage.setItem(`question_${currentQuestion}`, true);
+  } else {
+    questionLinks[currentQuestion].classList.remove('selected');
+    localStorage.removeItem(`question_${currentQuestion}`);
+  }
+}
+    window.addEventListener('DOMContentLoaded', function () {
+        questionLinks.forEach((link, index) => {
+            if (localStorage.getItem(`question_${index}`) === 'true') {
+                link.classList.add('selected');
+            }
+        });
+    });
     const answerInputs = document.querySelectorAll('input[type=radio]');
     answerInputs.forEach(input => input.addEventListener('change', handleAnswerChange));
 

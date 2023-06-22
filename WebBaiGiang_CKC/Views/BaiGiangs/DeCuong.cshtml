@@ -14,15 +14,6 @@
 
         <h2>Đề cương </h2>
         <hr />
-        <div style="padding-top: 20px">
-            @foreach (var item in Model)
-            {
-                <a id="@item.TenDeCuong" name="@item.TenDeCuong"></a>
-                <h2 class="display-6 text-black font-weight-bold p-0 m-0 ">@item.TenDeCuong</h2>
-                <p class="lead">@Html.Raw(@item.MoTa)</p>
-            }
-        </div>
-
         <section class="decuong">
             <h2>CHƯƠNG TRÌNH CHI TIẾT HỌC PHẦN</h2>
             <ul>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8xb4eCZkzEDm5OqSEBCRB0+56IvqQoTLA3hobJvdJNy4GbyLeVm4lbzuaYi9h9GFHvi37ZAF42WEFXg9NC8CyQ==",
+  "dgSpecHash": "0Ykq+wIvqL0xIVUOjxT1DyaGYLIWQNqHsuB0rXwIOYoPhmSDnN0X/ykjDyWe0OaNwtWA+43e0rIWr2CdluP7gQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SV\\Source\\Repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
+  "projectFilePath": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SV\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\SV\\.nuget\\packages\\bouncycastle.cryptography\\2.1.1\\bouncycastle.cryptography.2.1.1.nupkg.sha512",

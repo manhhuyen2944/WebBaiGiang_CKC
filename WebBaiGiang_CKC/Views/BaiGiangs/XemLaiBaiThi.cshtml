@@ -23,18 +23,19 @@
     </div>
     <h4>Câu Hỏi</h4>
     <ul>
-        @for (int i = 0; i < cauhoi_baiLam.Count; i++)
-        {
-            <li>
-                <a style="" href="#@cauhoi_baiLam[i].CauHoi_DeId">
-                    @{
-                        int a = i + 1;
-                    }
-                    @a
-                </a>
-            </li>
-        }
-    </ul>
+    @for (int i = 0; i < cauhoi_baiLam.Count; i++)
+    {
+        <li>
+            <a  href="#@cauhoi_baiLam[i].CauHoi_DeId">
+                @{
+                    int a = i + 1;
+                }
+                @a
+                    <span style="@((cauhoi_baiLam[i].DapAnSVChon != "X") ? "background-color: #AAAAAA;" : "")"> </span>
+            </a>
+        </li>
+    }
+</ul>
 
 </div>
 <div class="content" id="content">
@@ -174,7 +175,7 @@
                 </div>
             }
             <div class="text-center">
-                <a asp-controller="BaiGiangs" asp-action="Index" class="btn btn-primary">Trở lại trang chủ</a>
+                <button asp-controller="BaiGiangs" asp-action="Index" class="nopbaibtn">Trang chủ</button>
             </div>
         }
     </div>

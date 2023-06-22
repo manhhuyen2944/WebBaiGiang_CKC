@@ -146,21 +146,33 @@
     font-weight: normal;
     font-size: 18px;
 }
+
 .menu ul li a {
     color: black;
     border: 1px solid black;
     font-size: 16px;
     width: 49px;
-    height: 40px;
+    height: 46px;
     padding:15px;
+
     display: inline-block;
-    padding-bottom: 20px;
-    border-radius: 3px;
+    
+    border-radius: 5px;
     padding-top: 1px;
 }
+    .menu ul li a span {
+        display: inline-block;
+        width: 47px;
+        height: 19px;
+           
+        border-radius: 0 0 4.25px 4.25px;
+        margin-left: -15px;
+    }
+
+
     .answered {
-    background-color: #f2f2f2;
-}
+        background-color: #f2f2f2;
+    }
     .menu {
         height: 100%;
         width: 315px;
@@ -203,7 +215,7 @@
 
 .menu li {
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     font-size: 16px;
     color: #333;
     float: left;
@@ -334,4 +346,14 @@
     .content.active {
         margin-right: 0;
     }
+}
+.nopbaibtn {
+    border-radius: 30px;
+    font-size: 20px;
+    width: 130px;
+    height:50px;
+    padding: 10px;
+    border: none; /* Ẩn viền */
+    background-color: #126f9a;
+    color: white;
 }

@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
+
 using System.Security.Claims;
 using WebBaiGiang_CKC.Extension;
 using WebBaiGiang_CKC.Data;
-using NETCore.MailKit.Core;
+
 using Microsoft.EntityFrameworkCore;
 using BaiGiang.Models;
 using MailKit.Net.Smtp;
@@ -17,13 +18,13 @@ namespace WebBaiGiang_CKC.Controllers
     public class DangNhapController : Controller
     {
         private readonly WebBaiGiangContext _context;
-        private readonly IEmailService _emailService;
+       
         public INotyfService _notyfService { get; }
-        public DangNhapController(WebBaiGiangContext context, INotyfService notyfService, IEmailService emailService)
+        public DangNhapController(WebBaiGiangContext context, INotyfService notyfService )
         {
             _context = context;
             _notyfService = notyfService;
-            _emailService = emailService;
+        
 
         }
         #region Đăng nhập
@@ -116,6 +117,11 @@ namespace WebBaiGiang_CKC.Controllers
                     _notyfService.Error("Mật khẩu cũ không chính xác");
                     return RedirectToAction("HoSo", "BaiGiangs");
                 }
+                if (newpass.Length <6 && newpass.Length <100)
+                {
+                    _notyfService.Error("Mật khẩu mới phải trên 6 ký tự và nhỏ hơn 100 ký tự ");
+                    return RedirectToAction("HoSo", "BaiGiangs");
+                }
                 if (newpass != confirmpass)
                 {
                     _notyfService.Error("Mật khẩu mới không đúng với mật khẩu xác nhận !");
@@ -160,13 +166,13 @@ namespace WebBaiGiang_CKC.Controllers
                     // Gửi email chứa token đến địa chỉ email của người dùng
                     // ...
                     var email = new MimeMessage();
-                    email.From.Add(MailboxAddress.Parse("0306201451@caothang.edu.vn"));
+                    email.From.Add(new MailboxAddress("AdminDotnet", "admin@example.com"));
                     email.To.Add(MailboxAddress.Parse($"{model.Email}"));
                     email.Subject = "Yêu cầu đặt lại mật khẩu";
 
                     email.Body = new TextPart("plain")
                     {
-                        Text = $"Để đặt lại mật khẩu, vui lòng sử dụng token sau đây: {token}"
+                        Text = $"Để đặt lại mật khẩu, vui lòng sử dụng token sau đây: {token} mã token có thời hạn là 10 phút"
                     };
                     using var smtp = new SmtpClient();
                     smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
@@ -220,7 +226,7 @@ namespace WebBaiGiang_CKC.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                TempData["ResetPasswordErrorMessage"] = "Yêu cầu đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.";
+                _notyfService.Error("Yêu cầu đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.");
             }
 
             return View(model);

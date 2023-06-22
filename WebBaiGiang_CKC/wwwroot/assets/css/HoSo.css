@@ -14,6 +14,7 @@ body {
     padding: 1.5rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
 }
 
 .title {
@@ -25,6 +26,7 @@ body {
 .personal-information {
     color: #005ea2;
     margin-top: 20px;
+   
 }
 
     .personal-information h2 {
@@ -83,3 +85,4 @@ body {
     .education strong, .work-experience strong, .skills strong {
         font-weight: bold;
     }
+

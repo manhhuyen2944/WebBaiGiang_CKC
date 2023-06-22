@@ -3,15 +3,16 @@
 
 <div class="container">
     <form asp-action="QuenMatKhau" method="post">
-        <h1>Quên mật khẩu</h1>
+        <h1>Quên Mật Khẩu</h1>
         <div class="form-group">
             <label for="Email">Email</label>
-            <input type="email" class="form-control" id="Email" name="Email" placeholder="Nhập địa chỉ email của bạn"  required>
+            <input type="email" class="form-control" id="Email" name="Email" placeholder="Nhập địa chỉ email của bạn" required>
         </div>
-        <button type="submit" class="btn btn-info btn-round">Gửi yêu cầu</button>
+        <div class="text-right"> <!-- Add this div with text-right class to align button to the right -->
+            <button type="submit" class="btn btn-info btn-round">Gửi yêu cầu</button>
+        </div>
     </form>
 </div>
-
 
 <style>
     /* Đặt chiều cao của body và html là 100%, để đảm bảo rằng modal sẽ được căn giữa theo chiều dọc */
