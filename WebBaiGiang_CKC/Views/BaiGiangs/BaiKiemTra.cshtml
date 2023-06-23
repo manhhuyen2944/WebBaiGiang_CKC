@@ -22,10 +22,11 @@
             @for (int i = 0; i < cauhoi_baiLam.Count; i++)
             {
                 <li>
-                    <a  href="#"  data-question="@i">@{
+                    <a href="#"  data-question="@i">
+                        @{
                             int a = i + 1;
                         }@a
-                        <span class ="question-link"> </span>
+                        <span class="question-link" data-question="@i"> </span>
                     </a>
                 </li>
             }
@@ -206,6 +207,16 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
                 container.style.display = "none";
             }
         });
+        if (index === 0) { // hide prevButton when on first question
+            prevButton.style.display = 'none';
+        } else {
+            prevButton.style.display = 'block';
+        }
+        if (index === questionContainers.length - 1) {
+            nextButton.style.display = 'none'; // hide nextButton when on last question
+        } else {
+            nextButton.style.display = 'block';
+        }
     }
 
     function showNextQuestion() {
@@ -214,11 +225,6 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
             currentQuestion = 0;
         }
         showQuestion(currentQuestion);
-        if (currentQuestion === questionContainers.length - 1) {
-            nextButton.style.display = "none"; // Ẩn nút "Đến câu hỏi tiếp theo"
-        } else {
-            nextButton.style.display = "inline-block"; // Hiển thị nút "Đến câu hỏi tiếp theo"
-        }
     }
 
     function showPreviousQuestion() {
@@ -227,30 +233,29 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
             currentQuestion = questionContainers.length - 1;
         }
         showQuestion(currentQuestion);
-        if (currentQuestion === 0) {
-            prevButton.style.display = "none"; // Ẩn nút "Trở về câu hỏi trước"
+    }
+
+   function showQuestionByLink(event) {
+    event.preventDefault();
+    const questionIndex = parseInt(this.dataset.question);
+    console.log(`Showing question ${questionIndex}`);
+    console.log(`Question container: ${questionContainers[questionIndex]}`);
+    currentQuestion = questionIndex;
+    showQuestion(currentQuestion);
+}
+
+    function handleAnswerChange() {
+        const currentAnswers = document.querySelectorAll(`.question-container:nth-of-type(${currentQuestion + 1}) input[type=radio]:checked`);
+        if (currentAnswers.length > 0) {
+            const selectedQuestionLink = questionLinks[currentQuestion];
+            selectedQuestionLink.classList.add('selected');
+            localStorage.setItem(`question_${currentQuestion}`, true);
         } else {
-            prevButton.style.display = "inline-block"; // Hiển thị nút "Trở về câu hỏi trước"
+            questionLinks[currentQuestion].classList.remove('selected');
+            localStorage.removeItem(`question_${currentQuestion}`);
         }
     }
 
-    function showQuestionByLink(event) {
-        event.preventDefault();
-        const questionIndex = parseInt(this.dataset.question);
-        currentQuestion = questionIndex;
-        showQuestion(currentQuestion);
-    }
-   function handleAnswerChange() {
-  const currentAnswers = document.querySelectorAll(`.question-container:nth-of-type(${currentQuestion + 1}) input[type=radio]:checked`);
-  if (currentAnswers.length > 0) {
-    const selectedQuestionLink = questionLinks[currentQuestion];
-    selectedQuestionLink.classList.add('selected');
-    localStorage.setItem(`question_${currentQuestion}`, true);
-  } else {
-    questionLinks[currentQuestion].classList.remove('selected');
-    localStorage.removeItem(`question_${currentQuestion}`);
-  }
-}
     window.addEventListener('DOMContentLoaded', function () {
         questionLinks.forEach((link, index) => {
             if (localStorage.getItem(`question_${index}`) === 'true') {
