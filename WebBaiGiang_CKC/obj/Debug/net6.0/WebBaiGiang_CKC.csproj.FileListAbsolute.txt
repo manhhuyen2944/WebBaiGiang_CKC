@@ -542,3 +542,4 @@ C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\WebBai
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\WebBaiGiang_CKC.genruntimeconfig.cache
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\ref\WebBaiGiang_CKC.dll
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\NETCore.MailKit.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\NETCore.MailKit.dll
