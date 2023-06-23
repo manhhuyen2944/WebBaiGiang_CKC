@@ -26,7 +26,7 @@
     height: auto;
 }
 #prevButton {
-    margin-right: 130px;
+    
     background-color: #126f9a;
     color: #fff;
     font-size: 25px;
@@ -35,7 +35,11 @@
     height: 40px;
     width: 40px;
     border-radius: 20px;
-    border: 2px solid #126f9a
+    border: 2px solid #126f9a;
+  margin-left:450px;
+  margin-right:200px;
+ float:left
+    
 }
     #prevButton:hover {
         color: #007bff;
@@ -50,7 +54,9 @@
     height: 40px;
     width: 40px;
     border-radius: 20px;
-    border: 2px solid #126f9a
+    border: 2px solid #126f9a;
+    text-align: center;
+    margin-left: 650px;
 }
     #nextButton:hover {
         color: #007bff;
@@ -58,7 +64,7 @@
     }
     .nutchuyen {
         text-align: center;
-
+        overflow:hidden;
     }
 
 #quiz {
@@ -160,16 +166,26 @@
     border-radius: 5px;
     padding-top: 1px;
 }
+    .menu ul li a.selected {
+        background-color:none;
+    }
     .menu ul li a span {
         display: inline-block;
         width: 47px;
-        height: 19px;
-           
+        height: 25px;
+       bottom:6px;
         border-radius: 0 0 4.25px 4.25px;
         margin-left: -15px;
+        position: relative; /* add position relative */
     }
-
-
+        .menu ul li a span::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 47px;
+            height: 40px; /* increase height */
+        }
     .answered {
         background-color: #f2f2f2;
     }
@@ -345,6 +361,14 @@
 
     .content.active {
         margin-right: 0;
+    }
+    #prevButton
+    {
+        margin-left:40px;
+    }
+    #nextButton
+    {
+        margin-left:300px;
     }
 }
 .nopbaibtn {

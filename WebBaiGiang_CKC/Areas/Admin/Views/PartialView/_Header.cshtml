@@ -44,9 +44,9 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" data-bs-toggle="modal" data-bs-target="#signup-modal">
                         <i class="mdi mdi-account-circle me-1"></i>
-                        <span>My Account</span>
+                        <span>Quên mật khẩu</span>
                     </a>
 
                     <!-- item-->
@@ -65,3 +65,40 @@
     </div>
 </div>
 <!-- end Topbar -->
+<!-- Signup modal-->
+@*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign Up Modal</button>*@
+<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="text-center mt-2 mb-4">
+                    <a href="index.html" class="text-success">
+                        <span><img src="~/AdminAssets/images/logo-dark.png" alt="" height="18"></span>
+                    </a>
+                </div>
+                <form class="ps-3 pe-3" method="post" asp-area="Admin" asp-controller="DangNhap" asp-action="DoiMatKhau">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Mật khẩu cũ </label>
+                        <input class="form-control" type="password" name="pass" required="" placeholder="Mật khẩu cũ">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="emailaddress" class="form-label">Mật khẩu mới </label>
+                        <input class="form-control" type="password" name="newpass" required="" placeholder="Mật khẩu mới ">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Xác nhận mật khẩu</label>
+                        <input class="form-control" type="password" required="" name="confirmpass" placeholder="Xác nhận mật khẩu">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-primary" type="submit">Đổi mật khẩu</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -83,6 +83,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                     {
                         new Claim(ClaimTypes.Name, user.HoTen),
                         new Claim(ClaimTypes.Role, "Admin"),
+                        new Claim("TenDangNhap" , user.TenDangNhap),
                          new Claim("AnhDaiDien", "/contents/Images/GiaoVien/" + user.AnhDaiDien) // Thêm đường dẫn đến ảnh đại diện vào claims
                     };
                     //   Response.Cookies.Append("AnhDaiDien", "Images/GiaoVien/" + user.AnhDaiDien);
@@ -209,6 +210,44 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             return View(model);
         }
+        [HttpPost]
+        public async Task<IActionResult> DoiMatKhau(string pass, string newpass, string confirmpass)
+        {
+            if (ModelState.IsValid)
+            {
+                var tendangnhapclam = User.Claims.SingleOrDefault(c => c.Type == "TenDangNhap");
+                var tendangnhap = "";
+                if (tendangnhapclam != null) { tendangnhap = tendangnhapclam.Value; }
+                var password = pass.ToMD5();
+                var user = await _context.GiaoVien.FirstOrDefaultAsync(u => u.TenDangNhap == tendangnhap);
+                if (user.MatKhau != password)
+                {
+                    _notyfService.Error("Mật khẩu cũ không chính xác");
+                    return RedirectToAction("Index", "Home");
+                }
+                if (newpass.Length < 6 && newpass.Length < 100)
+                {
+                    _notyfService.Error("Mật khẩu mới phải trên 6 ký tự và nhỏ hơn 100 ký tự ");
+                    return RedirectToAction("Index", "Home");
+                }
+                if (newpass != confirmpass)
+                {
+                    _notyfService.Error("Mật khẩu mới không đúng với mật khẩu xác nhận !");
+                    return RedirectToAction("Index", "Home");
+                }
+                user.MatKhau = newpass.ToMD5();
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                _notyfService.Error("Vui lòng nhập đầy đủ thông mật khẩu !");
+
+            }
+            _notyfService.Success("Đổi mật khẩu thành công!");
+            return RedirectToAction("Index", "Home");
+        }
+
 
     }
 }
