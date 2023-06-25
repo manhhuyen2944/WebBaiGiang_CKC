@@ -33,14 +33,6 @@ namespace WebBaiGiang_CKC.Controllers
             {
                 mssv_ = mssvclaim.Value;
             }
-
-            var kikiemtra = _context.DanhSachThi.Include(t => t.KyKiemTra).Include(x => x.TaiKhoan).ToList();
-            DanhSachThi kiemtra_ = null;
-            foreach (var kiemtra in kikiemtra)
-            {
-                kiemtra_ = _context.DanhSachThi.FirstOrDefault(x => x.TrangThai == false && x.TaiKhoan.MSSV == mssv_ && x.KyKiemTraId == kiemtra.KyKiemTraId);
-            }
-            ViewBag.kikiemtra = kiemtra_;
             return View();
         }
 
@@ -68,11 +60,12 @@ namespace WebBaiGiang_CKC.Controllers
             }
 
             var kikiemtra = _context.DanhSachThi.Include(t => t.KyKiemTra).Include(x => x.TaiKhoan).ToList();
-            DanhSachThi kiemtra_ = null;
+            var kiemtra_ = 0;
             CauHoi_BaiLam diemsv = null;
+            kiemtra_ = _context.KyKiemTra.Include(x => x.DanhSachThi).Count(x => x.DanhSachThi.First().TaiKhoan.MSSV == mssv_ && x.DanhSachThi.First().TrangThai == false  && DateTime.UtcNow.AddHours(7) >= x.ThoiGianBatDau && DateTime.UtcNow.AddHours(7) < x.ThoiGianKetThuc);
             foreach (var kiemtra in kikiemtra)
             {
-                kiemtra_ = _context.DanhSachThi.FirstOrDefault(x => x.TrangThai == false && x.TaiKhoan.MSSV == mssv_ && x.KyKiemTraId == kiemtra.KyKiemTraId);
+                
                 diemsv = _context.CauHoi_BaiLam.Include(x => x.BaiLam).Include(x => x.CauHoi_De).ThenInclude(x => x.De).FirstOrDefault(x=>x.CauHoi_De.De.KyKiemTraId == kiemtra.KyKiemTraId && x.BaiLam.MSSV == mssv_);
             }
             ViewBag.diemsv = diemsv;
