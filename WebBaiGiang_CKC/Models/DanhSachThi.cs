@@ -10,7 +10,7 @@ namespace WebBaiGiang_CKC.Models
         public int TaiKhoanId { get; set; }
         [ForeignKey("KyKiemTraId")]
         public int KyKiemTraId { get; set; }
-        [DisplayName("Trạng thái")]
+        [DisplayName("Đã nộp")]
         [DefaultValue(false)]
         public bool TrangThai { get; set; } = false;
 

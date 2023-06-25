@@ -17,52 +17,52 @@
 <hr />
 <br />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MucId" />
-            <br />
-            <div class="form-group">
-                <label class="form-label">Chương <span id="ChuongDisplay"></span></label>
-                <select asp-items="ChuongId" class="form-select" onchange="showChuongInfo(this)">
-                    <option value="">-- Chọn chương học --</option>
-                </select>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="BaiId" class="form-label">Bài <span id="ChuongDisplay"></span></label>
-                <select asp-for="BaiId" asp-items="BaiId" class="form-select">
-                    <option value="">-- Chọn bài học --</option>
-                </select>
-            </div>
-            <br>
-            <div class="form-group">
-                <label asp-for="TenMuc" class="control-label"></label>
-                <input asp-for="TenMuc" class="form-control" />
-                <span asp-validation-for="TenMuc" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="MucSo" class="control-label"></label>
-                <input asp-for="MucSo" class="form-control" />
-                <span asp-validation-for="MucSo" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="custom-control-label col-md-2" asp-for="NoiDung" class="control-label" for="htmlelementid">Nội Dung</label>
-                <textarea name="NoiDung" id="htmlelementid" class="form-control">@Model.NoiDung</textarea>
-                <span asp-validation-for="NoiDung" class="text-danger"></span>
-            </div>
 
-            <br>
-            <div class="form-group">
-                <div style="float: left; padding-right:10px">
-                    <input type="submit" value="Lưu" class="btn btn-primary" />
-                </div>
-                <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="MucId" />
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <label class="form-label">Chương <span id="ChuongDisplay"></span></label>
+            <select asp-items="ChuongId" class="form-select w-100" onchange="showChuongInfo(this)">
+                <option value="">-- Chọn chương học --</option>
+            </select>
+        </div>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="BaiId" class="form-label">Bài <span id="ChuongDisplay"></span></label>
+            <select asp-for="BaiId" asp-items="BaiId" class="form-select w-100">
+                <option value="">-- Chọn bài học --</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="TenMuc" class="control-label"></label>
+            <input asp-for="TenMuc" class="form-control w-100" />
+            <span asp-validation-for="TenMuc" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="MucSo" class="control-label"></label>
+            <input asp-for="MucSo" class="form-control w-100" />
+            <span asp-validation-for="MucSo" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <label class="custom-control-label col-md-2" asp-for="NoiDung" class="control-label" for="htmlelementid">Nội Dung</label>
+            <textarea name="NoiDung" id="htmlelementid" class="form-control">@Model.NoiDung</textarea>
+            <span asp-validation-for="NoiDung" class="text-danger"></span>
+        </div>
+
+        <br>
+        <div class="form-group flex-grow-1 mx-4">
+            <div style="float: left; padding-right:10px">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
-        </form>
-    </div>
+            <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
+        </div>
+    </form>
+
 </div>
 
 @section scripts{
@@ -131,7 +131,7 @@
             $('#htmlelementid').summernote({
 
                 height: 700,
-                width: 2000,
+                width: 2200,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear']],
