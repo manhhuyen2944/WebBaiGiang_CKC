@@ -19,30 +19,37 @@
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ChuongId" />
-            <br />
-            <div class="form-group">
-                <label asp-for="MonHocId" class="control-label"></label>
-                <select asp-for="MonHocId" class="form-control" asp-items="MonHocId"></select>
-                <span asp-validation-for="MonHocId" class="text-danger"></span>
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ChuongId" />
+        <br />
+
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="MonHocId" class="control-label"></label>
+            <select asp-for="MonHocId" class="form-control w-100" asp-items="MonHocId"></select>
+        </div>
+        <br />
+        <div class="form-group  flex-grow-1 mx-4">
+            <label asp-for="ChuongId" class="control-label"></label>
+            <input asp-for="ChuongId" class="form-control w-100" />
+            <span asp-validation-for="ChuongId" class="text-danger"></span>
+        </div>
+
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="TenChuong" class="control-label"></label>
+            <input asp-for="TenChuong" class="form-control w-100" />
+            <span asp-validation-for="TenChuong" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <div style="float: left; padding-right:10px">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="TenChuong" class="control-label"></label>
-                <input asp-for="TenChuong" class="form-control" />
-                <span asp-validation-for="TenChuong" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <div style="float: left; padding-right:10px">
-                    <input type="submit" value="Lưu" class="btn btn-primary" />
-                </div>
-                <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
-            </div>
-        </form>
-    </div>
+            <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
+        </div>
+    </form>
+
 </div>
 

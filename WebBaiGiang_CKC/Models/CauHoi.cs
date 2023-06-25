@@ -7,26 +7,26 @@ namespace WebBaiGiang_CKC.Models
     {
         public int CauHoiId { get; set; }
 
-        [DisplayName("Tên chương")]
+        [DisplayName("Chương")]
         public int ChuongId { get; set; }
 
         public Chuong Chuong { get; set; }
         [DisplayName("Câu hỏi")]
         public string NoiDung { get; set; }
 
-        [DisplayName("Câu trả lời")]
+        [DisplayName("Đáp án A")]
         public string? DapAnA { get; set; }
-        [DisplayName("Câu trả lời")]
+        [DisplayName("Đáp án B")]
         public string? DapAnB { get; set; }
-        [DisplayName("Câu trả lời")]
+        [DisplayName("Đáp án C")]
 
         public string? DapAnC { get; set; }
-        [DisplayName("Câu trả lời")]
+        [DisplayName("Đáp án D")]
         public string? DapAnD { get; set; }
         [DisplayName("Đáp án đúng")]
         public string DapAnDung { get; set; }
 
-        [DisplayName("Độ khó")]
+        [DisplayName("Độ khó (%)")]
         [Range(1, 100, ErrorMessage = "Độ khó đề là nguyên dương từ 1% đến 100%")]
         public float DoKho { get; set; }
         public int? SoLanLay { get; set; }

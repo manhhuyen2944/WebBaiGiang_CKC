@@ -44,7 +44,7 @@
                 @Html.DisplayNameFor(model => model.ThoiGianLamBai)
             </th>
             <th>
-                Chức năng
+               
             </th>
             <th></th>
         </tr>
@@ -75,7 +75,7 @@
                     <a asp-action="Details" asp-route-id="@item.KyKiemTraId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
                     <a asp-action="Edit" asp-route-id="@item.KyKiemTraId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>
                     <a asp-action="Delete" asp-route-id="@item.KyKiemTraId" class="action-icon"> <i class="mdi mdi-delete" style="color:#e75555;font-size:25px;"></i></a>
-                    <a asp-action="ExportExcel" asp-route-kykiemtra="@item.KyKiemTraId" class="action-icon">
+                    <a asp-action="ExportExcel" asp-route-kykiemtraid="@item.KyKiemTraId" class="action-icon">
                         <i class="uil-down-arrow" style="color: steelblue;"></i>
                     </a>
                 </td>

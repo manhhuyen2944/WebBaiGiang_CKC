@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var taikhoan = @ViewBag.TaiKhoanId;
+    var kykiemtra = @ViewBag.KyKiemTraId;
 }
 <ol class="breadcrumb">
 
@@ -14,34 +16,34 @@
 <hr />
 <br />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="DanhSachThiId" />
-            <div class="form-group">
-                <label asp-for="TaiKhoan.HoTen" class="control-label"></label>
-                <select asp-for="TaiKhoanId" class="form-control" asp-items="ViewBag.TaiKhoanId"></select>
-                <span asp-validation-for="TaiKhoanId" class="text-danger"></span>
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="DanhSachThiId" />
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="TaiKhoan.HoTen" class="control-label" for="TaiKhoanId"></label>
+            <select asp-for="TaiKhoanId" class="form-control w-100" asp-items="taikhoan"></select>
+            <span asp-validation-for="TaiKhoanId" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="KyKiemTra.TenKyKiemTra" class="control-label" for="KyKiemTraId"></label>
+            <select asp-for="KyKiemTraId" class="form-control w-100" asp-items="kykiemtra"></select>
+            <span asp-validation-for="KyKiemTraId" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group form-check flex-grow-1 mx-4">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="TrangThai" /> @Html.DisplayNameFor(model => model.TrangThai)
+            </label>
+        </div>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <div style="float: left; padding-right:10px">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="KyKiemTra.TenKyKiemTra" class="control-label"></label>
-                <select asp-for="KyKiemTraId" class="form-control" asp-items="ViewBag.KyKiemTraId"></select>
-                <span asp-validation-for="KyKiemTraId" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="TrangThai" /> @Html.DisplayNameFor(model => model.TrangThai)
-                </label>
-            </div>
-            <br />
-            <div class="form-group">
-                <div style="float: left; padding-right:10px">
-                    <input type="submit" value="Lưu" class="btn btn-primary" />
-                </div>
-                <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
-            </div>
-        </form>
-    </div>
+            <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
+        </div>
+    </form>
+
 </div>
