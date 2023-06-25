@@ -19,7 +19,7 @@ namespace WebBaiGiang_CKC.Models
         [Required(ErrorMessage = "{0} không được bỏ trống")]
         public DateTime ThoiGianKetThuc { get; set; }
 
-        [DisplayName("Thời gian")]
+        [DisplayName("Thời gian (phút)")]
         [Required(ErrorMessage = "{0} không được bỏ trống")]
         [Range(0, int.MaxValue, ErrorMessage = "{0} phải là số nguyên dương không âm")]
         public int ThoiGianLamBai { get; set; }

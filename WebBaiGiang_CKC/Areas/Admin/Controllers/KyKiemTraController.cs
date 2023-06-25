@@ -140,6 +140,18 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                     con.Open();
                     foreach (DataRow row in dt.Rows)
                     {
+                        var kykiemtraid = row["KyKiemTraId"].ToString();
+                        var queryKyKiemTra = "SELECT COUNT(*) FROM KyKiemTra WHERE KyKiemTraId = @KyKiemTraId";
+                        using (SqlCommand cmdKyKiemTra = new SqlCommand(queryKyKiemTra, con))
+                        {
+                            cmdKyKiemTra.Parameters.AddWithValue("@KyKiemTraId", kykiemtraid);
+                            int kyKiemTraCount = (int)cmdKyKiemTra.ExecuteScalar();
+                            if (kyKiemTraCount == 0)
+                            {
+                                _notyfService.Error($"Kỳ kiểm tra {kykiemtraid} chưa được tạo. Vui lòng tạo kỳ kiểm tra trước khi import danh sách thi!");
+                                return RedirectToAction("Index");
+                            }
+                        }
                         var taikhoanid = row["TaiKhoanId"].ToString();
                         var queryTaiKhoan = "SELECT MSSV FROM TaiKhoan WHERE TaiKhoanId = @TaiKhoanId";
                         using (SqlCommand cmdTaiKhoan = new SqlCommand(queryTaiKhoan, con))
@@ -184,8 +196,6 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 _notyfService.Success("Thêm Thành Công!");
                 return RedirectToAction("Index");
 
-
-
             }
             catch (Exception)
             {
@@ -212,7 +222,6 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             return View(kyKiemTra);
         }
-
         // POST: Admin/KyKiemTras/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -293,14 +302,18 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         {
             return _context.KyKiemTra.Any(e => e.KyKiemTraId == id);
         }
-        public IActionResult ExportExcel()
+        public IActionResult ExportExcel(int kykiemtraid)
         {
             try
             {
-                // var data = _context.CauHoi_BaiLam.Include(x=>x.BaiLam).Include(x => x.CauHoi_De).ThenInclude(x => x.De).ThenInclude(x => x.KyKiemTra).Where(x => x.CauHoi_De.De.KyKiemTra.KyKiemTraId == kykiemtra);
-
-                var data = _context.BaiLam.ToList();
-                if (data != null && data.Count > 0)
+                var kykiemtra = _context.KyKiemTra.FirstOrDefault(k => k.KyKiemTraId == kykiemtraid);
+                var data = _context.BaiLam
+                     .Include(x => x.CauHoi_BaiLam)
+                    .ThenInclude(x => x.CauHoi_De)
+                    .ThenInclude(x => x.De)
+                       .Where(x => x.CauHoi_BaiLam.First().CauHoi_De.De.KyKiemTraId == kykiemtraid)
+                       .ToList();
+                if (data != null && data.Count() > 0)
                 {
                     using (XLWorkbook wb = new XLWorkbook())
                     {
@@ -310,14 +323,14 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                         {
 
                             wb.SaveAs(stream);
-                            string fileName = $"BaiThiSinhVien_{DateTime.Now.ToString("dd/MM/yyyy")}.xlsx";
+                            string fileName = $"BaiThiSinhVien_{kykiemtra.TenKyKiemTra}_{DateTime.Now.ToString("dd/MM/yyyy")}.xlsx";
                             return File(stream.ToArray(), "application/vnd.openxmlformats-officedocuments.spreadsheetml.sheet", fileName);
                         }
 
                     }
 
                 }
-                _notyfService.Error("Không Có Dữ Liệu Trong Database");
+                _notyfService.Error("Kỳ kiểm tra này không có điểm của sinh viên");
             }
             catch (Exception)
             {
@@ -325,6 +338,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+       
         public DataTable ToConvertDataTable<T>(List<T> items)
         {
             DataTable dt = new DataTable(typeof(T).Name);
@@ -340,28 +354,18 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             foreach (T item in items)
             {
                 var values = new object[columnsToExport.Count];
-                int columnIndex = 0;
+                int j = 0;
                 for (int i = 0; i < propInfo.Length; i++)
                 {
                     if (columnsToExport.Contains(propInfo[i].Name))
                     {
-                        if (propInfo[i].Name == "DeId")
-                        {
-                            int deId = (int)propInfo[i].GetValue(item, null);
-                            De de = _context.De.Include(d => d.KyKiemTra).FirstOrDefault(d => d.DeId == deId);
-                            values[columnIndex] = de?.KyKiemTra.TenKyKiemTra;
-                        }
-                        else
-                        {
-                            values[columnIndex] = propInfo[i].GetValue(item, null);
-                        }
-                        columnIndex++;
+                        values[j] = propInfo[i].GetValue(item, null);
+                        j++;
                     }
                 }
                 dt.Rows.Add(values);
             }
             return dt;
         }
-
     }
 }

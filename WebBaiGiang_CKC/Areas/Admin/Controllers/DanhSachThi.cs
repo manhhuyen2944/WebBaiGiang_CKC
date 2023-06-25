@@ -74,6 +74,17 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DanhSachThiId,TaiKhoanId,KyKiemTraId,TrangThai")] DanhSachThi danhSachThi)
         {
+            var existingDanhSachThi = await _context.DanhSachThi
+                         .FirstOrDefaultAsync(d => d.TaiKhoanId == danhSachThi.TaiKhoanId && d.KyKiemTraId == danhSachThi.KyKiemTraId);
+
+            if (existingDanhSachThi != null)
+            {
+                // đã có bản ghi trong CSDL, xuất thông báo lỗi và không lưu đối tượng DanhSachThi vào CSDL
+                _notyfService.Error("Sinh viên đã tham gia thi kỳ kiểm tra này.");
+                ViewData["KyKiemTraId"] = new SelectList(_context.KyKiemTra, "KyKiemTraId", "TenKyKiemTra", danhSachThi.KyKiemTraId);
+                ViewData["TaiKhoanId"] = new SelectList(_context.TaiKhoan, "TaiKhoanId", "HoTen", danhSachThi.TaiKhoanId);
+                return View(danhSachThi);
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(danhSachThi);
@@ -115,7 +126,16 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
+            var existingDanhSachThi = await _context.DanhSachThi
+                 .FirstOrDefaultAsync(d => d.TaiKhoanId == danhSachThi.TaiKhoanId && d.KyKiemTraId == danhSachThi.KyKiemTraId && d.DanhSachThiId != danhSachThi.DanhSachThiId);
+            if (existingDanhSachThi != null)
+            {
+                // đã có bản ghi trong CSDL, xuất thông báo lỗi và không cập nhật đối tượng DanhSachThi vào CSDL
+                _notyfService.Error("Sinh viên đã tham gia thi kỳ kiểm tra này.");
+                ViewData["KyKiemTraId"] = new SelectList(_context.KyKiemTra, "KyKiemTraId", "TenKyKiemTra", danhSachThi.KyKiemTraId);
+                ViewData["TaiKhoanId"] = new SelectList(_context.TaiKhoan, "TaiKhoanId", "HoTen", danhSachThi.TaiKhoanId);
+                return View(danhSachThi);
+            }
             if (ModelState.IsValid)
             {
                 try

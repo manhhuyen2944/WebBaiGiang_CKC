@@ -20,23 +20,23 @@
 <hr />
 <br />
 <div class="row">
-    <div class="col-md-4">
+ 
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TaiKhoanId" />
-            <div class="form-group">
+        <div class="form-group  flex-grow-1 mx-4">
                 <label asp-for="MSSV" class="control-label"></label>
                 <input asp-for="MSSV" class="form-control" />
                 <span asp-validation-for="MSSV" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
+        <div class="form-group  flex-grow-1 mx-4">
                 <label asp-for="HoTen" class="control-label"></label>
                 <input asp-for="HoTen" class="form-control" />
                 <span asp-validation-for="HoTen" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
+        <div class="form-group  flex-grow-1 mx-4">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -44,7 +44,7 @@
 
             <br>
             <div class="form-row">
-                <div class="form-group form-check col-md-6">
+            <div class="form-group form-check  flex-grow-1 mx-4">
                     @if (Model.TrangThai)
                     {
                         <div class="switch m-r-10">
@@ -66,10 +66,10 @@
 
             </div>
             <br>
-            <div class="form-group">
+        <div class="form-group  flex-grow-1 mx-4">
                 <a asp-action="Index" class="btn btn-outline-secondary" style="margin-right:20px;"> Trở về</a>
                 <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </form>
-    </div>
+    
 </div>

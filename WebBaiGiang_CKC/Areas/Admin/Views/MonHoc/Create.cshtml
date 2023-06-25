@@ -16,37 +16,38 @@
 <h1 style="text-align: center;">THÊM MÔN HỌC</h1>
 
 <hr />
+<br />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="TenMonHoc" class="control-label"></label>
-                <input asp-for="TenMonHoc" class="form-control" />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="d-flex justify-content-between">
+            <div class="form-group flex-grow-1 mx-4">
+                <label asp-for="TenMonHoc" class="control-label">Tên môn học</label>
+                <input asp-for="TenMonHoc" class="form-control w-100" />
                 <span asp-validation-for="TenMonHoc" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
-                <label asp-for="MaMonHoc" class="control-label"></label>
-                <input asp-for="MaMonHoc" class="form-control" />
+            <div class="form-group flex-grow-1">
+                <label asp-for="MaMonHoc" class="control-label">Mã môn học</label>
+                <input asp-for="MaMonHoc" class="form-control w-100" />
                 <span asp-validation-for="MaMonHoc" class="text-danger"></span>
             </div>
-            <br />
-            <div class="form-group">
-                <label class="custom-control-label col-md-2" asp-for="MoTa" class="control-label" for="htmlelementid">Mô Tả</label>
-                <textarea name="MoTa" id="htmlelementid" class="form-control" asp-for="MoTa"></textarea>
+        </div>
+        <br />
+        <div class="form-group  flex-grow-1 mx-4">
+            <label class="custom-control-label col-md-2" asp-for="MoTa" class="control-label" for="htmlelementid">Mô Tả</label>
+            <textarea name="MoTa" id="htmlelementid" class="form-control" asp-for="MoTa"></textarea>
 
-                <span asp-validation-for="MoTa" class="text-danger"></span>
-            </div>
+            <span asp-validation-for="MoTa" class="text-danger"></span>
+        </div>
 
-            <br>
-            <div class="form-group">
-                <input type="submit" value="Thêm" class="btn btn-primary" />
-                <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
-            </div>
-        </form>
-    </div>
+        <br>
+        <div class="form-group flex-grow-1 mx-4">
+            <input type="submit" value="Thêm" class="btn btn-primary" />
+            <a class="btn btn-secondary" asp-action="Index">Quay Lại</a>
+        </div>
+    </form>
+
 </div>
 
 @section scripts{
@@ -115,7 +116,7 @@
             $('#htmlelementid').summernote({
 
                 height: 700,
-                width: 2000,
+                width: 2220,
 
                 toolbar: [
                     ['style', ['style']],
