@@ -22,11 +22,11 @@
             @for (int i = 0; i < cauhoi_baiLam.Count; i++)
             {
                 <li>
-                    <a href="#"  data-question="@i">
+                    <a class="question-link" data-question="@i">
                         @{
                             int a = i + 1;
                         }@a
-                        <span class="question-link" data-question="@i"> </span>
+                        <span > </span>
                     </a>
                 </li>
             }
@@ -81,8 +81,8 @@
                                 {
                                     @*  @(cauhoi_kt.CauHoi_De.CauHoi.DapAnA.Length > 40 ? "long-answer" : cauhoi_kt.CauHoi_De.CauHoi.DapAnA.Length > 20 ? "medium-answer" : "short-answer")*@
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio"id="q1a" name="@cauhoi_kt.CauHoi_DeId" value="A" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
-                                        <label class="form-check-label" for="q1a" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'A');">
+                                        <input class="form-check-input" type="radio" name="@cauhoi_kt.CauHoi_DeId" value="A" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
+                                        <label class="form-check-label" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'A');">
                                             @cauhoi_kt.CauHoi_De.CauHoi.DapAnA
                                         </label>
                                     </div>
@@ -91,8 +91,8 @@
                                 @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnB))
                                 {
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="q1b" name="@cauhoi_kt.CauHoi_DeId" value="B" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
-                                        <label class="form-check-label" for="q1b" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'B');">
+                                        <input class="form-check-input" type="radio"  name="@cauhoi_kt.CauHoi_DeId" value="B" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
+                                        <label class="form-check-label"  onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'B');">
                                             @cauhoi_kt.CauHoi_De.CauHoi.DapAnB
                                         </label>
                                     </div>
@@ -100,8 +100,8 @@
                                 @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnC))
                                 {
                                     <div class="form-check ">
-                                        <input class="form-check-input" type="radio" id="q1c" name="@cauhoi_kt.CauHoi_DeId" value="C" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
-                                        <label class="form-check-label" for="q1c" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'C');">
+                                        <input class="form-check-input" type="radio"  name="@cauhoi_kt.CauHoi_DeId" value="C" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
+                                        <label class="form-check-label"  onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'C');">
                                             @cauhoi_kt.CauHoi_De.CauHoi.DapAnC
                                         </label>
                                     </div>
@@ -109,8 +109,8 @@
                                 @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnD))
                                 {
                                     <div class="form-check ">
-                                        <input class="form-check-input" type="radio" id="q1d" name="@cauhoi_kt.CauHoi_DeId" value="D" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
-                                        <label class="form-check-label" for="q1d" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'D');">
+                                        <input class="form-check-input" type="radio" name="@cauhoi_kt.CauHoi_DeId" value="D" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
+                                        <label class="form-check-label"  onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'D');">
                                             @cauhoi_kt.CauHoi_De.CauHoi.DapAnD
                                         </label>
                                     </div>
@@ -140,7 +140,7 @@
 
 </div>
 <style>
-    .question-link.selected {
+    .question-link.selected span{
       
         background-color: #AAAAAA;
         
