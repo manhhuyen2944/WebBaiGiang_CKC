@@ -1,17 +1,12 @@
-﻿
+﻿@{
+    var giaovien = ViewBag.Giaovien as List<GiaoVien>;
+}
 <header>
-
     <div class="mainheder">
-
         <div class="heder1">
-
-
             <h2>
-
                 CAO ĐẲNG KỸ THUẬT CAO THẮNG
-
             </h2>
-
             <div>
                 <div class="menu-heder1">
                     <i class="fas fa-bars">
@@ -26,14 +21,13 @@
                                 Trang chủ
                             </a>
                         </li>
-
                         <li><a asp-controller="BaiGiangs" asp-action="GiaoVien">Giáo viên</a></li>
-                        <li><a href="#">Liên hệ</a></li>
+                        <li><a data-toggle="modal" data-target="#lienhe">Liên hệ</a></li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li>
                                 <div class="container-dn" id="container-dn">
-                            
+
 
                                     @if (!string.IsNullOrEmpty(User.Identity.Name))
                                     {
@@ -67,18 +61,10 @@
                                         </li>
                                     </ul>
                                 </div>
-
-
-
-
-
-
                             </li>
                             <li>
                                 <strong> @User.Identity.Name</strong>
                             </li>
-
-
                         }
                         else
                         {
@@ -91,36 +77,31 @@
                                 </div>
                             </li>
                         }
-
-
-
                     </ul>
-
-
                 </nav>
             </div>
         </div>
         @await Html.PartialAsync("~/Views/PartialView/_DangNhap.cshtml")
         <!-- Modal -->
-<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="forgotPasswordModalLabel">Quên mật khẩu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form asp-action="QuenMatKhau" method="post">
-            <div class="form-group">
-                <label for="Email">Email</label>
-                <input type="email" class="form-control" id="Email" name="Email" placeholder="Nhập địa chỉ email của bạn" required>
+        <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="forgotPasswordModalLabel">Quên mật khẩu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-action="QuenMatKhau" method="post">
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" name="Email" placeholder="Nhập địa chỉ email của bạn" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+        </div>
 
     </div>
     <div class="heder2">
@@ -137,4 +118,30 @@
 </header>
 
 
-        
+
+
+<div class="modal fade" id="lienhe" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <button style="color:black" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-title text-center">
+                    <h2>Thông tin liên hệ</h2>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/utabussy/">Nguyễn Chí Khang</a></p>
+                    <p><strong>Điện thoại:</strong> 0964431054</p>
+                    <p><strong>Zalo:</strong> 0964431054</p>
+                    <p><strong>Email:</strong> 0306201451@caothang.edu.vn</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -44,14 +44,14 @@
 
                                 <div class="mb-3">
                                     <label  class="form-label">Tên đăng nhập</label>
-                                    <input class="form-control" name="tendangnhap" placeholder="Nhập tên đăng nhập">
+                                    <input class="form-control" name="tendangnhap" placeholder="Nhập tên đăng nhập" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <a asp-area="Admin" asp-controller="DangNhap" asp-action="QuenMatKhau" class="text-muted float-end"><small>Quên mật khẩu?</small></a>
                                     <label  class="form-label">Mật khẩu</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password" name="pass" class="form-control" placeholder="Nhập mật khẩu">
+                                        <input type="password" id="password" name="pass" class="form-control" placeholder="Nhập mật khẩu" required>
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>

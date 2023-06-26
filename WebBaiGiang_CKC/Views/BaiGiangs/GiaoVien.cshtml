@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿<!DOCTYPE html>
+<html>
+@section Scripts{
+    <link rel="stylesheet" href="~/assets/css/HoSo.css" />
 }
+@{
+    var giaovien = ViewBag.Giaovien as List<GiaoVien>;
+    var anhDaiDienClaim = User.Claims.FirstOrDefault(c => c.Type == "AnhDaiDien");
+    var anhDaiDien = "";
+    if (anhDaiDienClaim != null)
+    {
+        anhDaiDien = anhDaiDienClaim.Value;
+    }
+}
+<body>
+    <div class="container">
+        <h1 class="title">Giáo viên giảng dạy</h1>
+        @foreach (var itemgv in giaovien)
+        {
+            <div style="overflow:hidden">
+                <div style=" float:left;margin-right:50px; width:250px; text-align:center" class="container-dn" id="container-dn" >
+                    <img src="/contents/Images/GiaoVien/@itemgv.AnhDaiDien" alt="Ảnh đại diện" class="rounded-circle">
+                </div>
+                <section class="personal-information">
+                    <h2>Thông tin cá nhân</h2>
+                    <ul>
+                        <li><strong>Họ tên:</strong> @itemgv.HoTen</li>
+                        <li><strong>Môn dạy:</strong> ASP.NET CORE</li>
+
+                        <li><strong>Email:</strong> @itemgv.Email</li>
+                    </ul>
+
+
+                </section>
+
+            </div>
+            <hr />
+        }
+
+
+
+    </div>
+</body>
+</html>

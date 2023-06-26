@@ -8,18 +8,20 @@
     <script src="~/assets/js/menu_.js">
     </script>
     }
+<style>
+    table {
+        width: 100%;
+    } 
 
 
+        
+    
+</style>
 <main>
-
     <div class="menu-toggle"> <a href="#">Menu</a> </div>
-
     <div>
         @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
-
-
         <div class="noidung">
-
             <h2>Lịch học</h2>
             <h6>Dưới đây là thành phần nội dung môn học ASP.NET Core</h6>
             <hr />
@@ -27,196 +29,146 @@
                 <h4 style="float: left;font-weight:bold; margin-right:40px;margin-left:20px;">
                     Tuần
                 </h4>
-                <h4 style="font-weight:bold;">
+                <h4 style="font-weight:bold; float:left">
                     Chủ đề
                 </h4>
+                <div style="float:right;">
+                    <h4 style="font-weight:bold;">
+                        Tài liệu tham khảo
+                    </h4>
+                </div>
             </div>
-            <div style="padding-top:20px;">
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 1:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: Giới thiệu chung về ASP.NET CORE </p>
-                        <p> - Thực hành: Cài đặt cấu hình ứng dụng trong ASP.NET CORE </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 2:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: ASP.NET CORE Razor Page </p>
-                        <p> - Thực hành: Xây dựng ứng dụng quản lý sách </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 3:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: ASP.NET CORE Razor Page (tt) </p>
-                        <p> - Thực hành: Thực hành CRUD trong Razor Pages </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 4:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: ASP.NET CORE MVC </p>
-                        <p> - Thực hành: Tạo , cấu hình dự án ASP.NET Core MVC </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 5:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: Controller trong ASP.NET CORE MVC </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 6:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: View trong ASP.NET CORE MVC </p>
-
-                    </div>
-                </div>
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 7:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: Routing trong ASP.NET CORE MVC </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 8:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: Model Binding trong ASP.NET CORE MVC </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 9:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Thực hành:Xây dựng ứng dụng mẫu - Category của Blog </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 10:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Thực hành:Xây dựng ứng dụng mẫu - Tích hợp HTML Editor Summernote </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 11:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Thực hành:Xây dựng ứng dụng mẫu - Post của Blog </p>
-
-                    </div>
-                </div>
-
-                <div style="overflow: hidden; margin-left:30px">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 12:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Thực hành:Xây dựng ứng dụng mẫu - Trang hiển thị các bài viết </p>
-
-                    </div>
-                </div>
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 13:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Thực hành:Xây dựng ứng dụng mẫu - Trang giỏ hàng </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 14:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Lý thuyết: elFinder,Admin Template, Triển khai UD ASP.NET Core </p>
-                    </div>
-                </div>
-
-
-                <div style="overflow: hidden; margin-left:30px; background-color:#f5f5f5">
-                    <div style="float: left;">
-                        <h5 style="margin-right: 20px;">
-                            Tuần 15:
-                        </h5>
-                    </div>
-                    <div style="margin-left: 100px;">
-                        <p> - Thực hành:Tích hợp elFinder,Admin Template vào ASP.NET Core </p>
-                    </div>
-                </div>
-
-            </div>
+            <table>
+                @*<thead>
+                    <tr>
+                        <th style="background-color:#126f9a; color:#fff; padding:10px;">Tuần</th>
+                        <th style="background-color:#126f9a; color:#fff; padding:10px;">Chủ đề</th>
+                        
+                        <th style="background-color:#126f9a; color:#fff; padding:10px;">Tài liệu tham khảo</th>
+                    </tr>
+                </thead>*@
+                <tbody>
+                    <tr style="background-color:#f5f5f5;">
+                        <td style="padding:10px;">Tuần 1:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: Giới thiệu chung về ASP.NET CORE</p>
+                            <p>- Thực hành: Cài đặt cấu hình ứng dụng trong ASP.NET CORE</p>
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="https://drive.google.com/file/d/1QobRhjzYZ-2JGJ8OPqWD0m-fS-2N1fqv/view?usp=sharing" style="color:#007bff;
+            text-decoration: none;">Tài liệu lý thuyết</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">Tuần 2:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: ASP.NET CORE Razor Page</p>
+                            <p>- Thực hành: Xây dựng ứng dụng quản lý sách</p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="background-color:#f5f5f5;">
+                        <td style="padding:10px;">Tuần 3:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: ASP.NET CORE Razor Page (tt)</p>
+                            <p>- Thực hành: Thực hành CRUD trong Razor Pages</p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">Tuần 4:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: ASP.NET CORE MVC</p>
+                            <p>- Thực hành: Tạo, cấu hình dự án ASP.NET Core MVC</p>
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="https://drive.google.com/file/d/1OgHwja0dqcMpDbLNKmfgIvpQjtN3nn3H/view?usp=sharing" style="color:#007bff;
+            text-decoration: none;">Tài liệu lý thuyết</a>
+                        </td>
+                    </tr>
+                    <tr style="background-color:#f5f5f5;">
+                        <td style="padding:10px;">Tuần 5:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: Controller trong ASP.NET CORE MVC</p>
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="https://drive.google.com/file/d/1RSTyP1yxQoMAaU9Lg-QrR5oZBdOxhS94/view?usp=sharing" style="color:#007bff;
+            text-decoration: none;">Tài liệu về Cotroller</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">Tuần 6:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: View trong ASP.NET CORE MVC</p>
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="https://drive.google.com/file/d/1_dU13F_4Y9pw73rSCvStW0gsN8MA2eZi/view?usp=sharing" style="color:#007bff;
+            text-decoration: none;">Tài liệu về View</a>
+                        </td>
+                    </tr>
+                    <tr style="background-color:#f5f5f5;">
+                        <td style="padding:10px;">Tuần 7:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: Routing trong ASP.NET CORE MVC</p>
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="https://drive.google.com/file/d/13fB0QH3VvXSui2flskA7r3UWHRI-Hk8P/view?usp=sharing" style="color:#007bff;
+            text-decoration: none;">Tài liệu về Routing</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">Tuần 8:</td>
+                        <td style="padding:10px;">
+                            <p>- Lý thuyết: Model Binding trong ASP.NET CORE MVC</p>
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="https://drive.google.com/file/d/1Kgaqjoj7iQ-1faV6aCIj1t5-ZiT5fBBW/view?usp=sharing" style="color:#007bff;
+            text-decoration: none;">Tài liệu về Binding</a>
+                        </td>
+                    </tr>
+                    <tr style="background-color:#f5f5f5;">
+                        <td style="padding:10px;">Tuần 9:</td>
+                        <td style="padding:10px;">
+                            <p>- Thực hành: Xây dựng ứng dụng mẫu - Category của Blog</p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">Tuần 10:</td>
+                        <td style="padding:10px;">
+                            <p>- Thực hành: Xây dựng ứng dụng mẫu - Tích hợp HTML Editor Summernote</p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="background-color:#f5f5f5;">
+                        <td style="padding:10px;">Tuần 11:</td>
+                        <td style="padding:10px;">
+                            <p>- Thực hành: Xây dựng ứng dụng mẫu - Post của Blog</p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">Tuần 12:</td>
+                        <td style="padding:10px;">
+                            <p>- Thực hành: Xây dựng ứng dụng mẫu - Tích hợp Identity Framework</p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+           
         </div>
     </div>
 

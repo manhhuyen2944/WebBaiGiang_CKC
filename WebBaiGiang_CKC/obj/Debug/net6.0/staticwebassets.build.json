@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jw9lGtgK9ZiasmdjoZ3Nkl0gmnigwxKv1vy+rwmqiKs=",
+  "Hash": "TfpmXlPYSA75X6pVEQ3HkwORKeAEzR0XJWBkFjgLUqI=",
   "Source": "WebBaiGiang_CKC",
   "BasePath": "_content/WebBaiGiang_CKC",
   "Mode": "Default",
@@ -1018,6 +1018,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssets\\fonts\\unicons.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\AdminAssets\\images\\.png",
+      "SourceId": "WebBaiGiang_CKC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang_CKC",
+      "RelativePath": "AdminAssets/images/.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssets\\images\\.png"
     },
     {
       "Identity": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\AdminAssets\\images\\1111.png",
