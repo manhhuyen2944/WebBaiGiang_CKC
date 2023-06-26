@@ -217,6 +217,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\fonts\\unicons.woff2"
     },
     {
+      "Id": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\AdminAssets\\images\\.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\images\\.png"
+    },
+    {
       "Id": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\AdminAssets\\images\\1111.png",
       "PackagePath": "staticwebassets\\AdminAssets\\images\\1111.png"
     },
