@@ -65,9 +65,10 @@ namespace WebBaiGiang_CKC.Controllers
             kiemtra_ = _context.KyKiemTra.Include(x => x.DanhSachThi).Count(x => x.DanhSachThi.First().TaiKhoan.MSSV == mssv_ && x.DanhSachThi.First().TrangThai == false  && DateTime.UtcNow.AddHours(7) >= x.ThoiGianBatDau && DateTime.UtcNow.AddHours(7) < x.ThoiGianKetThuc);
             foreach (var kiemtra in kikiemtra)
             {
-                
                 diemsv = _context.CauHoi_BaiLam.Include(x => x.BaiLam).Include(x => x.CauHoi_De).ThenInclude(x => x.De).FirstOrDefault(x=>x.CauHoi_De.De.KyKiemTraId == kiemtra.KyKiemTraId && x.BaiLam.MSSV == mssv_);
             }
+            var giaovien = _context.GiaoVien.ToList();
+            ViewBag.Giaovien = giaovien;
             ViewBag.diemsv = diemsv;
             ViewBag.kikiemtra = kiemtra_;
             base.OnActionExecuting(filterContext);
