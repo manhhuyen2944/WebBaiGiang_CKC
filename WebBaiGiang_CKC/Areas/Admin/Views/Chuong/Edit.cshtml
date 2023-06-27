@@ -5,7 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var MonHocId = @ViewBag.MonHocId;
 }
-}
 
 <ol class="breadcrumb">
 
@@ -29,13 +28,6 @@
             <label asp-for="MonHocId" class="control-label"></label>
             <select asp-for="MonHocId" class="form-control w-100" asp-items="MonHocId"></select>
         </div>
-        <br />
-        <div class="form-group  flex-grow-1 mx-4">
-            <label asp-for="ChuongId" class="control-label"></label>
-            <input asp-for="ChuongId" class="form-control w-100" />
-            <span asp-validation-for="ChuongId" class="text-danger"></span>
-        </div>
-
         <br />
         <div class="form-group flex-grow-1 mx-4">
             <label asp-for="TenChuong" class="control-label"></label>
