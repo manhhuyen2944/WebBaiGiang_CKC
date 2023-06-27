@@ -50,7 +50,7 @@
         <br />
         <div class="form-group flex-grow-1 mx-4">
             <label class="custom-control-label col-md-2" asp-for="NoiDung" class="control-label" for="htmlelementid">Nội Dung</label>
-            <textarea name="NoiDung" id="htmlelementid" class="form-control" asp-for="NoiDung"></textarea>
+            <textarea name="NoiDung" id="htmlelementid" style="max-width:auto" class="form-control" asp-for="NoiDung"></textarea>
             <span asp-validation-for="NoiDung" class="text-danger"></span>
         </div>
 
@@ -130,7 +130,6 @@
             $('#htmlelementid').summernote({
 
                 height: 700,
-                width: 2200,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear']],

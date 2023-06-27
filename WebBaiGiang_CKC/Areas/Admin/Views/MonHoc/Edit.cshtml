@@ -22,23 +22,23 @@
     <form asp-action="Edit">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="MonHocId" />
-        <div class="d-flex justify-content-between">
+      
             <div class="form-group flex-grow-1 mx-4">
                 <label asp-for="TenMonHoc" class="control-label"></label>
                 <input asp-for="TenMonHoc" class="form-control w-100" />
                 <span asp-validation-for="TenMonHoc" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group flex-grow-1">
+            <div class="form-group flex-grow-1 mx-4">
                 <label asp-for="MaMonHoc" class="control-label"></label>
                 <input asp-for="MaMonHoc" class="form-control w-100" />
                 <span asp-validation-for="MaMonHoc" class="text-danger"></span>
             </div>
-        </div>
+       
         <br />
         <div class="form-group flex-grow-1 mx-4">
             <label asp-for="MoTa" class="control-label" for="htmlelementid"></label>
-            <textarea id="htmlelementid" name="MoTa" class="form-control" asp-for="MoTa"></textarea>
+            <textarea id="htmlelementid" style="max-width:auto" name="MoTa" class="form-control" asp-for="MoTa"></textarea>
             <span asp-validation-for="MoTa" class="text-danger"></span>
         </div>
         <br />
@@ -117,7 +117,6 @@
             $('#htmlelementid').summernote({
 
                 height: 700,
-                width: 2220,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear']],
