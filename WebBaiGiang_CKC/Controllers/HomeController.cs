@@ -60,9 +60,10 @@ namespace WebBaiGiang_CKC.Controllers
             }
 
             var kikiemtra = _context.DanhSachThi.Include(t => t.KyKiemTra).Include(x => x.TaiKhoan).ToList();
-            var kiemtra_ = 0;
+            List<DanhSachThi> kiemtra_ = null;
             CauHoi_BaiLam diemsv = null;
-            kiemtra_ = _context.KyKiemTra.Include(x => x.DanhSachThi).Count(x => x.DanhSachThi.First().TaiKhoan.MSSV == mssv_ && x.DanhSachThi.First().TrangThai == false  && DateTime.UtcNow.AddHours(7) >= x.ThoiGianBatDau && DateTime.UtcNow.AddHours(7) < x.ThoiGianKetThuc);
+            kiemtra_ = _context.DanhSachThi.Include(x=>x.KyKiemTra).Include(x=>x.TaiKhoan).Where(x => x.TaiKhoan.MSSV == mssv_ && x.TrangThai == false 
+            && DateTime.UtcNow.AddHours(7) >= x.KyKiemTra.ThoiGianBatDau && DateTime.UtcNow.AddHours(7) < x.KyKiemTra.ThoiGianKetThuc).ToList();
             foreach (var kiemtra in kikiemtra)
             {
                 diemsv = _context.CauHoi_BaiLam.Include(x => x.BaiLam).Include(x => x.CauHoi_De).ThenInclude(x => x.De).FirstOrDefault(x=>x.CauHoi_De.De.KyKiemTraId == kiemtra.KyKiemTraId && x.BaiLam.MSSV == mssv_);

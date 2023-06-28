@@ -105,7 +105,7 @@
                 <a id="@cauhoi_kt.CauHoi_DeId" name="@cauhoi_kt.CauHoi_DeId"> </a>
                 <div class="question" data-question="1">
                     <h3>
-                        Câu  @(cauhoi_baiLam.IndexOf(cauhoi_kt) + 1) : @cauhoi_kt.CauHoi_De.CauHoi.NoiDung
+                        Câu  @(cauhoi_baiLam.IndexOf(cauhoi_kt) + 1) : @Html.Raw( @cauhoi_kt.CauHoi_De.CauHoi.NoiDung)
                     </h3>
 
                     @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnA))
