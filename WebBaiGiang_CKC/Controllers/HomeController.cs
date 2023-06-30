@@ -27,12 +27,7 @@ namespace WebBaiGiang_CKC.Controllers
 
         public IActionResult Index()
         {
-            var mssvclaim = User.Claims.FirstOrDefault(c => c.Type == "MSSV");
-            var mssv_ = "";
-            if (mssvclaim != null)
-            {
-                mssv_ = mssvclaim.Value;
-            }
+           
             return View();
         }
 
@@ -58,19 +53,9 @@ namespace WebBaiGiang_CKC.Controllers
             {
                 mssv_ = mssvclaim.Value;
             }
-
-            var kikiemtra = _context.DanhSachThi.Include(t => t.KyKiemTra).Include(x => x.TaiKhoan).ToList();
             List<DanhSachThi> kiemtra_ = null;
-            CauHoi_BaiLam diemsv = null;
             kiemtra_ = _context.DanhSachThi.Include(x=>x.KyKiemTra).Include(x=>x.TaiKhoan).Where(x => x.TaiKhoan.MSSV == mssv_ && x.TrangThai == false 
             && DateTime.UtcNow.AddHours(7) >= x.KyKiemTra.ThoiGianBatDau && DateTime.UtcNow.AddHours(7) < x.KyKiemTra.ThoiGianKetThuc).ToList();
-            foreach (var kiemtra in kikiemtra)
-            {
-                diemsv = _context.CauHoi_BaiLam.Include(x => x.BaiLam).Include(x => x.CauHoi_De).ThenInclude(x => x.De).FirstOrDefault(x=>x.CauHoi_De.De.KyKiemTraId == kiemtra.KyKiemTraId && x.BaiLam.MSSV == mssv_);
-            }
-            var giaovien = _context.GiaoVien.ToList();
-            ViewBag.Giaovien = giaovien;
-            ViewBag.diemsv = diemsv;
             ViewBag.kikiemtra = kiemtra_;
             base.OnActionExecuting(filterContext);
         }
