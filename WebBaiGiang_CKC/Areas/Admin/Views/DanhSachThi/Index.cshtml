@@ -6,7 +6,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    var kiemtra = ViewBag.kiemtra as List<De>;
+
 }
 
 <ol class="breadcrumb">
@@ -59,38 +59,16 @@
                     @Html.DisplayFor(modelItem => item.KyKiemTra.TenKyKiemTra)
                 </td>
                 <td>
-                    @if (item.KyKiemTra.De.Any())
-                    {
-                        var baiLam = item.KyKiemTra.De.First().CauHoi_DeThi.First().CauHoi_BaiLam.FirstOrDefault(x => x.BaiLam.MSSV == item.TaiKhoan.MSSV);
-                        if (baiLam != null)
-                        {
-                            var soCauDung = baiLam.BaiLam.SoCauDung;
-                            @Html.DisplayFor(modelItem => soCauDung)
-                        }
-                        else
-                        {
-                            int socaunull = 0;
-                            @Html.DisplayFor(modelItem => socaunull)
-                        }
+                    @{
+                        int socaudung = item.KyKiemTra.De.Any() ? item.KyKiemTra.De.First().CauHoi_DeThi.First().CauHoi_BaiLam.FirstOrDefault(x => x.BaiLam.MSSV == item.TaiKhoan.MSSV)?.BaiLam.SoCauDung ?? 0 : 0;
                     }
-                   
+                        @Html.DisplayFor(modelItem => socaudung)
                 </td>
                 <td>
-                    @if (item.KyKiemTra.De.Any())
-                    {
-                        var baiLam = item.KyKiemTra.De.First().CauHoi_DeThi.First().CauHoi_BaiLam.FirstOrDefault(x => x.BaiLam.MSSV == item.TaiKhoan.MSSV);
-                        if (baiLam != null)
-                        {
-                            var diem = baiLam.BaiLam.Diem;
-                            @Html.DisplayFor(modelItem => diem)
-                        }
-                        else
-                        {
-                            int deimnull = 0;
-                            @Html.DisplayFor(modelItem => deimnull)
-                        }
+                    @{
+                        float diem = item.KyKiemTra.De.Any() ? item.KyKiemTra.De.First().CauHoi_DeThi.First().CauHoi_BaiLam.FirstOrDefault(x => x.BaiLam.MSSV == item.TaiKhoan.MSSV)?.BaiLam.Diem ?? 0 : 0;
                     }
-                   
+                    @Html.DisplayFor(modelItem => diem)
                 </td>
                 <td>
                     @if (@item.TrangThai == false)
