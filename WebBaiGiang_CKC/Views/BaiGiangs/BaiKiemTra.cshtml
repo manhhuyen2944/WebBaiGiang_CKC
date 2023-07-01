@@ -10,7 +10,7 @@
 @{
     var mssvClaim = User.Claims.SingleOrDefault(c => c.Type == "MSSV");
     var mssv_ = "";
-    if (mssvClaim != null) {mssv_ = mssvClaim.Value;}
+    if (mssvClaim != null) { mssv_ = mssvClaim.Value; }
 }
 <form id="myForm" asp-controller="BaiGiangs" asp-action="NopBai" asp-route-id="@ViewBag.IdKiKiemTra">
     <div class="menu" id="menu">
@@ -26,14 +26,14 @@
                         @{
                             int a = i + 1;
                         }@a
-                        <span > </span>
+                        <span> </span>
                     </a>
                 </li>
             }
         </ul>
         <hr>
         <div class="text-center">
-            <button type="submit" class="nopbaibtn">Nộp bài</button>
+            <button type="submit" class="nopbaibtn" onclick="return confirmSubmit()">Nộp Bài</button>
         </div>
     </div>
     <div class="content" id="content">
@@ -71,10 +71,8 @@
                                 int socau = cauhoi_baiLam.IndexOf(cauhoi_kt);
                             }
                             <div class="question" data-question="@socau">
-
-                               
                                 <h3>
-                                    Câu @(cauhoi_baiLam.IndexOf(cauhoi_kt) + 1) : @cauhoi_kt.CauHoi_De.CauHoi.NoiDung
+                                    Câu @(cauhoi_baiLam.IndexOf(cauhoi_kt) + 1) :  @Html.Raw(@cauhoi_kt.CauHoi_De.CauHoi.NoiDung)
                                 </h3>
 
                                 @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnA))
@@ -87,12 +85,12 @@
                                         </label>
                                     </div>
                                 }
-                         
+
                                 @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnB))
                                 {
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio"  name="@cauhoi_kt.CauHoi_DeId" value="B" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
-                                        <label class="form-check-label"  onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'B');">
+                                        <input class="form-check-input" type="radio" name="@cauhoi_kt.CauHoi_DeId" value="B" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
+                                        <label class="form-check-label" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'B');">
                                             @cauhoi_kt.CauHoi_De.CauHoi.DapAnB
                                         </label>
                                     </div>
@@ -100,8 +98,8 @@
                                 @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnC))
                                 {
                                     <div class="form-check ">
-                                        <input class="form-check-input" type="radio"  name="@cauhoi_kt.CauHoi_DeId" value="C" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
-                                        <label class="form-check-label"  onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'C');">
+                                        <input class="form-check-input" type="radio" name="@cauhoi_kt.CauHoi_DeId" value="C" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
+                                        <label class="form-check-label" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'C');">
                                             @cauhoi_kt.CauHoi_De.CauHoi.DapAnC
                                         </label>
                                     </div>
@@ -110,7 +108,7 @@
                                 {
                                     <div class="form-check ">
                                         <input class="form-check-input" type="radio" name="@cauhoi_kt.CauHoi_DeId" value="D" onchange="luuTruDapAn('@cauhoi_kt.CauHoi_DeId', this.value.toLowerCase())">
-                                        <label class="form-check-label"  onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'D');">
+                                        <label class="form-check-label" onclick="$(this).prev().prop('checked', true); handleAnswerChange();luuTruDapAn('@cauhoi_kt.CauHoi_DeId', 'D');">
                                             @cauhoi_kt.CauHoi_De.CauHoi.DapAnD
                                         </label>
                                     </div>
@@ -119,16 +117,16 @@
                             @if (cauhoi_baiLam.Count - 1 == socau)
                             {
                                 <div class="text-center">
-                                    <button type="submit" class="nopbaibtn">Nộp Bài</button>
+                                    <button type="submit" class="nopbaibtn" onclick="return confirmSubmit()">Nộp Bài</button>
                                 </div>
                             }
                         </div>
                     }
                 </div>
                 <div class="nutchuyen">
-                    <button type="button" id="prevButton" ><i class="fa fa-chevron-left"></i>  </button>
+                    <button type="button" id="prevButton"><i class="fa fa-chevron-left"></i>  </button>
 
-                    <button type="button" id="nextButton" >  <i class="fa fa-chevron-right"></i></button>
+                    <button type="button" id="nextButton">  <i class="fa fa-chevron-right"></i></button>
                 </div>
             }
         </div>
@@ -140,22 +138,20 @@
 
 </div>
 <style>
-    .question-link.selected span{
-      
+    .question-link.selected span {
         background-color: #AAAAAA;
-        
     }
 </style>
 <script>
-   function submitForm() {
-  localStorage.clear(); // Xóa hết dữ liệu đã lưu trữ trong localStorage
-  document.getElementById("myForm").submit();
-}
+    function submitForm() {
+        localStorage.clear(); // Xóa hết dữ liệu đã lưu trữ trong localStorage
+        document.getElementById("myForm").submit();
+    }
 
-document.getElementById("myForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  submitForm();
-});
+    document.getElementById("myForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        submitForm();
+    });
     setTimeout(function () {
         submitForm();
     }, @(((int)tg_tim.TotalMilliseconds)));
@@ -235,14 +231,14 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         showQuestion(currentQuestion);
     }
 
-   function showQuestionByLink(event) {
-    event.preventDefault();
-    const questionIndex = parseInt(this.dataset.question);
-    console.log(`Showing question ${questionIndex}`);
-    console.log(`Question container: ${questionContainers[questionIndex]}`);
-    currentQuestion = questionIndex;
-    showQuestion(currentQuestion);
-}
+    function showQuestionByLink(event) {
+        event.preventDefault();
+        const questionIndex = parseInt(this.dataset.question);
+        console.log(`Showing question ${questionIndex}`);
+        console.log(`Question container: ${questionContainers[questionIndex]}`);
+        currentQuestion = questionIndex;
+        showQuestion(currentQuestion);
+    }
 
     function handleAnswerChange() {
         const currentAnswers = document.querySelectorAll(`.question-container:nth-of-type(${currentQuestion + 1}) input[type=radio]:checked`);
@@ -271,4 +267,11 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     prevButton.addEventListener('click', showPreviousQuestion);
 
     showQuestion(currentQuestion);
+
+
+
+
+    function confirmSubmit() {
+        return confirm('Bạn có chắc chắn muốn nộp bài không?');
+    }
 </script>

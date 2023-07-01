@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
 @section Scripts{
     <link rel="stylesheet" href="~/assets/css/HoSo.css" />
 }
@@ -12,14 +11,14 @@
         anhDaiDien = anhDaiDienClaim.Value;
     }
 }
-<body>
+
     <div class="container">
         <h1 class="title">Giáo viên giảng dạy</h1>
         @foreach (var itemgv in giaovien)
         {
             <div style="overflow:hidden">
-                <div style=" float:left;margin-right:50px; width:250px; text-align:center" class="container-dn" id="container-dn" >
-                    <img src="/contents/Images/GiaoVien/@itemgv.AnhDaiDien" alt="Ảnh đại diện" class="rounded-circle">
+                <div style=" float:left;margin-right:50px; width:250px; text-align:center"  >
+                    <img style="width:250px;" src="/contents/Images/GiaoVien/@itemgv.AnhDaiDien" alt="Ảnh đại diện" class="rounded-circle">
                 </div>
                 <section class="personal-information">
                     <h2>Thông tin cá nhân</h2>
@@ -40,5 +39,3 @@
 
 
     </div>
-</body>
-</html>
