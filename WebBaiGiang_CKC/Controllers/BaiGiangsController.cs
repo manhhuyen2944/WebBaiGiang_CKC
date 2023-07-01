@@ -68,13 +68,8 @@ namespace WebBaiGiang_CKC.Controllers
         [Route("/HoSo")]
         public IActionResult HoSo()
         {
-            var mssvclaim = User.Claims.FirstOrDefault(c => c.Type == "MSSV");
-            var mssv_ = "";
-            if (mssvclaim != null)
-            {
-                mssv_ = mssvclaim.Value;
-            }
-            var kikiemtra = _context.DanhSachThi.Include(t => t.TaiKhoan).Include(x => x.KyKiemTra).ThenInclude(x=>x.De).ThenInclude(x=>x.CauHoi_DeThi).ThenInclude(x=>x.CauHoi_BaiLam).ThenInclude(x=>x.BaiLam).ToList();
+         
+            var kikiemtra = _context.DanhSachThi.Include(t => t.TaiKhoan).Include(x => x.KyKiemTra).ThenInclude(x => x.De).ThenInclude(x => x.CauHoi_DeThi).ThenInclude(x => x.CauHoi_BaiLam).ThenInclude(x => x.BaiLam).ToList();
             ViewBag.kiemtra = kikiemtra;
             return View();
         }
@@ -85,7 +80,7 @@ namespace WebBaiGiang_CKC.Controllers
         }
         public IActionResult KyThi()
         {
-            var kikiemtra = _context.DanhSachThi.Include(t => t.KyKiemTra).Include(x => x.TaiKhoan).ToList();
+            var kikiemtra = _context.DanhSachThi.Include(t => t.TaiKhoan).Include(x => x.KyKiemTra).ThenInclude(x => x.De).ThenInclude(x => x.CauHoi_DeThi).ThenInclude(x => x.CauHoi_BaiLam).ThenInclude(x => x.BaiLam).ToList();
             ViewBag.kiemtra = kikiemtra;
             return View();
         }
@@ -115,27 +110,26 @@ namespace WebBaiGiang_CKC.Controllers
                 DateTime currentTime = DateTime.UtcNow.AddHours(7);
                 DateTime startDateTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, currentTime.Hour, currentTime.Minute, currentTime.Second);
                 DateTime updatedStartDateTime = startDateTime.AddMinutes(thoigiandenhan.De.KyKiemTra.ThoiGianLamBai);
-             
-                    var newbai = new BaiLam
-                    {
-                        MSSV = mssv_,
-                        HoTen = User.Identity.Name,
-                        ThoiGianBatDau = startDateTime,
-                        ThoiGianDenHan = (updatedStartDateTime < thoigiandenhan.De.KyKiemTra.ThoiGianKetThuc) ? updatedStartDateTime : thoigiandenhan.De.KyKiemTra.ThoiGianKetThuc,
-                    };
-                    _context.BaiLam.Add(newbai);
-                    await _context.SaveChangesAsync();
-                    // 
-                    var baiLamId = newbai.BaiLamId;
-                    // add bang cauhoi_bailam
-                    var cauHoiBaiLamListb = ds_cauhoi.Select(x => new CauHoi_BaiLam
-                    {
-                        BaiLamId = baiLamId,
-                        CauHoi_DeId = x.CauHoi_DeId
-                    }).ToList();
-                    _context.CauHoi_BaiLam.AddRange(cauHoiBaiLamListb);
-                    await _context.SaveChangesAsync();
-                
+                var newbai = new BaiLam
+                {
+                    MSSV = mssv_,
+                    HoTen = User.Identity.Name,
+                    ThoiGianBatDau = startDateTime,
+                    ThoiGianDenHan = (updatedStartDateTime < thoigiandenhan.De.KyKiemTra.ThoiGianKetThuc) ? updatedStartDateTime : thoigiandenhan.De.KyKiemTra.ThoiGianKetThuc,
+                };
+                _context.BaiLam.Add(newbai);
+                await _context.SaveChangesAsync();
+                // 
+                var baiLamId = newbai.BaiLamId;
+                // add bang cauhoi_bailam
+                var cauHoiBaiLamListb = ds_cauhoi.Select(x => new CauHoi_BaiLam
+                {
+                    BaiLamId = baiLamId,
+                    CauHoi_DeId = x.CauHoi_DeId
+                }).ToList();
+                _context.CauHoi_BaiLam.AddRange(cauHoiBaiLamListb);
+                await _context.SaveChangesAsync();
+
             }
             var newexistingBaiLam = await _context.CauHoi_BaiLam.FirstOrDefaultAsync(x => x.BaiLam.MSSV == mssv_ && x.CauHoi_De.De.KyKiemTraId == id);
             ViewBag.kiemtrasv_id = newexistingBaiLam.BaiLam.MSSV;

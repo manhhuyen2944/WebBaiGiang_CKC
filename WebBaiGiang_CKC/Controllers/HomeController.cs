@@ -47,16 +47,7 @@ namespace WebBaiGiang_CKC.Controllers
 
             var lstMon = _context.MonHoc.Include(a => a.Chuongs).ThenInclude(x => x.Bais).AsNoTracking().ToList();
             ViewData["lstSubject"] = lstMon;
-            var mssvclaim = User.Claims.FirstOrDefault(c => c.Type == "MSSV");
-            var mssv_ = "";
-            if (mssvclaim != null)
-            {
-                mssv_ = mssvclaim.Value;
-            }
-            List<DanhSachThi> kiemtra_ = null;
-            kiemtra_ = _context.DanhSachThi.Include(x=>x.KyKiemTra).Include(x=>x.TaiKhoan).Where(x => x.TaiKhoan.MSSV == mssv_ && x.TrangThai == false 
-            && DateTime.UtcNow.AddHours(7) >= x.KyKiemTra.ThoiGianBatDau && DateTime.UtcNow.AddHours(7) < x.KyKiemTra.ThoiGianKetThuc).ToList();
-            ViewBag.kikiemtra = kiemtra_;
+
             base.OnActionExecuting(filterContext);
         }
 

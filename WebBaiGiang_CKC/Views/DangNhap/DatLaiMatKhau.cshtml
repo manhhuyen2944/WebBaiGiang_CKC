@@ -1,6 +1,9 @@
 ﻿@using BaiGiang.Models;
 @model ResetPasswordViewModel
 
+@{
+    Layout = "_Layout";
+}
 
 <div class="container">
     @if (TempData["ResetPasswordSuccessMessage"] != null)
