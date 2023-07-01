@@ -126,7 +126,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
         [HttpPost]
         public async Task<IActionResult> QuenMatKhau(ForgotPasswordModel model)
-        {
+       {
             if (ModelState.IsValid)
             {
                 var user = await _context.GiaoVien.FirstOrDefaultAsync(u => u.Email == model.Email);
@@ -161,14 +161,10 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                     TempData["SuccessMessage"] = "Yêu cầu đặt lại mật khẩu của bạn đã được gửi đi. Vui lòng kiểm tra email của bạn để tiếp tục.";
                     return RedirectToAction("DatLaiMatKhau");
                 }
-                else
-                {
-                    _notyfService.Warning("Email không tồn tại trong hệ thống ");
-                }
-
-
+             
             }
 
+            _notyfService.Error("Email không tồn tại trong hệ thống ");
             return View(model);
 
         }
@@ -204,10 +200,8 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                     _notyfService.Success("Mật khẩu của bạn đã được đặt lại thành công.");
                     return RedirectToAction("Login", "DangNhap");
                 }
-
-                _notyfService.Error("Yêu cầu đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.");
             }
-
+            _notyfService.Error("Yêu cầu đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.");
             return View(model);
         }
         [HttpPost]

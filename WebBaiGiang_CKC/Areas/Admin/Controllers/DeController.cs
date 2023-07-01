@@ -383,7 +383,16 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        public IActionResult ExportDePDF()
+        {
+            _notyfService.Error("Đang design lại nha anh!!!!");
+            return RedirectToAction("Index", "De");
+        }
+        public IActionResult ExportDapAnPDF()
+        {
+            _notyfService.Error("Đang design lại nha anh!!!!");
+            return RedirectToAction("Index","De");
+        }
         private bool DeExists(int id)
         {
             return _context.De.Any(e => e.DeId == id);
