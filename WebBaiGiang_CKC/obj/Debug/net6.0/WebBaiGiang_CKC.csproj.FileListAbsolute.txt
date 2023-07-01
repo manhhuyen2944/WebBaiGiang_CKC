@@ -544,3 +544,4 @@ C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\ref\We
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\NETCore.MailKit.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\NETCore.MailKit.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\UpLoads\Images\GiaoVien\admin1.jpg
+C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\UpLoads\Images\GiaoVien\admin1.jpg
