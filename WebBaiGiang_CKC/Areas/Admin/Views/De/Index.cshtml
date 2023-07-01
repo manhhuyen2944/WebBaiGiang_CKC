@@ -50,8 +50,8 @@
                     <a asp-action="Details" asp-route-id="@item.DeId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
                     <a asp-action="Edit" asp-route-id="@item.DeId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>
                     <a asp-action="Delete" asp-route-id="@item.DeId" class="action-icon"> <i class="mdi mdi-delete" style="color:#e75555;font-size:25px;"></i></a>
-                    <a href="@Url.Action("ExportDePDF", new { deId = @item.DeId })">Xuất đề thi</a> |
-                    <a href="@Url.Action("ExportDapAnPDF", new { deId = @item.DeId })">Xuất đáp án</a>
+                    <a href="@Url.Action("ExportDePDF", new { deId = @item.DeId })" class="btn btn-info">Xuất đề thi</a>
+                    <a href="@Url.Action("ExportDapAnPDF", new { deId = @item.DeId })" class="btn btn-danger">Xuất đáp án</a>
                 </td>
             </tr>
         }
