@@ -1,10 +1,10 @@
 ﻿@{
-    var kiemtra = ViewBag.kikiemtra;
+    var kiemtra = ViewBag.kikiemtra as List<DanhSachThi>;
 }
 
 <div id="" class="thanh">
     <nav>
-         
+
         <ul class="menu">
             <li>
                 <div class="close-btn">
@@ -25,13 +25,15 @@
             <li class="menu-item">
                 <a id="menu-item-4" asp-controller="BaiGiangs" asp-action="BaiTap">Bài tập</a>
             </li>
-            @if (kiemtra != 0)
+     @if (User.Identity.Name != null)
             {
-                <li class="menu-item">
-                    <a id="menu-item-5" asp-area="" asp-controller="BaiGiangs" data-action="kythi" asp-action="KyThi">Kỳ thi</a>
-                </li>
+                  <li class="menu-item">
+                        <a id="menu-item-5" asp-area="" asp-controller="BaiGiangs" data-action="kythi" asp-action="KyThi">Kỳ thi</a>
+                    </li>
             }
+          
 
+          
         </ul>
     </nav>
 </div>

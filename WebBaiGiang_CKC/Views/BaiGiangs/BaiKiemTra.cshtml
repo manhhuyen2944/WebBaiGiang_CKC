@@ -71,10 +71,8 @@
                                 int socau = cauhoi_baiLam.IndexOf(cauhoi_kt);
                             }
                             <div class="question" data-question="@socau">
-
-
                                 <h3>
-                                    Câu @(cauhoi_baiLam.IndexOf(cauhoi_kt) + 1) : @cauhoi_kt.CauHoi_De.CauHoi.NoiDung
+                                    Câu @(cauhoi_baiLam.IndexOf(cauhoi_kt) + 1) :  @Html.Raw(@cauhoi_kt.CauHoi_De.CauHoi.NoiDung)
                                 </h3>
 
                                 @if (!string.IsNullOrEmpty(cauhoi_kt.CauHoi_De.CauHoi.DapAnA))
