@@ -546,5 +546,3 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.Interfaces.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.System.Drawing.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
-D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\BouncyCastle.Crypto.dll
-D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itextsharp.dll
