@@ -5,7 +5,7 @@
 }
 <main>
     <div class="menu-toggle"> <a href="#">Menu</a> </div>
-    <div>
+    <div class="wrapper">
         <div class="thanh">
             <nav>
 
@@ -30,38 +30,39 @@
                     </li>
                     @if (User.Identity.Name != null)
                     {
-                           <li class="menu-item">
-                                <a id="menu-item-5" asp-area="" asp-controller="BaiGiangs" data-action="kythi" asp-action="KyThi">Kỳ thi</a>
-                            </li>
+                        <li class="menu-item">
+                            <a id="menu-item-5" asp-area="" asp-controller="BaiGiangs" data-action="kythi" asp-action="KyThi">Kỳ thi</a>
+                        </li>
 
                     }
-                 
+
 
                 </ul>
             </nav>
         </div>
 
-    </div>
-    <div id="" class="noidung">
-        <ul>
-            @if (lstMon != null && lstMon.Count() > 0)
-            {
-                @foreach (var monhoc in lstMon)
+
+        <div id="" class="noidung">
+            <ul>
+                @if (lstMon != null && lstMon.Count() > 0)
                 {
-                    <li>
-                        <h2>
-                            @monhoc.TenMonHoc
-                        </h2>
-                        <hr />
-                    </li>
-                    <li>
-                        <p>
-                            @Html.Raw(  @monhoc.MoTa)
-                        </p>
-                    </li>
+                    @foreach (var monhoc in lstMon)
+                    {
+                        <li>
+                            <h2>
+                                @monhoc.TenMonHoc
+                            </h2>
+                            <hr />
+                        </li>
+                        <li>
+                            <p>
+                                @Html.Raw(  @monhoc.MoTa)
+                            </p>
+                        </li>
+                    }
                 }
-            }
-        </ul>
+            </ul>
+        </div>
     </div>
 </main>
 @section Scripts{
