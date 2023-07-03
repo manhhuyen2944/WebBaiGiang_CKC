@@ -1,7 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using DocumentFormat.OpenXml.InkML;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -384,53 +382,11 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> PdfDeViewer(int deId)
-        {
-            var htmlcontent = await System.IO.File.ReadAllTextAsync(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "PdfDeViewer.html"));
-            var cauhoiList = await _context.CauHoi_De.Include(c => c.CauHoi).Where(c => c.DeId == deId).ToListAsync();
-
-            if (cauhoiList == null || cauhoiList.Count == 0)
-            {
-                return BadRequest("Không tìm thấy câu hỏi nào");
-            }
-
-            // Tạo một đối tượng Document
-            Document document = new Document();
-
-            // Tạo một MemoryStream để lưu tệp PDF
-            MemoryStream memoryStream = new MemoryStream();
-
-            // Tạo một đối tượng PdfWriter để viết dữ liệu vào tệp PDF
-            PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
-
-            // Mở Document
-            document.Open();
-
-            int i = 1;
-            // Thêm phần tử HTML vào Document bằng iTextSharp
-            foreach (var cauhoi in cauhoiList)
-            {
-                document.Add(new Paragraph($"Câu {i}. {cauhoi.CauHoi.NoiDung}"));
-                document.Add(new Paragraph($"A. {cauhoi.CauHoi.DapAnA}"));
-                document.Add(new Paragraph($"B. {cauhoi.CauHoi.DapAnB}"));
-                document.Add(new Paragraph($"C. {cauhoi.CauHoi.DapAnC}"));
-                document.Add(new Paragraph($"D. {cauhoi.CauHoi.DapAnD}"));
-
-                i++;
-            }
-
-            // Đóng Document
-            document.Close();
-            // Thiết lập kích thước giấy và viền giấy
-            document.SetPageSize(new Rectangle(PageSize.A4));
-            document.SetMargins(20f, 20f, 20f, 20f);
-            // Lấy dữ liệu tệp PDF từ MemoryStream và trả về nó như là một FileContentResult
-            byte[] pdfBytes = memoryStream.ToArray();
-            return new FileContentResult(pdfBytes, "application/pdf");
-        }
+       
         private bool DeExists(int id)
         {
             return _context.De.Any(e => e.DeId == id);
         }
+       
     }
 }
