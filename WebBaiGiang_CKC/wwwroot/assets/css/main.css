@@ -135,13 +135,15 @@ main {
     padding: 20px;
 }
 
+.wrapper {
+    display: flex; /* Sử dụng flexbox layout */
+    height: 100%;
+}
 
 
 .thanh {
-    float: left;
-    width: 250px;
-    height: 100%;
-    transition: width 0.5s ease;
+    max-width: 250px;
+    flex-grow: 1;
     background-color: #eeeeee;
 }
 
@@ -151,10 +153,12 @@ main {
     }
 
 .noidung {
-    margin-left: 270px;
+    margin-left: 20px;
     background-color: #eeeeee;
-    padding: 10px;
-    min-height: 700px;
+    padding: 20px;
+    min-height: 100%;
+    flex-grow: 1;
+    max-width: 1200px;
 }
 
     .noidung p {

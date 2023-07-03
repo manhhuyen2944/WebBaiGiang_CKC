@@ -10,7 +10,7 @@
 
     <div class="menu-toggle"> <a href="#">Menu</a> </div>
 
-    <div>
+    <div class="wrapper">
         @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
 
 
@@ -18,7 +18,7 @@
 
             <h2> Bài tập</h2>
             <hr />
-            <div class="crue">
+
                         <h2 style=" text-align:center;">Thực hành (2) CRUD trong Razor Pages (+video)</h2>
                         <p>CRUD – Create, Retrieve, Update, Delete – là nhóm chức năng cơ bản nhất của các ứng dụng quản lý (Line-of-Business, LOB). Trong Razor Pages, bạn rất dễ dàng thực hiện nhóm chức năng CRUD dữ liệu cơ bản.</p>
                         <p>Trong bài thực hành tổng hợp thứ nhất, bạn đã xây dựng được một phần của ứng dụng quản lý sách điện tử. Cụ thể, bạn đã hiển thị được danh sách tài liệu ở dạng bảng và hiển thị được thông tin chi tiết của từng tài liệu. Đây tương ứng với chức năng R – Retrieve trong CRUD.</p>
@@ -118,7 +118,7 @@
                 <hr />
                 <p>Thêm khai báo sau vào Controller:</p>
                 <img src="/contents/imgBaiTap/bookstore10.png" alt="">
-                    </div>
+                
             <h2>Bước 2. Bổ sung phương thức Delete vào Controller</h2>
           
             <p>Thực thi phương thức Delete trong Controller:</p>
@@ -238,11 +238,15 @@
        
             <p>Bạn có thể xem video hướng dẫn này để tham khảo.</p>
             <iframe width="1000" height="500" src="https://www.youtube.com/embed/phrt-EufumQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        
+
         </div>
     </div>
 </main>
 @section Scripts{
     <script src="~/assets/js/menu_.js">
+
     </script>
     }
+    <script>
+
+    </script>

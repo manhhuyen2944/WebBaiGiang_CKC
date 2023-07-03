@@ -3,9 +3,10 @@
 @{
     var lstMon = ViewBag.lstSubject as List<MonHoc>; var kiemtra = ViewBag.kikiemtra as List<DanhSachThi>;
 }
+<app-root></app-root>
 <main>
     <div class="menu-toggle"> <a href="#">Menu</a> </div>
-    <div>
+    <div class="wrapper">
         <div class="thanh">
             <nav>
 
@@ -41,7 +42,7 @@
             </nav>
         </div>
 
-    </div>
+   
     <div id="" class="noidung">
         <ul>
             @if (lstMon != null && lstMon.Count() > 0)
@@ -62,6 +63,7 @@
                 }
             }
         </ul>
+    </div>
     </div>
 </main>
 @section Scripts{
