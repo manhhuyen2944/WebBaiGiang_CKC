@@ -78,9 +78,7 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Compositio
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Composition.Runtime.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Composition.TypedParts.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
-D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Data.OleDb.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Diagnostics.DiagnosticSource.dll
-D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Diagnostics.PerformanceCounter.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.Drawing.Common.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\System.IO.Packaging.dll
@@ -239,8 +237,6 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win-arm6
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Data.OleDb.dll
-D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.PerformanceCounter.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
@@ -269,3 +265,8 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\WebBaiGiang_CKC.p
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\WebBaiGiang_CKC.genruntimeconfig.cache
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\ref\WebBaiGiang_CKC.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\UpLoads\Images\GiaoVien\admin1.jpg
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\UpLoads\Images\GiaoVien\adminpro.jpg
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\EPPlus.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\EPPlus.Interfaces.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\EPPlus.System.Drawing.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Release\net6.0\Microsoft.IO.RecyclableMemoryStream.dll

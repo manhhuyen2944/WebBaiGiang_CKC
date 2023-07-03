@@ -4,12 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System.Data.OleDb;
+using OfficeOpenXml;
 using System.Data;
+using WebBaiGiang_CKC.Data;
 using WebBaiGiang_CKC.Models;
 using X.PagedList;
-using WebBaiGiang_CKC.Data;
-using DocumentFormat.OpenXml.Math;
 
 namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 {
@@ -94,12 +93,11 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult CreateList(IFormFile formFile)
         {
-
             try
             {
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 // Lấy danh sách các giá trị khóa ngoại từ bảng KyKiemTra
                 List<int> ChuongIds = new List<int>();
                 string ConString = _configuration.GetConnectionString("WebBaiGiang");
@@ -125,96 +123,80 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                     Directory.CreateDirectory(mainPath);
                 }
 
-                var filePath = Path.Combine(mainPath, formFile.FileName);
+                var filePath = Path.Combine(mainPath, $"{Guid.NewGuid()}{Path.GetExtension(formFile.FileName)}");
 
                 using (FileStream stream = new FileStream(filePath, FileMode.Create))
                 {
                     formFile.CopyTo(stream);
                 }
-                var fileName = formFile.FileName;
-                string extension = Path.GetExtension(fileName);
-                string conString = string.Empty;
-                switch (extension)
+
+                FileInfo fileInfo = new FileInfo(filePath);
+                using (ExcelPackage package = new ExcelPackage(fileInfo))
                 {
-                    case ".xls":
-                        conString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + filePath + ";Extended Properties='Excel 8.0; HDR=Yes'";
-                        break;
-                    case ".xlsx":
-                        conString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + filePath + ";Extended Properties='Excel 8.0; HDR=Yes'";
-                        break;
-                }
-                DataTable dt = new DataTable();
-                conString = string.Format(conString, filePath);
-#pragma warning disable CA1416 // Validate platform compatibility
-                using (OleDbConnection conExcel = new OleDbConnection(conString))
-                {
-                    using (OleDbCommand cmdExcel = new OleDbCommand())
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                    DataTable dt = new DataTable();
+                    foreach (var firstRowCell in worksheet.Cells[1, 1, 1, worksheet.Dimension.End.Column])
                     {
-                        using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
+                        dt.Columns.Add(firstRowCell.Text);
+                    }
+                    for (var rowNumber = 2; rowNumber <= worksheet.Dimension.End.Row; rowNumber++)
+                    {
+                        var row = worksheet.Cells[rowNumber, 1, rowNumber, worksheet.Dimension.End.Column];
+                        var newRow = dt.Rows.Add();
+                        foreach (var cell in row)
                         {
-                            cmdExcel.Connection = conExcel;
-                            conExcel.Open();
-                            DataTable dtExcelSchema = conExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                            string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
-                            cmdExcel.CommandText = "SELECT * FROM[" + sheetName + "]";
-                            odaExcel.SelectCommand = cmdExcel;
-                            odaExcel.Fill(dt);
-                            conExcel.Close();
+                            newRow[cell.Start.Column - 1] = cell.Text;
                         }
                     }
-                }
-#pragma warning restore CA1416 // Validate platform compatibility
-                // Kiểm tra giá trị khóa ngoại trước khi thêm bản ghi vào cơ sở dữ liệu
-                bool hasInvalidChuongHoc = false;
-                foreach (DataRow row in dt.Rows)
-                {
-                    string dapAnDung = row["DapAnDung"].ToString().ToUpper();
-                    row["DapAnDung"] = dapAnDung;
-                    if (!ChuongIds.Contains(Convert.ToInt32(row["ChuongId"])))
-                    {
-                        _notyfService.Warning("Chưa tạo chương học hoặc sai chương học !");
-                        hasInvalidChuongHoc = true;
-                        break;
-                    }
-                }
 
-                if (hasInvalidChuongHoc)
-                {
+                    // Kiểm tra giá trị khóa ngoại trước khi thêm bản ghi vào cơ sở dữ liệu
+                    bool hasInvalidChuongHoc = false;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string dapAnDung = row["DapAnDung"].ToString().ToUpper();
+                        row["DapAnDung"] = dapAnDung;
+                        if (!ChuongIds.Contains(Convert.ToInt32(row["ChuongId"])))
+                        {
+                            _notyfService.Warning("Chưa tạo chương học hoặc sai chương học !");
+                            hasInvalidChuongHoc = true;
+                            break;
+                        }
+                    }
+
+                    if (hasInvalidChuongHoc)
+                    {
+                        return RedirectToAction("Index");
+                    }
+
+                  var  conString = _configuration.GetConnectionString("WebBaiGiang");
+                    using (SqlConnection con = new SqlConnection(conString))
+                    {
+                        using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+                        {
+                            sqlBulkCopy.DestinationTableName = "CauHoi";
+                            sqlBulkCopy.ColumnMappings.Add("ChuongId", "ChuongId");
+                            sqlBulkCopy.ColumnMappings.Add("NoiDung", "NoiDung");
+                            sqlBulkCopy.ColumnMappings.Add("DapAnA", "DapAnA");
+                            sqlBulkCopy.ColumnMappings.Add("DapAnB", "DapAnB");
+                            sqlBulkCopy.ColumnMappings.Add("DapAnC", "DapAnC");
+                            sqlBulkCopy.ColumnMappings.Add("DapAnD", "DapAnD");
+                            sqlBulkCopy.ColumnMappings.Add("DapAnDung", "DapAnDung");
+                            sqlBulkCopy.ColumnMappings.Add("DoKho", "DoKho");
+                            sqlBulkCopy.ColumnMappings.Add("SoLanLay", "SoLanLay");
+                            sqlBulkCopy.ColumnMappings.Add("SoLanTraLoiDung", "SoLanTraLoiDung");
+                            con.Open();
+                            sqlBulkCopy.WriteToServer(dt);
+                            con.Close();
+                        }
+                    }
+                    _notyfService.Success("Thêm Thành Công!");
                     return RedirectToAction("Index");
                 }
-                conString = _configuration.GetConnectionString("WebBaiGiang");
-                using (SqlConnection con = new SqlConnection(conString))
-                {
-                    using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
-                    {
-                        sqlBulkCopy.DestinationTableName = "CauHoi";
-                        sqlBulkCopy.ColumnMappings.Add("ChuongId", "ChuongId");
-                        sqlBulkCopy.ColumnMappings.Add("NoiDung", "NoiDung");
-                        sqlBulkCopy.ColumnMappings.Add("DapAnA", "DapAnA");
-                        sqlBulkCopy.ColumnMappings.Add("DapAnB", "DapAnB");
-                        sqlBulkCopy.ColumnMappings.Add("DapAnC", "DapAnC");
-                        sqlBulkCopy.ColumnMappings.Add("DapAnD", "DapAnD");
-                        sqlBulkCopy.ColumnMappings.Add("DapAnDung", "DapAnDung");
-                        sqlBulkCopy.ColumnMappings.Add("DoKho", "DoKho");
-                        sqlBulkCopy.ColumnMappings.Add("SoLanLay", "SoLanLay");
-                        sqlBulkCopy.ColumnMappings.Add("SoLanTraLoiDung", "SoLanTraLoiDung");
-                        con.Open();
-                        sqlBulkCopy.WriteToServer(dt);
-                        con.Close();
-                    }
-                }
-                _notyfService.Success("Thêm Thành Công!");
-                return RedirectToAction("Index");
-
-
-
             }
             catch (Exception)
             {
                 _notyfService.Error("Thêm Thất Bại!");
             }
-
-
             return RedirectToAction("Index");
         }
         // GET: Admin/KhoCauHoi/Edit/5

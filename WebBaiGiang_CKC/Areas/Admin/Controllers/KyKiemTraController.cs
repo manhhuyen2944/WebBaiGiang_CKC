@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using System.Data;
-using System.Data.OleDb;
 using System.Globalization;
 using System.Reflection;
 using WebBaiGiang_CKC.Data;
@@ -84,18 +84,18 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult CreateList(IFormFile formFile)
         {
             try
             {
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 var mainPath = Path.Combine(Directory.GetCurrentDirectory(), "UpLoads", "Files");
                 if (!Directory.Exists(mainPath))
                 {
                     Directory.CreateDirectory(mainPath);
                 }
 
-                var filePath = Path.Combine(mainPath, formFile.FileName);
+                var filePath = Path.Combine(mainPath, $"{Guid.NewGuid()}{Path.GetExtension(formFile.FileName)}");
 
                 using (FileStream stream = new FileStream(filePath, FileMode.Create))
                 {
@@ -103,38 +103,30 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 }
                 var fileName = formFile.FileName;
                 string extension = Path.GetExtension(fileName);
-                string conString = string.Empty;
-                switch (extension)
-                {
-                    case ".xls":
-                        conString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + filePath + ";Extended Properties='Excel 8.0; HDR=Yes'";
-                        break;
-                    case ".xlsx":
-                        conString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + filePath + ";Extended Properties='Excel 8.0; HDR=Yes'";
-                        break;
-                }
+
                 DataTable dt = new DataTable();
-                conString = string.Format(conString, filePath);
-#pragma warning disable CA1416 // Validate platform compatibility
-                using (OleDbConnection conExcel = new OleDbConnection(conString))
+                using (var package = new ExcelPackage(new FileInfo(filePath)))
                 {
-                    using (OleDbCommand cmdExcel = new OleDbCommand())
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+                    if (worksheet != null)
                     {
-                        using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
+                        foreach (var firstRowCell in worksheet.Cells[1, 1, 1, worksheet.Dimension.End.Column])
                         {
-                            cmdExcel.Connection = conExcel;
-                            conExcel.Open();
-                            DataTable dtExcelSchema = conExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                            string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
-                            cmdExcel.CommandText = "SELECT * FROM[" + sheetName + "]";
-                            odaExcel.SelectCommand = cmdExcel;
-                            odaExcel.Fill(dt);
-                            conExcel.Close();
+                            dt.Columns.Add(firstRowCell.Text.Trim());
+                        }
+
+                        for (var rowNumber = 2; rowNumber <= worksheet.Dimension.End.Row; rowNumber++)
+                        {
+                            var row = worksheet.Cells[rowNumber, 1, rowNumber, worksheet.Dimension.End.Column];
+                            var newRow = dt.Rows.Add();
+                            foreach (var cell in row)
+                            {
+                                newRow[cell.Start.Column - 1] = cell.Value?.ToString().Trim();
+                            }
                         }
                     }
                 }
-#pragma warning restore CA1416 // Validate platform compatibility
-                conString = _configuration.GetConnectionString("WebBaiGiang");
+               var conString = _configuration.GetConnectionString("WebBaiGiang");
                 using (SqlConnection con = new SqlConnection(conString))
                 {
                     con.Open();

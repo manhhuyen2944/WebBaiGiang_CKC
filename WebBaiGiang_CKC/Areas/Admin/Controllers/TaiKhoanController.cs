@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System.Data.OleDb;
+using OfficeOpenXml;
 using System.Data;
 using System.Globalization;
+using WebBaiGiang_CKC.Data;
+using WebBaiGiang_CKC.Extension;
 using WebBaiGiang_CKC.Models;
 using X.PagedList;
-using WebBaiGiang_CKC.Extension;
-using WebBaiGiang_CKC.Data;
 
 namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 {
@@ -19,15 +19,16 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
     {
         private readonly WebBaiGiangContext _context;
         private readonly IConfiguration _configuration;
+        private readonly ILogger<TaiKhoanController> _logger;
+        private readonly INotyfService _notyfService;
 
-        public INotyfService _notyfService { get; }
-        public TaiKhoanController(WebBaiGiangContext context, INotyfService notyfService, IConfiguration configuration)
+        public TaiKhoanController(WebBaiGiangContext context, INotyfService notyfService, IConfiguration configuration, ILogger<TaiKhoanController> logger)
         {
             _context = context;
             _notyfService = notyfService;
             _configuration = configuration;
+            _logger = logger;
         }
-
 
         // GET: Admin/TaiKhoan
         public IActionResult Index(int? page)
@@ -46,131 +47,95 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult CreateList(IFormFile formFile)
         {
-
             try
             {
-
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 var mainPath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", "Files");
                 if (!Directory.Exists(mainPath))
                 {
                     Directory.CreateDirectory(mainPath);
                 }
 
-                var filePath = Path.Combine(mainPath, formFile.FileName);
+                var filePath = Path.Combine(mainPath, $"{Guid.NewGuid()}{Path.GetExtension(formFile.FileName)}");
 
                 using (FileStream stream = new FileStream(filePath, FileMode.Create))
                 {
                     formFile.CopyTo(stream);
                 }
+
                 var fileName = formFile.FileName;
                 string extension = Path.GetExtension(fileName);
-                string conString = string.Empty;
-                switch (extension)
-                {
-                    case ".xls":
-                        conString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + filePath + ";Extended Properties='Excel 8.0; HDR=Yes'";
-                        break;
-                    case ".xlsx":
-                        conString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + filePath + ";Extended Properties='Excel 8.0; HDR=Yes'";
-                        break;
-                }
+
+                // Tạo DataTable và đọc dữ liệu từ tệp Excel vào
                 DataTable dt = new DataTable();
-                conString = string.Format(conString, filePath);
-#pragma warning disable CA1416 // Validate platform compatibility
-                using (OleDbConnection conExcel = new OleDbConnection(conString))
+                using (ExcelPackage package = new ExcelPackage(new FileInfo(filePath)))
                 {
-                    using (OleDbCommand cmdExcel = new OleDbCommand())
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                    foreach (var firstRowCell in worksheet.Cells[1, 1, 1, worksheet.Dimension.End.Column])
                     {
-                        using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
+                        dt.Columns.Add(firstRowCell.Text);
+                    }
+                    for (var rowNumber = 2; rowNumber <= worksheet.Dimension.End.Row; rowNumber++)
+                    {
+                        var row = worksheet.Cells[rowNumber, 1, rowNumber, worksheet.Dimension.End.Column];
+                        var newRow = dt.Rows.Add();
+                        foreach (var cell in row)
                         {
-                            cmdExcel.Connection = conExcel;
-                            conExcel.Open();
-                            DataTable dtExcelSchema = conExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                            string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
-                            cmdExcel.CommandText = "SELECT * FROM[" + sheetName + "]";
-                            odaExcel.SelectCommand = cmdExcel;
-                            odaExcel.Fill(dt);
-                            conExcel.Close();
+                            newRow[cell.Start.Column - 1] = cell.Text;
                         }
                     }
                 }
-#pragma warning restore CA1416 // Validate platform compatibility
-                conString = _configuration.GetConnectionString("WebBaiGiang");
-                using (SqlConnection con = new SqlConnection(conString))
+
+                // Thực hiện các kiểm tra và chuẩn hóa dữ liệu
+                foreach (DataRow row in dt.Rows)
                 {
-                    con.Open();
-                    foreach (DataRow row in dt.Rows)
+                    var mssv = row["MSSV"].ToString().Trim();
+                    var email = row["Email"].ToString().Trim();
+                    var hoTen = row["HoTen"].ToString();
+
+                    // Viết hoa chữ cái đầu của tên
+                    hoTen = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(hoTen.ToLower());
+
+                    // Kiểm tra MSSV đã tồn tại trong cơ sở dữ liệu
+                    var student = _context.TaiKhoan.FirstOrDefault(x => x.MSSV == mssv);
+                    if (student != null)
                     {
-                        var mssv = row["MSSV"].ToString();
-                        var email = row["Email"].ToString();
-                        var hoTen = row["HoTen"].ToString();
-
-                        // Viết hoa chữ cái đầu của tên
-                        hoTen = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(hoTen.ToLower());
-
-                        // Kiểm tra MSSV đã tồn tại trong cơ sở dữ liệu
-                        var query = "SELECT COUNT(*) FROM TaiKhoan WHERE MSSV = @MSSV";
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.Parameters.AddWithValue("@MSSV", mssv);
-                            int count = (int)cmd.ExecuteScalar();
-                            if (count > 0)
-                            {
-                                _notyfService.Error($"MSSV {mssv} đã tồn tại trong cơ sở dữ liệu!");
-                                return View();
-                            }
-                        }
-                        // Kiểm tra Email đã tồn tại trong cơ sở dữ liệu
-                        query = "SELECT COUNT(*) FROM TaiKhoan WHERE Email = @Email";
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.Parameters.AddWithValue("@Email", email);
-                            int count = (int)cmd.ExecuteScalar();
-                            if (count > 0)
-                            {
-                                _notyfService.Error($"Email {email} đã tồn tại trong cơ sở dữ liệu!");
-                                return View();
-                            }
-                        }
-                        row["HoTen"] = hoTen; // gán giá trị mới cho cột Họ tên
+                        _notyfService.Error($"MSSV {mssv} đã tồn tại trong cơ sở dữ liệu!");
+                        return RedirectToAction("Index");
                     }
-                    using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+
+                    //  Kiểm tra Email đã tồn tại trong cơ sở dữ liệu
+                    student = _context.TaiKhoan.FirstOrDefault(x => x.Email == email);
+                    if (student != null)
                     {
-                        sqlBulkCopy.DestinationTableName = "TaiKhoan";
-                        sqlBulkCopy.ColumnMappings.Add("MSSV", "MSSV");
-                        sqlBulkCopy.ColumnMappings.Add("MatKhau", "MatKhau");
-                        sqlBulkCopy.ColumnMappings.Add("Email", "Email");
-                        sqlBulkCopy.ColumnMappings.Add("HoTen", "HoTen");
-                        sqlBulkCopy.ColumnMappings.Add("TrangThai", "TrangThai");
-
-
-                        foreach (DataRow row in dt.Rows)
-                        {
-
-                            var plainPassword = row["MatKhau"].ToString();
-                            var md5 = plainPassword.ToMD5();
-                            row["MatKhau"] = md5;
-
-                        }
-                        sqlBulkCopy.WriteToServer(dt);
-                        con.Close();
+                        _notyfService.Error($"Email {email} đã tồn tại trong cơ sở dữ liệu!");
+                        return RedirectToAction("Index");
                     }
+
+                    row["HoTen"] = hoTen; // gán giá trị mới cho cột Họ tên
+                    row["MatKhau"] = HashMD5.ToMD5(row["MatKhau"].ToString().Trim()); // mã hóa mật khẩu bằng MD5
+                    row["TrangThai"] = true; // mặc định là true
+                }
+                var conString = _configuration.GetConnectionString("WebBaiGiang");
+                using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(conString))
+                {
+                    sqlBulkCopy.DestinationTableName = "TaiKhoan";
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        sqlBulkCopy.ColumnMappings.Add(column.ColumnName, column.ColumnName);
+                    }
+                    sqlBulkCopy.WriteToServer(dt);
+
                 }
                 _notyfService.Success("Thêm Thành Công!");
                 return RedirectToAction("Index");
-
-
-
             }
             catch (Exception)
             {
                 _notyfService.Error("Thêm Thất Bại!");
             }
-
-
             return RedirectToAction("Index");
         }
         // GET: Admin/TaiKhoan/Details/5
