@@ -12640,23 +12640,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\huyen\\.nuget\\packages\\": {},
+    "C:\\Users\\SV\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HK5\\DATN\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
+      "projectUniqueName": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
       "projectName": "WebBaiGiang_CKC",
-      "projectPath": "D:\\HK5\\DATN\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
-      "packagesPath": "C:\\Users\\huyen\\.nuget\\packages\\",
-      "outputPath": "D:\\HK5\\DATN\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\obj\\",
+      "projectPath": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
+      "packagesPath": "C:\\Users\\SV\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\huyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SV\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -12665,7 +12665,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12758,7 +12757,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
