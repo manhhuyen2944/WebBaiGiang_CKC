@@ -5,385 +5,384 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebBaiGiang_CKC
 build_property.RootNamespace = WebBaiGiang_CKC
-build_property.ProjectDir = C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\
+build_property.ProjectDir = D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC
+build_property.MSBuildProjectDirectory = D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Bai/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/DatLaiMatKhau.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/DatLaiMatKhau.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuZ05oYXBcRGF0TGFpTWF0S2hhdS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/Login.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuZ05oYXBcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/QuenMatKhau.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/QuenMatKhau.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuZ05oYXBcUXVlbk1hdEtoYXUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaFNhY2hUaGlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaFNhY2hUaGlcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaFNhY2hUaGlcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaFNhY2hUaGlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DanhSachThi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaFNhY2hUaGlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/De/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/GiaoVien/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhb1ZpZW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/HinhAnh/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/HinhAnh/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSGluaEFuaFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Home/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/_PartialViewCreateList.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KhoCauHoi/_PartialViewCreateList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvQ2F1SG9pXF9QYXJ0aWFsVmlld0NyZWF0ZUxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/_PartialViewCreateList.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/KyKiemTra/_PartialViewCreateList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS3lLaWVtVHJhXF9QYXJ0aWFsVmlld0NyZWF0ZUxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/MonHoc/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVjXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVjXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVjXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVjXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Muc/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVjXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/PartialView/_Footer.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/PartialView/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFydGlhbFZpZXdcX0Zvb3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/PartialView/_Header.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/PartialView/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFydGlhbFZpZXdcX0hlYWRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Shared/Error.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Create.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFpS2hvYW5cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Delete.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFpS2hvYW5cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Details.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFpS2hvYW5cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Edit.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFpS2hvYW5cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFpS2hvYW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/_PartialViewCreateList.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/TaiKhoan/_PartialViewCreateList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFpS2hvYW5cX1BhcnRpYWxWaWV3Q3JlYXRlTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/_ViewImports.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/_ViewStart.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Bai.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Bai.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJhaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BaiKiemTra.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BaiKiemTra.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJhaUtpZW1UcmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BaiTap.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BaiTap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJhaVRhcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Blog.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Blog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJsb2cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BookShop.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/BookShop.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEJvb2tTaG9wLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Crue.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Crue.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXENydWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/DeCuong.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/DeCuong.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXERlQ3VvbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/GiaoVien.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/GiaoVien.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEdpYW9WaWVuLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/HoSo.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/HoSo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEhvU28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/KyThi.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/KyThi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXEt5VGhpLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Lich.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/Lich.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXExpY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/NoiDungChinh.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/NoiDungChinh.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXE5vaUR1bmdDaGluaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/TichHop.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/TichHop.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXFRpY2hIb3AuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/XemLaiBaiThi.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/BaiGiangs/XemLaiBaiThi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpR2lhbmdzXFhlbUxhaUJhaVRoaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/DangNhap/DatLaiMatKhau.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/DangNhap/DatLaiMatKhau.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ05oYXBcRGF0TGFpTWF0S2hhdS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/DangNhap/QuenMatKhau.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/DangNhap/QuenMatKhau.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ05oYXBcUXVlbk1hdEtoYXUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Home/Index.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Home/Privacy.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_DangNhap.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_DangNhap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX0RhbmdOaGFwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Footer.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX0Zvb3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Header.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX0hlYWRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Menu.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/PartialView/_Menu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdcX01lbnUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Shared/Error.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/_ViewImports.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/_ViewStart.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-d75mcgzlvu
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Shared/_Layout.cshtml]
+[D:/HK5/DATN/WebBaiGiang_CKC/WebBaiGiang_CKC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-094b9ebcp1

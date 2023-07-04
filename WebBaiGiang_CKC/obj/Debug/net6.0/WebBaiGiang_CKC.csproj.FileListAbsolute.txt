@@ -542,8 +542,27 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.Interfaces.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.System.Drawing.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
+<<<<<<< HEAD
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\UpLoads\Images\GiaoVien\adminpro.jpg
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.dll
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.Interfaces.dll
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\EPPlus.System.Drawing.dll
 C:\Users\SV\Source\Repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
+=======
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.barcodes.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.bouncy-castle-connector.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.forms.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.io.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.kernel.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.layout.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.pdfa.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.sign.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.styledxmlparser.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.svg.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.commons.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.html2pdf.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\itext.bouncy-castle-adapter.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+>>>>>>> Huyen

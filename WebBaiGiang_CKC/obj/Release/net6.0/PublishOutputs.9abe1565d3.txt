@@ -19,6 +19,18 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\EPPlus
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\ExcelNumberFormat.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Humanizer.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Irony.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.barcodes.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.bouncy-castle-connector.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.forms.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.io.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.kernel.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.layout.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.pdfa.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.sign.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.styledxmlparser.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.svg.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.bouncy-castle-adapter.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\itext.commons.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\JetBrains.Annotations.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\MailKit.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\MessagePack.dll
@@ -38,6 +50,7 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Micros
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.CodeAnalysis.Workspaces.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.DiaSymReader.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.DotNet.PlatformAbstractions.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.DotNet.Scaffolding.Shared.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -45,6 +58,7 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Micros
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DependencyModel.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.Identity.Client.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
@@ -74,6 +88,7 @@ D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\NuGet.
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\NuGet.ProjectModel.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\NuGet.Protocol.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\NuGet.Versioning.dll
+D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\BouncyCastle.Crypto.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\SixLabors.Fonts.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\System.Composition.AttributedModel.dll
 D:\HK5\DATN\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Release\net6.0\PubTmp\Out\System.Composition.Convention.dll

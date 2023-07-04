@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TJEf6D+bQCBsprY8vyVzB3I+OeJnbkPzSL7y0jAIN0U=",
+  "Hash": "2jNZlgG8jnCCgmwbUz8ob+1V2wty3KaMRGt1vr3fI80=",
   "Source": "WebBaiGiang_CKC",
   "BasePath": "_content/WebBaiGiang_CKC",
   "Mode": "Default",
@@ -20959,6 +20959,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\summernote\\summernote-lite.min.js"
+    },
+    {
+      "Identity": "D:\\HK5\\DATN\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\PdfDapAnViewer.html",
+      "SourceId": "WebBaiGiang_CKC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HK5\\DATN\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang_CKC",
+      "RelativePath": "PdfDapAnViewer.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PdfDapAnViewer.html"
+    },
+    {
+      "Identity": "D:\\HK5\\DATN\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\PdfDeViewer.html",
+      "SourceId": "WebBaiGiang_CKC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HK5\\DATN\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang_CKC",
+      "RelativePath": "PdfDeViewer.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PdfDeViewer.html"
     }
   ]
 }
