@@ -8,7 +8,7 @@
 
     <div class="menu-toggle"> <a href="#">Menu</a> </div>
 
-    <div>
+    <div class="wrapper">
         @await Html.PartialAsync("~/Views/PartialView/_Menu.cshtml")
 
 
@@ -28,12 +28,8 @@
 
                 <p style="font-size: 15px; font-weight: bold;">
                     NỘI DUNG BÀI GIẢNG
-                    <a onclick="toggleContent()"
-                   href="#"
-                   class="lwptoc_toggle_label"
-                   data-label="Ẩn">
-                        [Hiện]
-                    </a>
+                   <a href="javascript:void(0)" class="lwptoc_toggle_label" data-label="Ẩn" onclick="toggleContent()">[Ẩn]</a>
+                      
                 </p>
 
                 <div id="mydiv">
@@ -42,7 +38,7 @@
                         {
 
                             <li>
-                                <a href="#@e.TenMuc" style=" text-decoration: none;">
+                                <a href="#@e.MucSo" style=" text-decoration: none;">
                                     <strong>
                                         @e.TenMuc
                                     </strong>
@@ -61,7 +57,7 @@
                 // body o day
                 @foreach (var e in item.Mucs)
                 {
-                    <a id="@e.TenMuc" name="@e.TenMuc"></a>
+                    <a id="@e.MucSo" name="@e.MucSo"></a>
                     <h2>@e.TenMuc</h2>
                     <p>@Html.Raw(@e.NoiDung)</p>
 
@@ -80,3 +76,4 @@
     <script src="~/assets/js/menu_.js">
     </script>
     }
+    <script></script>

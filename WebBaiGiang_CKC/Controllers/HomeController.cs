@@ -45,7 +45,7 @@ namespace WebBaiGiang_CKC.Controllers
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
 
-            var lstMon = _context.MonHoc.Include(a => a.Chuongs).ThenInclude(x => x.Bais).AsNoTracking().ToList();
+            var lstMon = _context.MonHoc.Include(a => a.Chuongs).ThenInclude(x => x.Bais.OrderBy(x=>x.SoBai)).AsNoTracking().ToList();
             ViewData["lstSubject"] = lstMon;
 
             base.OnActionExecuting(filterContext);
