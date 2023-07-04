@@ -31,7 +31,12 @@ namespace WebBaiGiang_CKC.Controllers
         public IActionResult Bai(int id)
         {
 
-            var lstBai = _context.Bai.Where(x => x.BaiId == id).Include(a => a.Mucs).AsNoTracking();
+            var lstBai = _context.Bai
+       .Where(x => x.BaiId == id)
+       .Include(a => a.Mucs.OrderBy(y => y.MucSo))
+       .OrderByDescending(x => x.Mucs.FirstOrDefault().MucSo)
+       .AsNoTracking()
+       .ToList();
             return View(lstBai);
         }
         public IActionResult Lich()
