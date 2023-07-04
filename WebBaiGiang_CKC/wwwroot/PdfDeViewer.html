@@ -1,44 +1,4 @@
-﻿<!--<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-    <link rel="stylesheet" href="~/path/to/pdfjs-dist/web/pdf_viewer.css">-->
-<!-- Thư viện jQuery -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<!-- Thư viện PDF.js -->
-<!--<script src="~/path/to/pdfjs-dist/build/pdf.js"></script>
-</head>
-<body>
-
-</body>
-</html>-->
-<!-- Thư viện PDF.js -->
-<!-- Script để hiển thị tệp PDF -->
-<!--<script>
-    $(function () {
-        // Lấy đường dẫn tệp PDF từ URL
-        var url = '@Url.Action("ExportDePDF", "De", new { deId = 1 })';
-
-        // Tải tệp PDF từ đường dẫn URL
-        pdfjsLib.getDocument(url).then(function (pdf) {
-            // Lấy đối tượng trang PDF
-            pdf.getPage(1).then(function (page) {
-                // Lấy kích thước trang PDF
-                var viewport = page.getViewport({ scale: 1.0 });
-
-                // Thiết lập kích thước của trình xem PDF
-                var canvas = document.getElementById('pdf-canvas');
-                var context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                // Hiển thị trang PDF lên trình xem PDF
-                page.render({ canvasContext: context, viewport: viewport });
-            });
-        });
-    });
-</script>-->
+﻿
 <!DOCTYPE html>
 <html>
 

@@ -1,12 +1,15 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using DocumentFormat.OpenXml.InkML;
+using iText.Html2pdf;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 using WebBaiGiang_CKC.Data;
 using WebBaiGiang_CKC.Models;
-
 namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -183,7 +186,13 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
+            var kiemtrasv = _context.BaiLam.FirstOrDefault(x => x.CauHoi_BaiLam.First().CauHoi_De.DeId == id);
+            if(kiemtrasv != null)
+            {
+                _notyfService.Error("Đề thi này đã có sinh viên kiểm tra rồi!");
+                ViewData["KyKiemTraId"] = new SelectList(_context.KyKiemTra, "KyKiemTraId", "TenKyKiemTra", de.KyKiemTraId);
+                return View(de);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -382,11 +391,388 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-       
+
         private bool DeExists(int id)
         {
             return _context.De.Any(e => e.DeId == id);
         }
-       
+        public async Task<IActionResult> PdfDeViewer(int deId)
+        {
+            var document = new StringBuilder();
+            var htmlcontent = @"<!DOCTYPE html>
+            <html>
+
+            <head>
+            <title>Đề thi trắc nghiệm</title>
+              <style>
+               
+                .container {
+                  max-width: 794px;
+                  margin: 0 auto;
+                  font-family: Helvetica;
+                 line-height: 1.5;
+                }
+
+                .hedert {
+                  height: 150px;
+                  width: 370px;
+                  float: left;
+                }
+
+                .hedert p {
+                  font-size: 17px;
+                }
+
+                .hedert h4 {
+                  padding-left: 50px;
+                }
+
+                .hedery {
+
+                  text-align: center;
+                }
+
+                .mssv {
+                  margin-left: 500px;
+                  margin-top: -40px;
+                }
+                .mini1
+                {
+                  margin-left: 500px;
+                  margin-top: -40px;
+                }
+    
+                h1,
+                h2 {
+                  text-align: center;
+                }
+
+                .cauhoi {
+                  padding-left: 40px;
+                }
+
+                .cauhoi div {
+                  padding-bottom: 40px;
+                  font-size: 18px;
+                  margin-top: -10px;
+                }
+
+                table {
+                  border-collapse: collapse;
+                  width: 100%;
+                  border: 1px solid #ddd;
+                  margin-bottom: 20px;
+                  
+                }
+
+                td,th {
+                  text-align: left;
+                  border: 1px solid #757575;
+                  font-size: 16px;
+                }
+
+                th {
+                  background-color: #f2f2f2;
+                }
+ 
+              </style>
+            </head>
+
+            <body>
+              <div class='container'>
+
+                <div style=' overflow: hidden;'>
+
+                  <div class='hedert'>
+                    <p> TRƯỜNG CAO ĐẲNG KỸ THUẬT CAO THẮNG</p>
+                    <h4> KHOA CÔNG NGHỆ THÔNG TIN</h4>
+                  </div>
+
+                  <div class='hedery'>
+                    <h2> ĐỀ THI CUỐI KỲ</h2>
+                      <p>Thời gian: 60 phút (không kể thời gian phát đề)</p>
+                      <p>Sinh viên không được sử dụng tài liệu</p>
+                  </div>
+                </div>
+
+
+                <div >
+                  <h2>Môn: LẬP TRÌNH ỨNG DỤNG ASP.NET CORE</h2>
+                  <h3 style='text-align: center;'>Hệ/Khóa: CĐTH ............. </h3>
+
+
+                </div>
+                <div style='font-size: 19px;overflow: hidden;margin-left:130px;'>
+                  <p style='float: left; padding-right: 30px;'>Ngày thi: ......../......../........</p>
+                  <p>Thời lượng: ........ phút</p>
+                  <p style='margin-left: 150px;'>Mã đề: .........</p>
+                </div>
+               
+
+                <h2>HƯỚNG DẪN TRẢ LỜI TRẮC NGHIỆM</h2>
+                <hr>
+                <div style='font-size: 16px;padding-left: 20px;padding-right: 20px;'>
+                  <p> Sinh viên ghi HỌ VÀ TÊN, Mã SV, LỚP.</p>
+                 <p style='font-style: italic;'>Mỗi câu hỏi trắc nghiệm chỉ chọn một phương án trả lời đúng nhất, nếu chọn từ hai phương án trở lên là trả lời sai.</p>
+                </div>
+                <h1>ĐỀ THI TRẮC NGHIỆM</h1>
+                <hr>";
+
+            //  Lấy danh sách câu hỏi từ bảng cauhoi_de
+            var cauhoiList = await _context.CauHoi_De.Include(c => c.CauHoi).Where(c => c.DeId == deId).ToListAsync();
+
+            if (cauhoiList == null || cauhoiList.Count == 0)
+            {
+                return BadRequest("Không tìm thấy câu hỏi nào");
+            }
+
+            //  Hiển thị từng câu hỏi và đáp áTo continue building the HTML code in C# for generating a PDF, you can add the following code after the existing HTML code:
+            //  Tạo danh sách câu hỏi
+            int i = 1;
+            foreach (var cauhoi in cauhoiList)
+            {
+                string dapAn = cauhoi.CauHoi.DapAnA + cauhoi.CauHoi.DapAnB + cauhoi.CauHoi.DapAnC + cauhoi.CauHoi.DapAnD;
+                int doDaiDapAn = TinhDoDaiDapAn(cauhoi.CauHoi.DapAnA, cauhoi.CauHoi.DapAnB, cauhoi.CauHoi.DapAnC, cauhoi.CauHoi.DapAnD);
+
+                string tableHtml = "<table>";
+                tableHtml += "<tr>";
+                tableHtml += $"<td colspan='4' style='text-align: left;'>{i}. {cauhoi.CauHoi.NoiDung}</td>";
+                tableHtml += "</tr>";
+                if (doDaiDapAn <= 50)
+                {
+                    tableHtml += "<tr>";
+                    tableHtml += $"<td>A. {cauhoi.CauHoi.DapAnA}</td>";
+                    tableHtml += $"<td>B. {cauhoi.CauHoi.DapAnB}</td>";
+                    tableHtml += $"<td>C. {cauhoi.CauHoi.DapAnC}</td>";
+                    tableHtml += $"<td>D. {cauhoi.CauHoi.DapAnD}</td>";
+                    tableHtml += "</tr>";
+                }
+                else if (doDaiDapAn > 50 && doDaiDapAn <= 100)
+                {
+                    tableHtml += "<tr>";
+                    tableHtml += $"<td colspan='2'>A. {cauhoi.CauHoi.DapAnA}</td>";
+                    tableHtml += $"<td colspan='2'>B. {cauhoi.CauHoi.DapAnB}</td>";
+                    tableHtml += "</tr>";
+                    tableHtml += "<tr>";
+                    tableHtml += $"<td colspan='2'>C. {cauhoi.CauHoi.DapAnC}</td>";
+                    tableHtml += $"<td colspan='2'>D. {cauhoi.CauHoi.DapAnD}</td>";
+                    tableHtml += "</tr>";
+                }
+                else
+                {
+                    tableHtml += "<tr>";
+                    tableHtml += $"<td colspan='4'>A. {cauhoi.CauHoi.DapAnA}</td>";
+                    tableHtml += "</tr>";
+                    tableHtml += "<tr>";
+                    tableHtml += $"<td colspan='4'>B. {cauhoi.CauHoi.DapAnB}</td>";
+                    tableHtml += "</tr>";
+                    tableHtml += "<tr>";
+                    tableHtml += $"<td colspan='4'>C. {cauhoi.CauHoi.DapAnC}</td>";
+                    tableHtml += "</tr>";
+                    tableHtml += "<tr>";
+                    tableHtml += $"<td colspan='4'>D. {cauhoi.CauHoi.DapAnD}</td>";
+                    tableHtml += "</tr>";
+                }
+                tableHtml += "</table>";
+
+                htmlcontent += tableHtml;
+                i++; 
+            }
+            //  Kết thúc HTML
+            htmlcontent += @"</div>
+              </body>
+            </html>";
+            var pdfStream = new MemoryStream();
+            var pdfWriter = new PdfWriter(pdfStream);
+            var pdfDocument = new PdfDocument(pdfWriter);
+            pdfDocument.SetDefaultPageSize(PageSize.A4);
+            HtmlConverter.ConvertToPdf(htmlcontent, pdfStream);
+
+            return new FileContentResult(pdfStream.ToArray(), "application/pdf");
+
+        }
+        static int TinhDoDaiDapAn(string dapAnA, string dapAnB, string dapAnC, string dapAnD)
+        {
+            string dapAn = dapAnA + dapAnB + dapAnC + dapAnD;
+            return dapAn.Length;
+        }
+        public async Task<IActionResult> PdfDapAnViewer(int deId)
+        {
+            var document = new StringBuilder();
+            var htmlcontent = @"<!DOCTYPE html>
+                <html>
+
+                <head>
+                  <title>Đáp án thi trắc nghiệm</title>
+                  <style>
+                    .container {
+                      max-width: 794px;
+                      margin: 0 auto;
+                      font-family: Helvetica;
+                    }
+
+
+                   .hedert {
+                      height: 150px;
+                      width: 370px;
+                      float: left;
+                      margin-top: 10px;
+                    }
+
+                    .hedert p {
+                      font-size: 17px;
+                    }
+
+                    .hedert h4 {
+                      padding-left: 50px;
+                    }
+
+                    .hedery {
+
+                      text-align: center;
+                    }
+
+                    .mssv {
+                      margin-left: 500px;
+                      margin-top: -40px;
+                    }
+                    h1,
+                    h2 {
+                      text-align: center;
+                    }
+
+                    .cauhoi {
+                      padding-left: 40px;
+                    }
+
+                    .cauhoi div {
+                      padding-bottom: 40px;
+                      font-size: 18px;
+                      margin-top: -10px;
+                    }
+
+                    .cauhoi p {
+                      font-size: 21px;
+                    }
+
+                  table {
+                      border-collapse: collapse;
+                      width: 10%;
+                      border: 1px solid #ddd;
+                      margin-bottom: 20px;
+                      float: left;
+
+                    }
+
+                    td,
+                    th {
+                      padding: 5px;
+                      text-align: center;
+                      border: 1px solid #757575;
+                      font-size: 16px;
+                    }
+
+                    th {
+                      background-color: #f2f2f2;
+                    }
+                  </style>
+                </head>
+
+                <body>
+                  <div class='container'>
+
+                   <div style=' overflow: hidden;'>
+
+                      <div class='hedert'>
+                        <p> TRƯỜNG CAO ĐẲNG KỸ THUẬT CAO THẮNG</p>
+                        <h4> KHOA CÔNG NGHỆ THÔNG TIN</h4>
+                      </div>
+
+                      <div class='hedery'>
+                        <h2> ĐÁP ÁN ĐỀ THI CUỐI KỲ</h4>
+                          <p>Thời gian: 60 phút (không kể thời gian phát đề)</p>
+                          <p>Sinh viên không được sử dụng tài liệu</p>
+                      </div>
+                    </div>
+
+
+                    <div>
+                      <h2>Môn: LẬP TRÌNH ỨNG DỤNG ASP.NET CORE</h2>
+                      <h3 style='text-align: center;'>Hệ/Khóa: CĐTH ............. </h3>
+
+
+                    </div>
+                    <div style='font-size: 19px;overflow: hidden;margin-left: 200px;'>
+                      <p style='float: left; padding-right: 30px;'>Ngày thi: ......../......../........</p>
+                      <p>Thời lượng: ........ phút</p>
+                      <p style='margin-left: 150px;'>Mã đề: .........</p>
+                    </div>
+                    <h2>ĐÁN ÁN</h2>
+                    <hr/>
+                    <hr/>
+                    <div style='overflow: hidden;'>
+                ";
+
+            //  Lấy danh sách câu hỏi từ bảng cauhoi_de
+            var cauhoiList = await _context.CauHoi_De.Include(c => c.CauHoi).Where(c => c.DeId == deId).ToListAsync();
+
+            if (cauhoiList == null || cauhoiList.Count == 0)
+            {
+                return BadRequest("Không tìm thấy câu hỏi nào");
+            }
+
+            //  Hiển thị từng câu hỏi và đáp áTo continue building the HTML code in C# for generating a PDF, you can add the following code after the existing HTML code:
+            //  Tạo danh sách câu hỏi
+            int i = 1;
+
+            foreach (var cauhoi in cauhoiList)
+            {
+                htmlcontent += $@"
+
+                    <table>
+                        <tr>
+                            <td style='text-align: center';>Câu {i}</td>
+
+                        </tr>
+                         <tr>
+
+                             <td> {cauhoi.CauHoi.DapAnDung}</td>
+                         </tr>
+
+
+                    </table>
+                  ";
+                i++;
+            }
+
+            //  Kết thúc HTML
+            htmlcontent += @" </div>
+                        <div style='text-align: center;'>
+                              <p>
+                                -----Hết-----
+                              </p>
+                            </div >
+                           <div style='overflow: hidden;'>
+                            <p style='text-align: right;'>
+                              Tp. HCM, ngày..... tháng..... năm 20.....
+
+                            </p>
+                           <h3 style='text-align: right;margin-right: 40px; float: right;margin-top: -3px;'>
+                              Người lập đáp án
+                            </h3>
+                            <h3>	Người duyệt đáp án</h3>
+                           </div>
+                        </div>
+              </body>
+            </html>";
+            // Khởi tạo HTML to PDF converter
+            var pdfStream = new MemoryStream();
+            var pdfWriter = new PdfWriter(pdfStream);
+            var pdfDocument = new PdfDocument(pdfWriter);
+            pdfDocument.SetDefaultPageSize(PageSize.A4);
+            HtmlConverter.ConvertToPdf(htmlcontent, pdfStream);
+
+            return new FileContentResult(pdfStream.ToArray(), "application/pdf");
+        }
     }
 }
