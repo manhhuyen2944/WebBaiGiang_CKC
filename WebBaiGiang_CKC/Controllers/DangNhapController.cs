@@ -41,12 +41,17 @@ namespace WebBaiGiang_CKC.Controllers
 
         public IActionResult Login(string mssv, string pass)
         {
+            var mssvClaim = User.Claims.SingleOrDefault(c => c.Type == "MSSV");
+
 
             var password = pass.ToMD5();
-
-
             var user = _context.TaiKhoan.FirstOrDefault(u => u.MSSV == mssv && u.MatKhau == password);
-
+            if (mssvClaim?.Value != null)
+            {
+                // Tên đăng nhập hoặc mật khẩu không đúng
+                _notyfService.Error($"Bạn đang đăng nhập dưới tài khoản {mssvClaim.Value}");
+                return RedirectToAction("Index", "Home");
+            }
             if (user == null)
             {
                 // Tên đăng nhập hoặc mật khẩu không đúng

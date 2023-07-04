@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SV\\Source\\Repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj": {}
+    "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SV\\Source\\Repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj": {
+    "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SV\\Source\\Repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
+        "projectUniqueName": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
         "projectName": "WebBaiGiang_CKC",
-        "projectPath": "C:\\Users\\SV\\Source\\Repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
+        "projectPath": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\WebBaiGiang_CKC.csproj",
         "packagesPath": "C:\\Users\\SV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SV\\Source\\Repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\obj\\",
+        "outputPath": "C:\\Users\\SV\\source\\repos\\WebBaiGiang_CKC\\WebBaiGiang_CKC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
