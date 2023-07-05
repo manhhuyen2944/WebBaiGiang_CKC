@@ -1,0 +1,70 @@
+﻿<div ng-app="doimkApp" ng-controller="doimatkhaujs">
+    <form ng-submit="doimatkhau()">
+        <div>
+            <label for="currentPassword">Mật khẩu hiện tại:</label>
+            <input type="password" id="currentPassword" ng-model="currentPassword" required autocomplete="current-password">
+        </div>
+        <div>
+            <label for="newPassword">Mật khẩu mới:</label>
+            <input type="password" id="newPassword" ng-model="newPassword" required autocomplete="new-password">
+        </div>
+        <div>
+            <label for="confirmPassword">Xác nhận mật khẩu mới:</label>
+            <input type="password" id="confirmPassword" ng-model="confirmPassword" required autocomplete="new-password">
+        </div>
+        <button type="submit" ng-click="doimatkhau()">Đổi mật khẩu</button>
+    </form>
+</div>
+
+<script>
+    var asp = angular.module('doimkApp', []);
+    asp.controller('doimatkhaujs', function ($scope, $http) {
+        $scope.doimatkhau = function () {
+            var currentPassword = $scope.currentPassword;
+            var newPassword = $scope.newPassword;
+            var confirmPassword = $scope.confirmPassword;
+
+            if (currentPassword && newPassword && confirmPassword) {
+                if (newPassword !== confirmPassword) {
+                    alert('Mật khẩu mới và xác nhận mật khẩu không khớp.');
+                    return;
+                }
+
+                if (newPassword.length < 8) {
+                    alert('Mật khẩu mới phải có ít nhất 8 ký tự.');
+                    return;
+                }
+
+                // thực hiện kiểm tra các yêu cầu bảo mật khác cho mật khẩu mới ở đây (ví dụ: chứa ký tự đặc biệt, chữ hoa, chữ thường, số, ...)
+
+                var data = {
+                    currentPassword: currentPassword,
+                    newPassword: newPassword
+                };
+
+                $http({
+                    method: 'POST',
+                    url: '/api/authentication/changepassword',
+                    data: data,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true  // sử dụng withCredentials để đảm bảo sử dụng HTTPS (truy cập cookie được cấp cho trang web)
+                })
+                    .then(function (response) {
+                        alert(response.data);
+                        $scope.currentPassword = '';
+                        $scope.newPassword = '';
+                        $scope.confirmPassword = '';
+                        console.log('Request successful', response); // thêm vào để ghi lại thông tin
+                    })
+                    .catch(function (error) {
+                        alert(error.data);
+                        console.log('Request error', error); // thêm vào để ghi lại thông tin
+                    });
+            } else {
+                alert('Vui lòng nhập đầy đủ thông tin mật khẩu');
+            }
+        };
+    });
+</script>

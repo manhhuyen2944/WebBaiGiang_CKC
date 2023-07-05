@@ -13,13 +13,13 @@
                 <div class="form-title text-center">
                     <h3 style="color:black"> Đăng nhập</h3>
                 </div>
-                <div class="d-flex flex-column text-center">
-                    <form method="post" asp-controller="DangNhap" asp-action="Login">
+                <div ng-app="myApp" ng-controller="LoginController" class="d-flex flex-column text-center">
+                    <form ng-submit="login()">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="mssv" placeholder="MSSV" required>
+                            <input type="text" class="form-control" id="mssv" ng-model="mssv" placeholder="MSSV" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="pass" placeholder=" Mật khẩu" required>
+                            <input type="password" class="form-control" ng-model="password" placeholder=" Mật khẩu" required requiredautocomplete="current-password">
                         </div>
                         <button type="submit" class="btn btn-info btn-block btn-round"> Đăng nhập</button>
                     </form>
@@ -31,3 +31,59 @@
         </div>
     </div>
 </div>
+
+<script>
+    ////dang nhap 
+    var app = angular.module('myApp', []);
+    app.controller('LoginController', function ($scope, $http, notyf, $window) {
+        $scope.login = function () {
+            $http.post('/api/authentication/login', { mssv: $scope.mssv, password: $scope.password })
+                .then(function (response) {
+                    notyf.success('Đăng nhập thành công.');
+                    $window.location.href = '/';
+                })
+                .catch(function (error) {
+                    notyf.error('Đăng nhập thất bại.');
+                });
+        };
+    });
+
+    app.factory('notyf', function () {
+        return new Notyf({
+            duration: 3000,
+            position: {
+                x: 'right',
+                y: 'top',
+            },
+            types: [
+                {
+                    type: 'success',
+                    background: '#00b300',
+                    icon: false,
+                },
+                {
+                    type: 'error',
+                    background: '#ff4d4d',
+                    icon: false,
+                },
+            ],
+        });
+    });
+    //////// dang xuat 
+    app.controller('LogoutController', function ($scope, $http, $window) {
+        var notyf = new Notyf();
+    $scope.logout = function () {
+            $http.post('/api/authentication/logout')
+            .then(function (response) {
+                localStorage.removeItem('token');
+                   notyf.success('Đăng xuất thành công.');
+                $window.location.href = '/';
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+    });
+    
+
+</script>

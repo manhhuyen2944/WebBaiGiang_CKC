@@ -56,8 +56,8 @@
                                         <li>
                                             <a asp-controller="BaiGiangs" asp-action="HoSo"> <i class="fas fa-user"></i>&nbsp Hồ sơ</a>
                                         </li>
-                                        <li>
-                                            <a asp-controller="DangNhap" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>&nbsp Đăng xuất </a>
+                                        <li ng-app="myApp" ng-controller="LogoutController">
+                                            <a style="color:black; cursor: pointer;" ng-click="logout()"><i class="fas fa-sign-out-alt"></i>&nbsp Đăng xuất </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -69,7 +69,7 @@
                         else
                         {
                             <li>
-                                
+
                                     <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
                                         Đăng nhập
                                     </button>
@@ -113,9 +113,8 @@
         </div>
 
     </div>
-
+    <script></script>
 </header>
-
 
 
 
