@@ -1,8 +1,10 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Security.Claims;
 using WebBaiGiang_CKC.Data;
 using WebBaiGiang_CKC.Extension;
 using WebBaiGiang_CKC.Helper;
@@ -201,18 +203,25 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.GiaoVien == null)
-            {
-                return Problem("Entity set 'BaiGiangContext.GiaoVien'  is null.");
-            }
+            ClaimsPrincipal claimsPrincipal = HttpContext.User;
             var giaoVien = await _context.GiaoVien.FindAsync(id);
-            if (giaoVien != null)
+
+            if (giaoVien == null)
             {
-                _context.GiaoVien.Remove(giaoVien);
+                return NotFound();
+            }
+            var giaovienid = User.Claims.FirstOrDefault(c => c.Type == "Id");
+            var tendangnhap = giaovienid.Value;
+            if (giaoVien.Id == Convert.ToInt16(tendangnhap))
+            {
+                _notyfService.Error("Bạn không thể xóa tài khoản của mình.");
+                return View();
             }
 
+            // Xóa giáo viên khỏi cơ sở dữ liệu
+            _context.GiaoVien.Remove(giaoVien);
             await _context.SaveChangesAsync();
-            _notyfService.Success("Xóa Thành Công");
+
             return RedirectToAction(nameof(Index));
         }
 

@@ -359,5 +359,16 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             }
             return dt;
         }
+        public IActionResult DownloadExcel()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "UpLoads", "Files", "ImportDanhSachThi.xlsx");
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+            return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", Path.GetFileName(filePath));
+        }
     }
 }
