@@ -70,7 +70,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                kyKiemTra.TenKyKiemTra = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(kyKiemTra.TenKyKiemTra);
+                kyKiemTra.TenKyKiemTra = CultureInfo.CurrentCulture.TextInfo.ToUpper(kyKiemTra.TenKyKiemTra);
                 _context.Add(kyKiemTra);
                 _notyfService.Success("Thêm thành công!");
                 await _context.SaveChangesAsync();
