@@ -20,7 +20,6 @@
                     </form>
                 </div>
             </li>
-
             <li class="notification-list">
                 <a class="nav-link end-bar-toggle" href="javascript: void(0);">
                     <i class="dripicons-gear noti-icon"></i>
@@ -74,29 +73,29 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Đổi mật khẩu</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" ng-app="DoiMatKhauApp" ng-controller="doimatkhaujs">
                 <div class="text-center mt-2 mb-4">
                     <a asp-controller="Home" asp-action="Index" class="text-success">
                         <span><img src="~/AdminAssets/images/logo-dark.png" alt="" height="18"></span>
                     </a>
                 </div>
-                <form class="ps-3 pe-3" method="post" asp-area="Admin" asp-controller="DangNhap" asp-action="DoiMatKhau">
+                <form class="ps-3 pe-3" ng-submit="doimatkhau()">
                     <div class="mb-3">
                         <label  class="form-label">Mật khẩu cũ </label>
-                        <input class="form-control" type="password" name="pass" required="" placeholder="Mật khẩu cũ">
+                        <input class="form-control" type="password" ng-model="currentPassword" required="" placeholder="Mật khẩu cũ">
                     </div>
 
                     <div class="mb-3">
                         <label  class="form-label">Mật khẩu mới </label>
-                        <input class="form-control" type="password" name="newpass" required="" placeholder="Mật khẩu mới ">
+                        <input class="form-control" type="password" ng-model="newPassword" required="" placeholder="Mật khẩu mới ">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Xác nhận mật khẩu</label>
-                        <input class="form-control" type="password" required="" name="confirmpass" placeholder="Xác nhận mật khẩu">
+                        <input class="form-control" type="password" required="" ng-model="confirmPassword" placeholder="Xác nhận mật khẩu">
                     </div>
                     <div class="mb-3 text-center">
-                        <button class="btn btn-primary" type="submit">Đổi mật khẩu</button>
+                        <button class="btn btn-primary" type="submit" ng-click="doimatkhau(); showModal = false;" data-dismiss="modal">Đổi mật khẩu</button>
                     </div>
 
                 </form>
@@ -104,3 +103,89 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<script>
+    angular.module('DoiMatKhauApp', [])
+        .factory('notyf', function () {
+            return new Notyf({
+                duration: 3000,
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                types: [
+                    {
+                        type: 'success',
+                        background: '#00b300',
+                        icon: {
+                            className: 'material-icons',
+                            tagName: 'i',
+                            text: 'check_circle',
+                            color: 'white',
+                        },
+                    },
+                    {
+                        type: 'error',
+                        background: '#ff4d4d',
+                        icon: {
+                            className: 'material-icons',
+                            tagName: 'i',
+                            text: 'cancel',
+                            color: 'white',
+                        },
+                    },
+
+                ],
+            });
+        })
+        .controller('doimatkhaujs', function ($scope, $http, notyf) {
+            $scope.showModal = true;
+            $scope.doimatkhau = function () {
+                var currentPassword = $scope.currentPassword;
+                var newPassword = $scope.newPassword;
+                var confirmPassword = $scope.confirmPassword;
+
+                if (currentPassword && newPassword && confirmPassword) {
+                    if (newPassword !== confirmPassword) {
+                        notyf.error('Mật khẩu mới và xác nhận mật khẩu không khớp.');
+                        return;
+                    }
+
+                    if (newPassword.length < 6) {
+                        notyf.error('Mật khẩu mới phải có ít nhất 6 ký tự.');
+                        return;
+                    }
+
+                    // thực hiện kiểm tra các yêu cầu bảo mật khác cho mật khẩu mới ở đây (ví dụ: chứa ký tự đặc biệt, chữ hoa, chữ thường, số, ...)
+
+                    var data = {
+                        currentPassword: currentPassword,
+                        newPassword: newPassword, confirmPassword: confirmPassword
+                    };
+
+                    $http({
+                        method: 'POST',
+                        url: '/api/authentication/changepasswordgv',
+                        data: data,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        withCredentials: true  // sử dụng withCredentials để đảm bảo sử dụng HTTPS (truy cập cookie được cấp cho trang web)
+                    })
+                        .then(function (response) {
+                            notyf.success("Đổi mật khẩu thành công!");
+                            $scope.currentPassword = '';
+                            $scope.newPassword = '';
+                            $scope.confirmPassword = '';
+                            $('#signup-modal').modal('hide');
+
+                        })
+                        .catch(function (error) {
+                            notyf.error(error.data);
+                            console.log('Request error', error); // thêm vào để ghi lại thông tin
+                        });
+                } else {
+                    notyf.error('Vui lòng nhập đầy đủ thông tin mật khẩu');
+                }
+            };
+        });
+</script>

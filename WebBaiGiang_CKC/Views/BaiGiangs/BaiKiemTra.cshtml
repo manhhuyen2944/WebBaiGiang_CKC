@@ -6,13 +6,13 @@
 @{
     var tg_tim = ViewBag.TimThoigian;
     var cauhoi_baiLam = ViewBag.cauhoi_de_mssv as List<CauHoi_BaiLam>;
-}
-@{
+    var tenkykiemtra = ViewBag.TenKiKiemTra;
     var mssvClaim = User.Claims.SingleOrDefault(c => c.Type == "MSSV");
     var mssv_ = "";
     if (mssvClaim != null) { mssv_ = mssvClaim.Value; }
+    var idkykiemtra = ViewBag.IdKiKiemTra;
 }
-<form id="myForm" asp-controller="BaiGiangs" asp-action="NopBai" asp-route-id="@ViewBag.IdKiKiemTra">
+<form id="myForm" asp-controller="BaiGiangs" asp-action="NopBai" asp-route-id="@idkykiemtra">
     <div class="menu" id="menu">
         <div class="btn-dong" id="btn-dong">
             <i class="fas fa-times"> </i>
@@ -33,7 +33,7 @@
         </ul>
         <hr>
         <div class="text-center">
-            <button type="submit" class="nopbaibtn" onclick="return confirmSubmit()">Nộp Bài</button>
+            <button type="button" class="nopbaibtn" data-toggle="modal" data-target="#confirm-dialog">Nộp Bài</button>
         </div>
     </div>
     <div class="content" id="content">
@@ -42,7 +42,7 @@
             {
                 <div style=" overflow:hidden;">
                     <div id="rectangle">
-                        <h1>@ViewBag.TenKiKiemTra  </h1> <p>Trắc nghiệm <i class="fa-solid fa-check"></i></p>
+                        <h1>ĐỀ THI @tenkykiemtra  </h1> <p>Trắc nghiệm <i class="fa-solid fa-check"></i></p>
                     </div>
                     <div id="triangle_left"></div>
                 </div>
@@ -117,8 +117,9 @@
                             @if (cauhoi_baiLam.Count - 1 == socau)
                             {
                                 <div class="text-center">
-                                    <button type="submit" class="nopbaibtn" onclick="return confirmSubmit()">Nộp Bài</button>
+                                    <button type="button" class="nopbaibtn" data-toggle="modal" data-target="#confirm-dialog">Nộp Bài</button>
                                 </div>
+
                             }
                         </div>
                     }
@@ -132,7 +133,25 @@
         </div>
     </div>
 </form>
-
+<div class="modal" tabindex="-1" role="dialog" id="confirm-dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận nộp bài</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn nộp bài không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                <button type="submit" class="btn btn-primary" form="myForm" id="confirm-btn-yes">Có</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="toggle-menu" id="toggle-menu">
     <i class="fa-solid fa-chevron-left"></i>
 
@@ -271,7 +290,21 @@
 
 
 
+   $('#confirm-dialog').on('shown.bs.modal', function () {
+        $('#confirm-btn-yes').focus();
+    });
+
     function confirmSubmit() {
-        return confirm('Bạn có chắc chắn muốn nộp bài không?');
+        $('#confirm-dialog').modal('show');
+
+        $('#confirm-btn-yes').on('click', function() {
+            return true;
+        });
+
+        $('#confirm-dialog').on('hidden.bs.modal', function () {
+            return false;
+        });
+
+        return false;
     }
 </script>

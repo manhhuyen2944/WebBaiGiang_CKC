@@ -18,7 +18,10 @@
     <link href="~/AdminAssets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="~/AdminAssets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
     <link href="~/AdminAssets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdn.jsdelivr.net/npm/notyf@3.2.0/notyf.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3.2.0/notyf.min.js"></script>
 </head>
 
 <body class="loading authentication-bg" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -35,23 +38,21 @@
                             </a>
                         </div>
 
-                        <div class="card-body p-4">
+                       <div class="card-body p-4" ng-app="myApp" ng-controller="ForgotPasswordController">
 
                             <div class="text-center w-75 m-auto">
                                 <h4 class="text-dark-50 text-center mt-0 fw-bold">Quên mật khẩu</h4>
                                 <p class="text-muted mb-4">Vui lòng nhập email của bạn và bạn sẽ nhận được token khôi phục mật khẩu ở email của bạn</p>
                             </div>
 
-                            <form asp-area="Admin" asp-controller="DangNhap" asp-action="QuenMatKhau">
+                            <form  ng-submit="forgotPassword()" novalidate>
                                 <div class="mb-3">
                                     <label  class="form-label">Email</label>
-                                    <input class="form-control" type="email" id="Email" name="Email" required="" placeholder="Vui lòng nhập Email">
+                                    <input class="form-control" type="email"name="email" ng-model="email"  required placeholder="Vui lòng nhập Email">
+        
                                 </div>
-
                                 <div class="mb-0 text-center">
-
                                     <button class="btn btn-primary" type="submit">Gửi yêu cầu</button>
-
                                 </div>
                             </form>
                         </div> <!-- end card-body-->
@@ -76,7 +77,61 @@
     <footer class="footer footer-alt">
         2023 © Đinh Mạnh Huyên | Nguyễn Chí Khang
     </footer>
+    <script>
+        angular.module('myApp', [])
+            .factory('notyf', function () {
+                return new Notyf({
+                    duration: 3000,
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    },
+                    types: [
+                        {
+                            type: 'success',
+                            background: '#00b300',
+                            icon: {
+                                className: 'material-icons',
+                                tagName: 'i',
+                                text: 'check_circle',
+                                color: 'white',
+                            },
+                        },
+                        {
+                            type: 'error',
+                            background: '#ff4d4d',
+                            icon: {
+                                className: 'material-icons',
+                                tagName: 'i',
+                                text: 'cancel',
+                                color: 'white',
+                            },
+                        },
 
+                    ],
+                });
+            })
+            .controller('ForgotPasswordController', ['$scope', '$http', 'notyf', '$window', function ($scope, $http, notyf, $window) {
+                $scope.forgotPassword = function () {
+                    var email = $scope.email;
+
+                    if (email) {
+                        $http.post('/api/authentication/forgotpasswordgv', { Email: email })
+                            .then(function (response) {
+                               
+                                $scope.email = '';
+                                $window.location.href = '/Admin/dangnhap/datlaimatkhau';
+
+                            })
+                            .catch(function (error) {
+                                notyf.error(error.data);
+                            });
+                    } else {
+                        notyf.error('Vui lòng nhập địa chỉ email của bạn');
+                    }
+                };
+            }]);
+    </script>
     <!-- bundle -->
     <script src="~/AdminAssets/js/vendor.min.js"></script>
     <script src="~/AdminAssets/js/app.min.js"></script>

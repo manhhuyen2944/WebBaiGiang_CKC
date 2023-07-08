@@ -10,9 +10,9 @@ namespace WebBaiGiang_CKC.Models
         public string HoTen { get; set; }
 
         [DisplayName("Số câu đúng")]
-        public int? SoCauDung { get; set; }
+        public int? SoCauDung { get; set; } = 0;
         [DisplayName("Điểm")]
-        public float? Diem { get; set; }
+        public float? Diem { get; set; } = 0;
 
 
         [DisplayName("Thời gian bắt đầu")]
