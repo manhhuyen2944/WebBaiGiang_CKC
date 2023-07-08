@@ -2,62 +2,164 @@
 @model ResetPasswordViewModel
 
 @{
-    Layout = "_Layout";
+    Layout = null;
 }
 
-<div class="container">
-    @if (TempData["ResetPasswordSuccessMessage"] != null)
-    {
-        <div class="alert alert-success" role="alert">@TempData["ResetPasswordSuccessMessage"]</div>
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Đặt lại mật khẩu | ASP.NET CORE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/AdminAssets/images/favicon.ico">
+    <link href="~/AdminAssets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/AdminAssets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
+    <link href="~/AdminAssets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdn.jsdelivr.net/npm/notyf@3.2.0/notyf.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3.2.0/notyf.min.js"></script>
+</head>
 
-    @if (TempData["ResetPasswordErrorMessage"] != null)
-    {
-        <div class="alert alert-danger" role="alert">@TempData["ResetPasswordErrorMessage"]</div>
-    }
+<body class="loading authentication-bg" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
 
-    <form asp-action="DatLaiMatKhau" method="post">
-        <h1>Đặt lại mật khẩu</h1>
-        <div class="form-group">
-            <label for="Token">Token</label>
-            <input type="text" class="form-control" id="Token" name="Token" placeholder="Nhập token" required>
+    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-4 col-lg-5">
+                    <div class="card">
+                        <!-- Logo -->
+                        <div class="card-header pt-4 pb-4 text-center bg-primary">
+                            <a href="index.html">
+                                <span><img src="~/AdminAssets/images/logo.png" alt="" height="18"></span>
+                            </a>
+                        </div>
+
+                        <div class="card-body p-4" ng-app="myApp" ng-controller="ResetPasswordController">
+
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center mt-0 fw-bold">Quên mật khẩu</h4>
+                                <p class="text-muted mb-4">Chúng tôi đã gửi email có mã token khôi phục mật khẩu cho bạn </p>
+                            </div>
+
+                            <form ng-submit="resetPassword()">
+                                <div class="mb-3">
+                                    <label class="form-label">Nhập Token</label>
+                                    <input class="form-control" ng-model="token" required placeholder="Nhập Token">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mật khẩu mới </label>
+                                    <input class="form-control" type="password" ng-model="password" required placeholder="Nhập Mật khẩu mới">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Xác nhận mật khẩu</label>
+                                    <input class="form-control" type="password" ng-model="confirmPassword" required placeholder="Xác nhận mật khẩu">
+                                </div>
+
+                                <div class="mb-0 text-center">
+                                    <button class="btn btn-primary" type="submit">Đổi mật khẩu</button>
+                                </div>
+                            </form>
+                        </div> <!-- end card-body-->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Quay lại <a asp-area="" asp-controller="Home" asp-action="Index" class="text-muted ms-1"><b>Trang chủ</b></a></p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
         </div>
-        <div class="form-group">
-            <label for="Password">Mật khẩu mới</label>
-            <input type="password" class="form-control" id="Password" name="Password" placeholder="Nhập mật khẩu mới" required>
-        </div>
-        <div class="form-group">
-            <label for="ConfirmPassword">Xác nhận mật khẩu mới</label>
-            <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Nhập lại mật khẩu mới" required>
-        </div>
-        <div class="text-center">
-            <!-- Add this div with text-center class to align button to the center -->
-            <button type="submit" class="btn btn-info btn-round">Đặt lại mật khẩu</button>
-        </div>
-    </form>
-</div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
 
-        <style>
-            /* Đặt chiều cao của body và html là 100%, để đảm bảo rằng trang sẽ được căn giữa theo chiều dọc */
-html, body {
-    height: 85%;
-}
+    <footer class="footer footer-alt">
+        2023 © Đinh Mạnh Huyên | Nguyễn Chí Khang
+    </footer>
+    <script>
+        angular.module('myApp', [])
+            .factory('notyf', function () {
+                return new Notyf({
+                    duration: 3000,
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    },
+                    types: [
+                        {
+                            type: 'success',
+                            background: '#00b300',
+                            icon: {
+                                className: 'material-icons',
+                                tagName: 'i',
+                                text: 'check_circle',
+                                color: 'white',
+                            },
+                        },
+                        {
+                            type: 'error',
+                            background: '#ff4d4d',
+                            icon: {
+                                className: 'material-icons',
+                                tagName: 'i',
+                                text: 'cancel',
+                                color: 'white',
+                            },
+                        },
 
-/* Định dạng container để nó sẽ được căn giữa theo chiều dọc và chiều ngang */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
+                    ],
+                });
+            })
+            .controller('ResetPasswordController', ['$scope', '$http', 'notyf', '$window', function ($scope, $http, notyf, $window) {
+                $scope.resetPassword = function () {
+                    var token = $scope.token;
+                    var password = $scope.password;
+                    var confirmPassword = $scope.confirmPassword;
+                    if (password.length < 6 || password.length > 100) {
+                        notyf.error('Mật khẩu phải có từ 6 đến 100 ký tự!');
+                        return;
+                    }
+                    if ($scope.password !== $scope.confirmPassword) {
+                        notyf.error('Xác nhận mật khẩu không đúng!');
+                        return;
+                    }
+                    if (token && password && confirmPassword) {
+                        var data = {
+                            Token: token,
+                            Password: password,
+                            ConfirmPassword: confirmPassword
+                        };
 
-/* Định dạng form đặt lại mật khẩu của bạn */
-form {
-    max-width: 500px;
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-        </style>
+                        $http.post('/api/authentication/resetpassword', data)
+                            .then(function (response) {
+                                sessionStorage.setItem('successMessage', 'Mật khẩu của bạn đã được đặt lại thành công.');
+                                $window.location.href = '/';
+                               
+                            })
+                            .catch(function (error) {
+                                notyf.error(error.data);
+                            });
+                    } else {
+                        notyf.error('Vui lòng nhập đầy đủ thông tin');
+                    }
+                };
+            }]);
+
+
+
+    </script>
+    <!-- bundle -->
+    <script src="~/AdminAssets/js/vendor.min.js"></script>
+    <script src="~/AdminAssets/js/app.min.js"></script>
+    @await Component.InvokeAsync("Notyf")
+</body>
+</html>

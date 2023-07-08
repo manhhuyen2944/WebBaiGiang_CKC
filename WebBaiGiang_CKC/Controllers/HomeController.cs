@@ -27,7 +27,12 @@ namespace WebBaiGiang_CKC.Controllers
 
         public IActionResult Index()
         {
-           
+            var forgotPasswordSuccess = HttpContext.Request.Cookies["forgotPasswordSuccess"];
+            if (forgotPasswordSuccess != null && forgotPasswordSuccess == "true")
+            {
+                _notyfService.Success("Đổi mật khẩu thành công!");
+                HttpContext.Response.Cookies.Delete("forgotPasswordSuccess");
+            }
             return View();
         }
 
