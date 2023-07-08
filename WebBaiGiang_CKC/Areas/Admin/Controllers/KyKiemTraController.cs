@@ -70,7 +70,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                kyKiemTra.TenKyKiemTra = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(kyKiemTra.TenKyKiemTra);
+                kyKiemTra.TenKyKiemTra = CultureInfo.CurrentCulture.TextInfo.ToUpper(kyKiemTra.TenKyKiemTra);
                 _context.Add(kyKiemTra);
                 _notyfService.Success("Thêm thành công!");
                 await _context.SaveChangesAsync();
@@ -358,6 +358,17 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 dt.Rows.Add(values);
             }
             return dt;
+        }
+        public IActionResult DownloadExcel()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "UpLoads", "Files", "ImportDanhSachThi.xlsx");
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+            return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", Path.GetFileName(filePath));
         }
     }
 }

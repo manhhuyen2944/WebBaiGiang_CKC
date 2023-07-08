@@ -84,6 +84,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                         new Claim(ClaimTypes.Name, user.HoTen),
                         new Claim(ClaimTypes.Role, "Admin"),
                         new Claim("TenDangNhap" , user.TenDangNhap),
+                        new Claim("Id" , user.Id.ToString()),
                          new Claim("AnhDaiDien", "/contents/Images/GiaoVien/" + user.AnhDaiDien) // Thêm đường dẫn đến ảnh đại diện vào claims
                     };
                     //   Response.Cookies.Append("AnhDaiDien", "Images/GiaoVien/" + user.AnhDaiDien);

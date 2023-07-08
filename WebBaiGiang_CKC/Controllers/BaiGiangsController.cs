@@ -154,7 +154,7 @@ namespace WebBaiGiang_CKC.Controllers
 
             }   
             else {
-                _notyfService.Error("Sinh viên không có bài cho kì kiểm tra này");
+                _notyfService.Error("Sinh viên không có bài cho kỳ kiểm tra này");
                 return RedirectToAction("KyThi", "BaiGiangs");
             }
            

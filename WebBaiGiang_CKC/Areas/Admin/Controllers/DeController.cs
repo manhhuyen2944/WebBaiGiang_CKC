@@ -187,7 +187,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 return NotFound();
             }
             var kiemtrasv = _context.BaiLam.FirstOrDefault(x => x.CauHoi_BaiLam.First().CauHoi_De.DeId == id);
-            if(kiemtrasv != null)
+            if (kiemtrasv != null)
             {
                 _notyfService.Error("Đề thi này đã có sinh viên kiểm tra rồi!");
                 ViewData["KyKiemTraId"] = new SelectList(_context.KyKiemTra, "KyKiemTraId", "TenKyKiemTra", de.KyKiemTraId);
@@ -398,6 +398,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
         public async Task<IActionResult> PdfDeViewer(int deId)
         {
+            var kykiemtra = _context.KyKiemTra.FirstOrDefault(x => x.De.FirstOrDefault().DeId == deId);
             var document = new StringBuilder();
             var htmlcontent = @"<!DOCTYPE html>
             <html>
@@ -488,9 +489,11 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                     <h4> KHOA CÔNG NGHỆ THÔNG TIN</h4>
                   </div>
 
-                  <div class='hedery'>
-                    <h2> ĐỀ THI CUỐI KỲ</h2>
-                      <p>Thời gian: 60 phút (không kể thời gian phát đề)</p>
+                  <div class='hedery'>";
+
+            htmlcontent += @$"<h2>{kykiemtra.TenKyKiemTra}</h2>";
+
+            htmlcontent += @$"<p>Thời gian: {kykiemtra.ThoiGianLamBai} phút (không kể thời gian phát đề)</p>
                       <p>Sinh viên không được sử dụng tài liệu</p>
                   </div>
                 </div>
@@ -503,8 +506,8 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
                 </div>
                 <div style='font-size: 19px;overflow: hidden;margin-left:130px;'>
-                  <p style='float: left; padding-right: 30px;'>Ngày thi: ......../......../........</p>
-                  <p>Thời lượng: ........ phút</p>
+                 <p style='float: left; padding-right: 30px;'>Ngày thi: {kykiemtra.ThoiGianBatDau.ToString("dd/MM/yyyy")}</p>
+                  <p>Thời lượng: {kykiemtra.ThoiGianLamBai} phút</p>
                   <p style='margin-left: 150px;'>Mã đề: .........</p>
                 </div>
                
@@ -576,7 +579,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 tableHtml += "</table>";
 
                 htmlcontent += tableHtml;
-                i++; 
+                i++;
             }
             //  Kết thúc HTML
             htmlcontent += @"</div>
@@ -598,6 +601,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
         public async Task<IActionResult> PdfDapAnViewer(int deId)
         {
+            var kykiemtra = _context.KyKiemTra.FirstOrDefault(x => x.De.FirstOrDefault().DeId == deId);
             var document = new StringBuilder();
             var htmlcontent = @"<!DOCTYPE html>
                 <html>
@@ -688,9 +692,9 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                         <h4> KHOA CÔNG NGHỆ THÔNG TIN</h4>
                       </div>
 
-                      <div class='hedery'>
-                        <h2> ĐÁP ÁN ĐỀ THI CUỐI KỲ</h4>
-                          <p>Thời gian: 60 phút (không kể thời gian phát đề)</p>
+                      <div class='hedery'>";
+            htmlcontent += @$" <h2> ĐÁP ÁN {kykiemtra.TenKyKiemTra}</h2>
+                          <p>Thời gian: {kykiemtra.ThoiGianLamBai} phút (không kể thời gian phát đề)</p>
                           <p>Sinh viên không được sử dụng tài liệu</p>
                       </div>
                     </div>
@@ -703,8 +707,8 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
                     </div>
                     <div style='font-size: 19px;overflow: hidden;margin-left: 200px;'>
-                      <p style='float: left; padding-right: 30px;'>Ngày thi: ......../......../........</p>
-                      <p>Thời lượng: ........ phút</p>
+                      <p style='float: left; padding-right: 30px;'>Ngày thi: {kykiemtra.ThoiGianBatDau.ToString("dd/MM/yyyy")}</p>
+                      <p>Thời lượng: {kykiemtra.ThoiGianLamBai} phút</p>
                       <p style='margin-left: 150px;'>Mã đề: .........</p>
                     </div>
                     <h2>ĐÁN ÁN</h2>

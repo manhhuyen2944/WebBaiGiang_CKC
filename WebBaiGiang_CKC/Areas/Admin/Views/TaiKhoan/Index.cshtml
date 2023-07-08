@@ -17,16 +17,18 @@
 <hr />
 <br />
 
-  
-  
+
+
 
 <!-- Static Backdrop modal -->
 <div class="d-flex justify-content-between">
     <a asp-action="Create" class="btn btn-success mb-2">Thêm</a>
-    <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Import File Excel
-    </button>
-   
+    <div class="ml-auto">
+        <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Import File Excel
+        </button>
+        <a asp-action="DownloadExcel" class="btn btn-danger mb-2">Down File Excel</a>
+    </div>
 </div>
 
 @await Html.PartialAsync("_PartialViewCreateList")
@@ -97,7 +99,7 @@
                     <a asp-action="Details" asp-route-id="@item.TaiKhoanId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
                     <a asp-action="Edit" asp-route-id="@item.TaiKhoanId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>
                     <a asp-action="Delete" asp-route-id="@item.TaiKhoanId" class="action-icon"> <i class="mdi mdi-delete" style="color:#e75555;font-size:25px;"></i></a>
-                   
+
                 </td>
             </tr>
         }

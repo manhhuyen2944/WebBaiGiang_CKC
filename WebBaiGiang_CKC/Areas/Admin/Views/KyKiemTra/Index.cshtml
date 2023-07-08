@@ -16,10 +16,12 @@
 <br />
 <div class="d-flex justify-content-between">
     <a asp-action="Create" class="btn btn-success mb-2">Thêm</a>
-    <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Import File Excel
-    </button>
-
+    <div class="ml-auto">
+        <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Import File Excel
+        </button>
+        <a asp-action="DownloadExcel" class="btn btn-danger mb-2">Down File Excel</a>
+    </div>
 </div>
 @await Html.PartialAsync("_PartialViewCreateList", new WebBaiGiang_CKC.Models.DanhSachThi())
 
