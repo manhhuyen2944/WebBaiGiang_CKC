@@ -145,11 +145,11 @@ namespace WebBaiGiang_CKC.Controllers
         //    return RedirectToAction("HoSo", "BaiGiangs");
         //}
 
-        //[HttpGet]
-        //public IActionResult QuenMatKhau()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult QuenMatKhau()
+        {
+            return View();
+        }
 
         //[HttpPost]
         //public async Task<IActionResult> QuenMatKhau(ForgotPasswordModel model)
@@ -200,11 +200,11 @@ namespace WebBaiGiang_CKC.Controllers
 
         //}
 
-        //[HttpGet]
-        //public IActionResult DatLaiMatKhau()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult DatLaiMatKhau()
+        {
+            return View();
+        }
 
         //[HttpPost]
         //public async Task<IActionResult> DatLaiMatKhau(ResetPasswordViewModel model)

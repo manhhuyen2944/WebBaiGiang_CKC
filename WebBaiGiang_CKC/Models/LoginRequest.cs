@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 namespace WebBaiGiang_CKC.Models
 {
     public class LoginRequest
@@ -9,4 +10,6 @@ namespace WebBaiGiang_CKC.Models
         [MaxLength(100)]
         public string Password { get; set; }
     }
+
 }
+

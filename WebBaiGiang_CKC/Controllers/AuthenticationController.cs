@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
-using NuGet.Protocol.Plugins;
+
 using System.Security.Claims;
 using WebBaiGiang_CKC.Data;
 using WebBaiGiang_CKC.Extension;
@@ -29,6 +29,7 @@ namespace WebBaiGiang_CKC.Controllers
             _logger = logger;
             _notyfService = notyfService;
         }
+
         [HttpPost]
         [Route("login")]
         public IActionResult Login([FromBody] LoginRequest request)
@@ -138,8 +139,10 @@ namespace WebBaiGiang_CKC.Controllers
                 user.ResetToken = token;
                 user.ResetTokenExpiry = DateTime.UtcNow.AddMinutes(10);
                  _context.SaveChangesAsync();
+
                 HttpContext.Session.SetString("ResetToken", token);
                 HttpContext.Session.SetString("Email", model.Email);
+
                 // Gửi email chứa token đến địa chỉ email của người dùng
                 var email = new MimeMessage();
                 email.From.Add(new MailboxAddress("AdminDotnet", "admin@example.com"));
@@ -162,6 +165,7 @@ namespace WebBaiGiang_CKC.Controllers
                 return BadRequest("Email không tồn tại trong hệ thống");
             }
         }
+
 
         [HttpPost("resetpassword")]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
