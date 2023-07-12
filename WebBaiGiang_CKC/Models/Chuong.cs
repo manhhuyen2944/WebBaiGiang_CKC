@@ -22,4 +22,5 @@ namespace WebBaiGiang_CKC.Models
         public MonHoc MonHoc { get; set; }
         public List<Bai> Bais { get; set; }
     }
+
 }

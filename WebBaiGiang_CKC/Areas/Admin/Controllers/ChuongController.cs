@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebBaiGiang_CKC.Areas.Admin.Data;
 using WebBaiGiang_CKC.Data;
 using WebBaiGiang_CKC.Models;
 
@@ -27,10 +28,16 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         // GET: Admin/Chuong
         public async Task<IActionResult> Index()
         {
-            var webBaiGiangContext = _context.Chuong.Include(c => c.MonHoc);
-            return View(await webBaiGiangContext.ToListAsync());
+            ViewBag.MonHocId = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc");
+            var viewModel = new ChuongViewModel
+            {
+                ListChuong = await  _context.Chuong.Include(c => c.MonHoc).ToListAsync(),
+                Detail = new Chuong()
+            };
+         
+           
+            return View(viewModel);
         }
-
         // GET: Admin/Chuong/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -51,11 +58,10 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
 
         // GET: Admin/Chuong/Create
-        public IActionResult Create()
-        {
-            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc");
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Admin/Chuong/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -71,16 +77,51 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("ChuongId", "Số chương đã tồn tại");
                     ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-                    return View(chuong);
+
+                    var model = new ChuongViewModel
+                    {
+                        Detail = chuong,
+                        ListChuong = await _context.Chuong.ToListAsync() 
+                    };
+
+                    return View("Index", model);
                 }
                 _context.Add(chuong);
                 _notyfService.Success("Thêm Thành Công");
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-            return View(chuong);
+
+            var viewModel = new ChuongViewModel
+            {
+                Detail = chuong,
+                ListChuong = await _context.Chuong.ToListAsync() // Cập nhật lại danh sách chương để hiển thị trên view
+            };
+
+            return View("Index", viewModel);
         }
+        //public async Task<IActionResult> Create([Bind("ChuongId,TenChuong,MonHocId")] Chuong chuong)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.ChuongId == chuong.ChuongId && c.MonHocId == chuong.MonHocId);
+        //        if (existingChuong != null)
+        //        {
+        //            ModelState.AddModelError("ChuongId", "Số chương đã tồn tại");
+        //            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
+        //            return View("Index","Chuong");
+        //        }
+        //        _context.Add(chuong);
+        //        _notyfService.Success("Thêm Thành Công");
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
+        //    return View("Index", "Chuong");
+        //}
+
 
         // GET: Admin/Chuong/Edit/5
         public async Task<IActionResult> Edit(int? id)

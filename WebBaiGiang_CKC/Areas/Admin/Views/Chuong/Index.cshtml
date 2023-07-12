@@ -1,9 +1,11 @@
-﻿@model IEnumerable<WebBaiGiang_CKC.Models.Chuong>
-
+﻿@using WebBaiGiang_CKC.Areas.Admin.Data
+@model ChuongViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var MonHocId = @ViewBag.MonHocId;
 }
+
 <ol class="breadcrumb">
 
     <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
@@ -14,42 +16,95 @@
 <h1 style="text-align: center;">QUẢN LÝ CHƯƠNG </h1>
 <hr />
 <br />
-<a asp-action="Create" class="btn btn-success mb-2">Thêm</a>
+<div class="row">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <br>
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="Detail.MonHocId" class="control-label"></label>
+            <select asp-for="Detail.MonHocId" class="form-control w-100" asp-items="MonHocId"></select>
+        </div>
+        <br />
+        <div class="form-group  flex-grow-1 mx-4">
+            <label asp-for="Detail.ChuongId" class="control-label"></label>
+            <input asp-for="Detail.ChuongId" class="form-control w-100" />
+            <span asp-validation-for="Detail.ChuongId" class="text-danger"></span>
+        </div>
 
-<table class="table table alert-light">
-    <thead class="table-dark">
-        <tr style="text-align: center;">
-            <th>
-                @Html.DisplayNameFor(model => model.MonHoc.TenMonHoc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TenChuong)
-            </th>
-            <th>  @Html.DisplayNameFor(model => model.ChuongId)</th>
-           
-            <th></th>
-        </tr>
-    </thead>
-    <tbody style="text-align: center;">
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MonHoc.TenMonHoc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TenChuong)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ChuongId)
-                </td>
-               
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
-                    <a asp-action="Edit" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-delete" style="color:#e75555;font-size:25px;"></i></a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+            <label asp-for="Detail.TenChuong" class="control-label"></label>
+            <input asp-for="Detail.TenChuong" class="form-control w-100" />
+            <span asp-validation-for="Detail.TenChuong" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group flex-grow-1 mx-4">
+          <input type="submit" value="Thêm" class="btn btn-success mb-2" />
+            <a class="btn btn-secondary mb-2" asp-action="Index">Quay Lại</a>
+        </div>
+    </form>
+</div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered w-100 dt-responsive nowrap" id="products-datatable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="display:none"></th>
+                            <th>Tên môn học </th>
+                            <th>Tên chương</th>
+                            <th>Số chương</th>
+                            <th style="width: 120px;"></th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    @foreach (var item in Model.ListChuong)
+                    {
+                        <tr>
+                            <td style="display:none"></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MonHoc.TenMonHoc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenChuong)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ChuongId)
+                            </td>
+                            <td class="table-action">
+                                <a asp-action="Details" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-eye" style="color:#19b6ff;font-size:25px;"></i>  </a>
+                                <a asp-action="Edit" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-square-edit-outline" style="color:#ffd83b;font-size:25px;"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.ChuongId" class="action-icon"> <i class="mdi mdi-delete" style="color:#e75555;font-size:25px;"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div> <!-- end card-body-->
+</div> <!-- end card-->
+@section scripts{
+    <link rel="shortcut icon" href="~/AdminAssets/images/favicon.ico">
+
+    <!-- third party css -->
+    <link href="~/AdminAssets/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="~/AdminAssets/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css">
+    <!-- third party css end -->
+    <!-- App css -->
+    <link href="~/AdminAssets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/AdminAssets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style">
+
+
+    <!-- third party js -->
+    <script src="~/AdminAssets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="~/AdminAssets/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="~/AdminAssets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="~/AdminAssets/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="~/AdminAssets/js/vendor/dataTables.checkboxes.min.js"></script>
+
+    <!-- third party js ends -->
+    <!-- demo app -->
+    <script src="~/AdminAssets/js/pages/demo.products.js"></script>
+
+    }

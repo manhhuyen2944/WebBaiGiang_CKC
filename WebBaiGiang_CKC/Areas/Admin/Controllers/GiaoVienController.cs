@@ -210,9 +210,9 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var giaovienid = User.Claims.FirstOrDefault(c => c.Type == "Id");
+            var giaovienid = User.Claims.FirstOrDefault(c => c.Type == "TenDangNhap");
             var tendangnhap = giaovienid.Value;
-            if (giaoVien.Id == Convert.ToInt16(tendangnhap))
+            if (giaoVien.TenDangNhap ==tendangnhap)
             {
                 _notyfService.Error("Bạn không thể xóa tài khoản của mình.");
                 return View();
