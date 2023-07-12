@@ -141,7 +141,7 @@
 
                         $http.post('/api/authentication/resetpassword', data)
                             .then(function (response) {
-                                sessionStorage.setItem('successMessage', 'Mật khẩu của bạn đã được đặt lại thành công.');
+                                
                                 $window.location.href = '/';
                                
                             })

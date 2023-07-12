@@ -81,7 +81,7 @@ namespace WebBaiGiang_CKC.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity)
             );
-            _notyfService.Success("Đăng nhập thành công");
+            _notyfService.Success("Đổi mật khẩu thành công");
             return Ok(new { message = "Đăng nhập thành công" });
         }
 
@@ -118,7 +118,7 @@ namespace WebBaiGiang_CKC.Controllers
                 user.MatKhau = request.NewPassword.ToMD5();
                 _context.TaiKhoan.Update(user);
                 await _context.SaveChangesAsync();
-                return Ok("Đổi mật khẩu thành công");
+                return Ok(new { message = "Đổi mật khẩu thành công" });
            
         }
 
@@ -157,8 +157,8 @@ namespace WebBaiGiang_CKC.Controllers
                 smtp.Authenticate("0306201451@caothang.edu.vn", "12345qwertKHANG");
                 smtp.Send(email);
                 smtp.Disconnect(true);
-
-                return Ok("Yêu cầu đặt lại mật khẩu của bạn đã được gửi. Vui lòng kiểm tra email của bạn để tiếp tục.");
+                _notyfService.Success("Yêu cầu đặt lại mật khẩu của bạn đã được gửi. Vui lòng kiểm tra email của bạn để tiếp tục.");
+                return Ok(new { message = "Yêu cầu đặt lại mật khẩu của bạn đã được gửi. Vui lòng kiểm tra email của bạn để tiếp tục." });
             }
             else
             {
@@ -184,8 +184,8 @@ namespace WebBaiGiang_CKC.Controllers
 
                     user.MatKhau = (model.Password).ToMD5();
                     await _context.SaveChangesAsync();
-
-                    return Ok("Mật khẩu của bạn đã được đặt lại thành công.");
+                _notyfService.Success("Mật khẩu của bạn đã được đặt lại thành công.");
+                return Ok("Mật khẩu của bạn đã được đặt lại thành công.");
                 }
 
 
@@ -245,7 +245,7 @@ namespace WebBaiGiang_CKC.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity)
             );
-            _notyfService.Success("Đăng nhập thành công");
+            
             return Ok(new { message = "Đăng nhập thành công" });
         }
 
@@ -275,7 +275,7 @@ namespace WebBaiGiang_CKC.Controllers
             user.MatKhau = request.NewPassword.ToMD5();
             _context.GiaoVien.Update(user);
             await _context.SaveChangesAsync();
-            return Ok("Đổi mật khẩu thành công");
+            return Ok(new { message = "Đổi mật khẩu thành công" });
 
         }
 
@@ -313,7 +313,7 @@ namespace WebBaiGiang_CKC.Controllers
                 smtp.Authenticate("0306201451@caothang.edu.vn", "12345qwertKHANG");
                 smtp.Send(email);
                 smtp.Disconnect(true);
-
+                _notyfService.Success("Yêu cầu đặt lại mật khẩu của bạn đã được gửi. Vui lòng kiểm tra email của bạn để tiếp tục.");
                 return Ok("Yêu cầu đặt lại mật khẩu của bạn đã được gửi. Vui lòng kiểm tra email của bạn để tiếp tục.");
             }
             else
@@ -340,7 +340,7 @@ namespace WebBaiGiang_CKC.Controllers
 
                 user.MatKhau = (model.Password).ToMD5();
                 await _context.SaveChangesAsync();
-
+                _notyfService.Success("Mật khẩu của bạn đã được đặt lại thành công.");
                 return Ok("Mật khẩu của bạn đã được đặt lại thành công.");
             }
 
