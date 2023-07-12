@@ -342,3 +342,7 @@ C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\refint
 C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\WebBaiGiang_CKC.pdb
 C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\WebBaiGiang_CKC.genruntimeconfig.cache
 C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\obj\Debug\net6.0\ref\WebBaiGiang_CKC.dll
+C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\UpLoads\Files\ImportCauHoi.xlsx
+C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\UpLoads\Files\ImportDanhSachThi.xlsx
+C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\UpLoads\Files\ImportTaiKhoan.xlsx
+C:\Users\SV\source\repos\WebBaiGiang_CKC\WebBaiGiang_CKC\bin\Debug\net6.0\UpLoads\Images\GiaoVien\adminpro.png
