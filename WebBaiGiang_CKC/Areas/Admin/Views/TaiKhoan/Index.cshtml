@@ -35,7 +35,9 @@
 <table class="table alert-light">
     <thead class="table-dark">
         <tr style="text-align: center;">
-
+            <th>
+              ID Tài Khoản
+            </th>
             <th>
                 Hình Ảnh
             </th>
@@ -56,7 +58,9 @@
         @foreach (var item in Model)
         {
             <tr>
-
+                <td>
+                    @item.TaiKhoanId
+                </td>
                 <td>
                     <div class="avatar">
                         @if (!string.IsNullOrEmpty(item.HoTen))
