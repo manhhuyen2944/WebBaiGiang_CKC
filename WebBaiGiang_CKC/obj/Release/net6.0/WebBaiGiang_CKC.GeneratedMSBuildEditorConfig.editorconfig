@@ -36,16 +36,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/Chuong/_PartialViewDelete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1b25nXF9QYXJ0aWFsVmlld0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/SV/source/repos/WebBaiGiang_CKC/WebBaiGiang_CKC/Areas/Admin/Views/DangNhap/DatLaiMatKhau.cshtml]
