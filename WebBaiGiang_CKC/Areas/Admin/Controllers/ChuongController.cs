@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using WebBaiGiang_CKC.Areas.Admin.Data;
 using WebBaiGiang_CKC.Data;
 using WebBaiGiang_CKC.Models;
@@ -26,128 +28,137 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         }
 
         // GET: Admin/Chuong
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            ViewBag.MonHocId = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc");
-            var viewModel = new ChuongViewModel
+            if (id == null)
             {
-                ListChuong = await  _context.Chuong.Include(c => c.MonHoc).ToListAsync(),
-                Detail = new Chuong()
-            };
-         
-           
-            return View(viewModel);
-        }
-        // GET: Admin/Chuong/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Chuong == null)
+                ViewBag.MonHocId = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc");
+                var chuong = new Chuong()
+                {
+                    TenChuong = "",
+                    ChuongId = 0,
+                    MonHocId = 1,
+                };
+                var viewModel = new ChuongViewModel
+                {
+                    ListChuong = await _context.Chuong.Include(c => c.MonHoc).ToListAsync(),
+                    Detail = chuong
+                };
+
+
+                return View(viewModel);
+            }
+            else
             {
-                return NotFound();
+                ViewBag.MonHocId = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc");
+                List<Chuong> DsChuong = await _context.Chuong.Include(c => c.MonHoc).ToListAsync();
+                var chuong = new Chuong()
+                {
+                    TenChuong = DsChuong.FirstOrDefault(c => c.ChuongId == id).TenChuong,
+                    ChuongId = DsChuong.FirstOrDefault(c => c.ChuongId == id).ChuongId,
+                    MonHocId = 1,
+                };
+                var viewModel = new ChuongViewModel
+                {
+                    ListChuong = DsChuong,
+                    Detail = chuong
+                };
+
+
+                return View(viewModel);
             }
 
-            var chuong = await _context.Chuong
+        }
+
+        public IActionResult GetDetail(int id)
+        {
+            var chuong = _context.Chuong
                 .Include(c => c.MonHoc)
-                .FirstOrDefaultAsync(m => m.ChuongId == id);
+                .SingleOrDefault(c => c.ChuongId == id);
+
             if (chuong == null)
             {
                 return NotFound();
             }
 
-            return View(chuong);
+            var data = new
+            {
+                monHoc = new { tenMonHoc = chuong.MonHoc.TenMonHoc },
+                tenChuong = chuong.TenChuong,
+                chuongId = chuong.ChuongId
+            };
+
+            try
+            {
+                var jsonData = JsonConvert.SerializeObject(data);
+                return Content(jsonData, "application/json");
+            }
+            catch (Exception)
+            {
+                // log lỗi serialize JSON vào đây
+                return BadRequest();
+            }
         }
 
-        // GET: Admin/Chuong/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        // POST: Admin/Chuong/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ChuongId,TenChuong,MonHocId")] Chuong chuong)
+        public async Task<IActionResult> Create(ChuongViewModel chuong)
         {
             if (ModelState.IsValid)
             {
-                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.ChuongId == chuong.ChuongId && c.MonHocId == chuong.MonHocId);
+                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.ChuongId == chuong.Detail.ChuongId || c.TenChuong == chuong.Detail.TenChuong && c.MonHocId == chuong.Detail.MonHocId);
+
                 if (existingChuong != null)
                 {
-                    ModelState.AddModelError("ChuongId", "Số chương đã tồn tại");
-                    ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-
-                    var model = new ChuongViewModel
+                    if (existingChuong.ChuongId == chuong.Detail.ChuongId)
                     {
-                        Detail = chuong,
-                        ListChuong = await _context.Chuong.ToListAsync() 
-                    };
+                        ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.Detail.MonHocId);
 
-                    return View("Index", model);
+                        var model = new ChuongViewModel
+                        {
+                            Detail = chuong.Detail,
+                            ListChuong = await _context.Chuong.ToListAsync()
+                        };
+                        _notyfService.Error("Số chương đã tồn tại");
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+
+
+                        ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.Detail.MonHocId);
+
+                        var model = new ChuongViewModel
+                        {
+                            Detail = chuong.Detail,
+                            ListChuong = await _context.Chuong.ToListAsync()
+                        }; _notyfService.Error("Tên chương đã tồn tại");
+                      
+                        return RedirectToAction(nameof(Index));
+                    }
                 }
-                _context.Add(chuong);
+                _context.Add(chuong.Detail);
                 _notyfService.Success("Thêm Thành Công");
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
+            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.Detail.MonHocId);
 
             var viewModel = new ChuongViewModel
             {
-                Detail = chuong,
+                Detail = chuong.Detail,
                 ListChuong = await _context.Chuong.ToListAsync() // Cập nhật lại danh sách chương để hiển thị trên view
             };
 
             return View("Index", viewModel);
         }
-        //public async Task<IActionResult> Create([Bind("ChuongId,TenChuong,MonHocId")] Chuong chuong)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.ChuongId == chuong.ChuongId && c.MonHocId == chuong.MonHocId);
-        //        if (existingChuong != null)
-        //        {
-        //            ModelState.AddModelError("ChuongId", "Số chương đã tồn tại");
-        //            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-        //            return View("Index","Chuong");
-        //        }
-        //        _context.Add(chuong);
-        //        _notyfService.Success("Thêm Thành Công");
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-        //    return View("Index", "Chuong");
-        //}
 
-
-        // GET: Admin/Chuong/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Chuong == null)
-            {
-                return NotFound();
-            }
-
-            var chuong = await _context.Chuong.FindAsync(id);
-            if (chuong == null)
-            {
-                return NotFound();
-            }
-            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-            return View(chuong);
-        }
-
-        // POST: Admin/Chuong/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ChuongId,TenChuong,MonHocId")] Chuong chuong)
+        public async Task<IActionResult> Edit(int id, ChuongViewModel chuong)
         {
-            if (id != chuong.ChuongId)
+            if (id != chuong.Detail.ChuongId)
             {
                 return NotFound();
             }
@@ -156,13 +167,30 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(chuong);
+                    var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.TenChuong == chuong.Detail.TenChuong && c.MonHocId == chuong.Detail.MonHocId);
+
+                    if (existingChuong != null)
+                    {
+                       
+
+                            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.Detail.MonHocId);
+
+                            var model = new ChuongViewModel
+                            {
+                                Detail = chuong.Detail,
+                                ListChuong = await _context.Chuong.ToListAsync()
+                            }; _notyfService.Error("Tên chương đã tồn tại");
+
+                            return RedirectToAction(nameof(Index));
+                        
+                    }
+                    _context.Update(chuong.Detail);
                     _notyfService.Success("Cập Nhật Thành Công");
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ChuongExists(chuong.ChuongId))
+                    if (!ChuongExists(chuong.Detail.ChuongId))
                     {
                         return NotFound();
                     }
@@ -173,33 +201,40 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.MonHocId);
-            return View(chuong);
+            ViewData["MonHocId"] = new SelectList(_context.MonHoc, "MonHocId", "TenMonHoc", chuong.Detail.MonHocId);
+
+            var viewModel = new ChuongViewModel
+            {
+                Detail = chuong.Detail,
+                ListChuong = await _context.Chuong.ToListAsync() // Cập nhật lại danh sách chương để hiển thị trên view
+            };
+
+            return View("Index", viewModel);
         }
 
         // GET: Admin/Chuong/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Chuong == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null || _context.Chuong == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var chuong = await _context.Chuong
-                .Include(c => c.MonHoc)
-                .FirstOrDefaultAsync(m => m.ChuongId == id);
-            if (chuong == null)
-            {
-                return NotFound();
-            }
+        //    var chuong = await _context.Chuong
+        //        .Include(c => c.MonHoc)
+        //        .FirstOrDefaultAsync(m => m.ChuongId == id);
+        //    if (chuong == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(chuong);
-        }
+        //    return View(chuong);
+        //}
 
         // POST: Admin/Chuong/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (_context.Chuong == null)
             {
@@ -217,7 +252,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
 
         private bool ChuongExists(int id)
         {
-          return _context.Chuong.Any(e => e.ChuongId == id);
+            return _context.Chuong.Any(e => e.ChuongId == id);
         }
     }
 }
