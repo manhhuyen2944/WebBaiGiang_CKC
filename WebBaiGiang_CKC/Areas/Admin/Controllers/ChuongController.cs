@@ -106,7 +106,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.ChuongId == chuong.Detail.ChuongId || c.TenChuong == chuong.Detail.TenChuong && c.MonHocId == chuong.Detail.MonHocId);
+                var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.ChuongId == chuong.Detail.ChuongId || c.TenChuong.Trim() == chuong.Detail.TenChuong.Trim() && c.MonHocId == chuong.Detail.MonHocId);
 
                 if (existingChuong != null)
                 {
@@ -167,7 +167,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             {
                 try
                 {
-                    var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.TenChuong == chuong.Detail.TenChuong && c.MonHocId == chuong.Detail.MonHocId);
+                    var existingChuong = await _context.Chuong.FirstOrDefaultAsync(c => c.TenChuong.Trim() == chuong.Detail.TenChuong.Trim() && c.MonHocId == chuong.Detail.MonHocId);
 
                     if (existingChuong != null)
                     {

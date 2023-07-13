@@ -230,7 +230,7 @@ namespace WebBaiGiang_CKC.Areas.Admin.Controllers
             {
                 try
                 {
-                    kyKiemTra.TenKyKiemTra = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(kyKiemTra.TenKyKiemTra);
+                    kyKiemTra.TenKyKiemTra = CultureInfo.CurrentCulture.TextInfo.ToUpper(kyKiemTra.TenKyKiemTra);
                     _context.Update(kyKiemTra);
                     _notyfService.Success("Cập nhật thành công!");
                     await _context.SaveChangesAsync();
